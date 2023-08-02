@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>99乘法表</title>
+  <style>
+    span {
+      display: inline-block;
+      padding: 5px 10px;
+      width: 100px;
+      border: 1px solid pink;
+      border-radius: 5px;
+      margin: 2px;
+      box-shadow: 2px 2px 2px pink;
+    }
+  </style>
+</head>
+
+<body>
+  <script>
+    // for (let i = 1; i <= 9; i++) {
+    //   for (let j = 1; j <= i; j++) {
+    //     document.write(j + " * " + i + " = " + (j * i) + "&nbsp;&nbsp;&nbsp;")
+    //   }
+    //   document.write('<br>')
+    // }
+
+    // 1、外层循环 控制行数
+    for (let i = 1; i <= 9; i++) {
+      // 2、里层循环控制列数
+      for (let j = 1; j <= i; j++) {
+        document.write(`<span> ${j} * ${i} = ${j * i}</span>`)
+      }
+      document.write('<br>')
+    }
+
+    var str = '';
+    for (var i = 1; i <= 9; i++) {
+      for (var j = 1; j <= i; j++) {
+        str += j + 'x' + i + '=' + j * i + '\t';
+      }
+      str += '\n';
+    }
+    console.log(str);
+    
+  </script>
+</body>
+
+</html>

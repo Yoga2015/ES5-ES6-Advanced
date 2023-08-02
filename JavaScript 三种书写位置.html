@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript三种书写位置</title>
+  <!-- 内部式 的 js -->
+  <script>
+    alert('欢迎来到JavaScript世界');
+  </script>
+
+  <!-- 外部式的js 文件 -->
+  <script src='./DataType.js'></script>
+
+</head>
+<body>
+
+  在HTML中, 我们推荐使用 双引号 ， JS中, 我们推荐使用 单引号
+
+  <!-- 内联式 的 js 直接写到元素的内部 -->
+  <button id="btn" onclick=" alert('欢迎来到JavaScript世界');">
+    JavaScript
+  </button>
+  
+  <!-- 内部式 的 js -->
+  <script>
+    var btn = document.getElementById('btn');
+    btn.addEventListener('click', function (event) {
+      alert('欢迎来到JavaScript世界');
+    }, false)
+
+    //这是一个输入框
+    prompt('请输入你的年龄');
+  </script>
+  
+  <!-- 外部式的js 文件 -->
+  <script src='./DataType.js'></script>
+
+  </body>
+  
+  </html>

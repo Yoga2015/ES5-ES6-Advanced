@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS操作</title>
+  <style>
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: yellow;
+    }
+  </style>
+</head>
+
+<body>
+  <div></div>
+
+  <script>
+    let divStyle = document.querySelector('div').style;
+    divStyle.width = '300px';
+    divStyle.height = '300px';
+    divStyle.backgroundColor = 'green';
+
+  </script>
+</body>
+
+</html>
