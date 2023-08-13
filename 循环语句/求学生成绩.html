@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>求学生成绩</title>
+</head>
+
+<body>
+  <script>
+    /** 求学生成绩
+    要求用户输入班级人数，之后依次输入每个学生的成绩，
+    最后打印出该班级总的成绩以及平均成绩
+    
+    1、先弹出第一个输入框，提示用户 输入 该班级总的人数 并保存到 total变量
+    2、再弹出第二个输入框，提示用户 输入 每个学生的成绩，并保存到 score变量
+    3、for循环：
+    3.1 弹出的次数 跟 班级总人数有关系 ，条件表达式  i <= total
+    3.2 进行业务处理：计算成绩。先求总成绩 sum，之后求平均成绩 average
+    4、弹出 该班级总成绩 、
+    5、弹出 该班级平均成绩     计算平均值的公式 ：平均值 = 总和 / 数值的数量
+    * 注意：从prompt()取过来的数据 是 字符串型的需要转换为数字型
+    */
+
+    var total = prompt('请输入班级总的人数？');  //班级总的人数
+    var sum = 0;     //求该班级总成绩的变量
+    var average = 0;  //求该班级平均成绩的变量
+    for (var i = 1; i <= parseFloat(total); i++) {
+      var score = prompt('请输入第' + i + '个学生的成绩？');//学生成绩
+      sum = sum + parseFloat(score);
+    }
+    average = sum / total;  //该班级平均成绩
+    alert('该班级总的成绩: ' + sum)
+    alert('该班级平均成绩: ' + average)
+  </script>
+</body>
+
+</html>

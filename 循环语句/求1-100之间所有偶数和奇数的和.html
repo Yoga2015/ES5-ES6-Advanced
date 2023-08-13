@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>求1-100之间所有偶数和奇数的和</title>
+</head>
+
+<body>
+  <script>
+    /** 求 1-100之间所有偶数和奇数的和
+     * 1、需要循环 100 次， 所以需要一个计数器 i
+     * 2、需要一个 偶数 变量 even  ,一个奇数 变量odd
+    */
+    var sum = 0;
+    var even = 0;
+    var odd = 0;
+    for (var i = 1; i <= 100; i++) {
+      if (i % 2 == 0) {   //能被2整除的就是偶数
+        even = even + i;
+      } else {        //否则就是奇数
+        odd = odd + i;
+      }
+    }
+    console.log('1-100之间所有的偶数和是：' + even);  //2550
+    console.log('1-100之间所有的奇数和是：' + odd);  //2500
+  </script>
+</body>
+
+</html>

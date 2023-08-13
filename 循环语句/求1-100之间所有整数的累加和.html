@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>求1-100之间所有整数的累加和</title>
+</head>
+
+<body>
+  <script>
+    /** 求 1 - 100 之间所有整数的累加和
+     求总和公式：（首项 + 末项） * 末项  / 2  = 总和
+     * 1、需要循环 100 次， 所以需要一个计数器 i
+     * 2、需要一个存储结果的变量 sum, 但是初始值 一定是 0；
+     * 3、核心算法 ： 1+2+3+4+5......，sum = sum + i;
+    */
+    var sum = 0;
+    for (var i = 1; i <= 100; i++) {
+      // sum = sum + i; 
+      sum += i;  //同上
+    }
+    console.log(sum)
+  </script>
+</body>
+
+</html>

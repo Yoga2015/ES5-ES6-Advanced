@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>求1-100之间所有能被3整除的数字的和</title>
+</head>
+
+<body>
+  <script>
+    /** 求 1-100之间所有能被 3 整除的数字的和
+   * 1、需要循环 100 次，所以需要一个计数器 i
+   * 2、需要一个 被3 整除的数字的和 result
+  */
+    var result = 0;
+    for (var i = 1; i <= 100; i++) {
+      if (i % 3 == 0) {
+        result = result + i
+      }
+    }
+    console.log('1-100之间所有能够被 3 整除的数字的和是' + result);
+  </script>
+</body>
+
+</html>
