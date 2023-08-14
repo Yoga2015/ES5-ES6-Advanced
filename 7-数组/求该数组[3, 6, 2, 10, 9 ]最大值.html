@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>求该数组[3, 6, 2, 10, 9 ]最大值</title>
+</head>
+
+<body>
+  <script>
+    let arr = [3, 6, 2, 10, 9, 10.4];
+
+    let max = arr[0];   // 先以第一个元素 作为最大值 ，进行判断比较
+
+    for (let i = 0; i <= arr.length; i++) {
+      if (arr[i] > max) {
+        max = arr[i];       // 如果这个数组元素 大于 max  就把这个数组元素 存到 max 里面      
+      }
+    }
+
+    console.log(`该数组中最大的值为：` + max);
+  </script>
+</body>
+
+</html>

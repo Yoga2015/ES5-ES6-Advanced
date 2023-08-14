@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>删除数组 [3, 2, 0, 6, 1, 7, 0, 4] 里面的第一个元素</title>
+</head>
+
+<body>
+  <script>
+    let arr = [3, 2, 0, 6, 1, 7, 0, 4];
+    let firstArr = [];
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] != arr[0]) {
+        firstArr[firstArr.length] = arr[i]
+      }
+    }
+
+    alert(firstArr)
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>将数组中大于等于10的元素选出来并放入新数组</title>
+</head>
+
+<body>
+  <script>
+    // let arr = [2, 0, 6, 1, 77, 0, 52, 0, 25, 7, 10.01];
+    // let newArr = [];
+    // let j = 0;
+    // for (let i = 0; i < arr.length; i++) {
+    //   if (arr[i] >= 10) {
+    //     newArr[j] = arr[i];
+    //     j++;
+    //   }
+    // }
+    // console.log(newArr);
+
+
+    let arr = [2, 0, 6, 1, 77, 0, 52, 0, 25, 7, 10.01];
+
+    let newArr = [];
+
+    for (let i = 0; i < arr.length; i++) {
+
+      if (arr[i] >= 10) {
+
+        // newArr[newArr.length] = arr[i];     // 方式1   
+
+        newArr.push(arr[i]);    // 方式2
+      }
+
+    }
+
+    console.log(newArr);
+  </script>
+</body>
+
+</html>

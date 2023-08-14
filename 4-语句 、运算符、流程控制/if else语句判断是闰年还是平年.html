@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>if else语句判断是闰年还是平年</title>
+</head>
+
+<body>
+  <script>
+    /** 案例：使用if else语句判断是闰年还是平年
+    算法：
+     能被 4 整除 并且 不能整除 100 的为闰年，
+     或者 能够被 400整除的就是闰年 。
+       
+     1、弹出 prompt 输入框，让用户输入年份
+     2、使用if else语句判断是闰年还是平年
+    
+     一定要注意里面的 且 &&  ，还有  或者 || 的写法，
+     同时注意判断整除的方法是取余为0
+    */
+
+    // years 取过来是字符串类型
+    var year = prompt('请输入你的年份：');
+
+    if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+      alert('您输入的' + year + '是 闰年')
+    } else {
+      alert('您输入的' + year + '是 平年')
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>输入查询的水果名称查询价格</title>
+</head>
+
+<body>
+  <script>
+    //我们开发里面 表达式 我们经常写成变量
+    var fruits = prompt('请输入查询的水果名称？');
+
+    switch (fruits) {  //fruits 的值 和case里面的值相匹配的时候是 全等
+      case '雪梨':  // 必须是值和数据类型一致才可以 即： fruits === 雪梨
+        console.log(fruits + '的价格是 4.9元/斤');
+        break;
+      case '苹果':
+        console.log(fruits + '的价格是 10.9元/斤');
+        break;
+      case '火龙果':
+        console.log(fruits + '的价格是 12元/斤');
+        break;
+      default:
+        console.log('不好意思，没有这种水果');
+    }
+  </script>
+</body>
+
+</html>

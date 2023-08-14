@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数组的遍历</title>
+</head>
+
+<body>
+  <script>
+    // for...in循环不仅可以遍历对象，也可以遍历数组，毕竟数组只是一种特殊对象。
+    let arr = [['one', 'two'], 12, { age: 18 }, 'walking', { name: 'lisi' }];
+    for (let i in arr) {
+      console.log(arr[i]);
+    }
+  </script>
+</body>
+
+</html>

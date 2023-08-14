@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>修改指定数组元素</title>
+</head>
+
+<body>
+  <script>
+    /**  修改指定数组元素 
+     *  将 数组 [3, 2, 0, 6, 1, 7, 0, 4] 中的 0 换成 walking 后，
+        形成一个不包含 0 的新数组
+    * 1、需要一个新数组用于存放筛选之后的数据。
+    * 2、遍历原来的数组，把 是 0 的数据  换成 walking 后 添加到 新数组里面
+    *   （此时要注意采用数组名 + 索引的格式接收数据）
+    * 3、新数组的个数，用length 不断的累加。
+    */
+
+    let arr = [3, 2, 0, 6, 1, 7, 0, 4];
+    let newArr = [];
+    for (let i = 0; i < arr.length; i++) {
+
+      if (arr[i] == 0) {
+        arr[i] = 'walking';
+        newArr[newArr.length] = arr[i];
+      } else {
+        newArr[newArr.length] = arr[i];
+      }
+    }
+    console.log(newArr);    // [3, 2, 'walking', 6, 1, 7, 'walking', 4]
+
+  </script>
+</body>
+
+</html>

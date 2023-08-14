@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>打印5行5列星星</title>
+</head>
+
+<body>
+  <script>
+    /**
+   * 打印5行5列星星
+   * 1 内层循环负责一行打印 5个星星
+   * 2 外层循环负责打印 5行
+  */
+    var str = '';
+    for (var i = 1; i <= 5; i++) {
+      for (var j = 1; j <= 5; j++) {
+        str = str + '*';  //字符串拼接
+      };
+      //如果一行打印完毕 5个 * 星星就要另起一行 加  \n
+      str = str + '\n';  //加 转义符 \n 换行   
+    };
+    console.log(str);
+
+  </script>
+</body>
+
+</html>

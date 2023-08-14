@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>continue语句用于立即终止本轮循环，返回循环结构的头部，开始下一轮循环</title>
+</head>
+
+<body>
+  <script>
+    var i = 0;
+
+    while (i < 100) {
+      i++;
+      if (i % 2 === 0) continue;
+      console.log('i 当前为：' + i);
+    }
+  </script>
+</body>
+
+</html>

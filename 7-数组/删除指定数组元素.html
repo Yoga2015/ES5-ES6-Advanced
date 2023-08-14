@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>删除指定数组元素</title>
+</head>
+
+<body>
+  <script>
+    /**  删除指定数组元素 ( 数组去重 )
+     *  将 数组 [3, 2, 0, 6, 1, 7, 0, 4] 中的0 去掉后，
+        形成一个不包含 0的新数组
+    * 1、需要一个新数组用于存放筛选之后的数据。
+    * 2、遍历原来的数组，把 不是 0 的数据 添加到新数组里面
+    *   （此时要注意采用数组名 + 索引的格式接收数据）
+    * 3、新数组的个数，用length 不断的累加。
+    */
+
+    let arr = [3, 2, 0, 6, 1, 7, 0, 4];
+    let newArr = [];
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] != 0) {
+        // newArr[newArr.length] = arr[i]
+        newArr.push(arr[i])
+      }
+    }
+    console.log(newArr);
+  </script>
+</body>
+
+</html>
