@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>为什么需要函数</title>
+</head>
+
+<body>
+  <script>
+    //  求 1 - 10 之间所有数的和 ？
+    let sum1 = 0;
+    for (let i = 1; i <= 10; i++) {
+      sum1 = sum1 + i
+    }
+    console.log(sum1);  // 55
+
+    //  求 10 - 50 之间所有数的和 ？
+    let sum2 = 0;
+    for (let i = 10; i <= 50; i++) {
+      sum2 = sum2 + i
+    }
+    console.log(sum2);  // 1230
+
+
+    // 以上两个例子的代码 是不是 重复率特别高呀？
+    // 我干脆把它封装到一个函数里面去，等我要使用的时候，
+    // 我只需去调用一下 这个函数 就可以帮我们实现这个计算结果
+    // 而不用重复写这么多代码
+
+    // 下面开始使用 函数 来实现 大量代码的重复使用
+    function getSum(num1, num2) {
+      let sum = 0;
+      for (let i = num1; i <= num2; i++) {
+        sum += num1;
+      }
+      console.log(sum);
+    }
+
+    getSum(1, 10);
+    getSum(10, 50);
+    getSum(50, 100);
+
+  </script>
+</body>
+
+</html>
