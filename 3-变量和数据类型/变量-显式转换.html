@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>变量-显式转换</title>
+</head>
+
+<body>
+  <script>
+
+    let str = '123';
+    console.log(Number(str));  // 123
+    console.log(Number('walking'));  // NaN
+
+    let num = prompt('请输入您的年龄：');
+    console.log(num);  // '12'
+    console.log(Number(num));  // 12
+
+
+    console.log(parseInt('12px'));    // 12
+    console.log(parseInt('12.34px'));   // 12
+    console.log(parseInt('12.96px'));   // 12
+    console.log(parseInt('abc12.96px'));  // NaN
+
+
+    console.log(parseFloat('12px'));  // 12
+    console.log(parseFloat('12.34px'));  // 12.34
+    console.log(parseFloat('12.96px'));   // 12.96
+    console.log(parseFloat('abc12.96px'));  // NaN
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>prompt()获取过来的数据默认是字符串类型</title>
+</head>
+
+<body>
+  <script>
+
+    // let num1 = prompt('请输入第一个数字');
+    // let num2 = prompt('请输入第二个数字');
+    // alert(num1 + num2);  // 1 + 1 =  11
+
+    let num1 = +prompt('请输入第一个数字');
+    let num2 = +prompt('请输入第二个数字');
+    alert(num1 + num2);  // 1 + 1  = 2
+
+  </script>
+</body>
+
+</html>

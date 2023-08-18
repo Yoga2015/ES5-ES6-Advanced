@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>undefined 和 null基本数据类型</title>
+</head>
+
+<body>
+  <script>
+    let age;    // 声明变量 但是未赋值
+    console.log(age);  // 输出 undefined
+
+    let obj = null;
+    console.log(obj);   //null
+
+    // null  和 undefined 的区别
+    // undefined 表示 没有赋值
+    // null 表示 赋值了 ，但是 内容未空 。是有值的，但是是空值。
+
+    // 计算有区别
+    console.log(undefined + 1);   // NaN
+    console.log(null + 1);   // 1
+
+  </script>
+</body>
+
+</html>
