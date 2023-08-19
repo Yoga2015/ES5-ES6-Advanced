@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>三元表达式：数字补 0 案例</title>
+</head>
+
+<body>
+  <script>
+    let age = 20;
+    age = age + 1;
+    console.log(age);   // 21
+
+    // 需求: 用户输入1个数，如果数字小于10，则前面进行补0，比如 09 03 等
+
+    let num = prompt('请输入一个数字：');   // 9
+    num = num < 10 ? 0 + num : num;
+    // num = num >= 10 ? num : 0 + num;
+    alert(num);   // 09
+
+  </script>
+</body>
+
+</html>
