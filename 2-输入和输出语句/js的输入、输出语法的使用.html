@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>js的输入、输出语法的使用</title>
+</head>
+
+<body>
+  <script>
+
+    // 输入语法
+    let uname = prompt('请输入您的姓名：');
+
+    let age = prompt('请输入您的年龄：');
+
+    // 输出语法
+    document.write(`大家好，我叫 ${uname}，我今年贵庚 ${age} 岁了`);
+
+    alert(`大家好，我叫 ${uname}，我今年贵庚 ${age} 岁了`);
+
+    console.log(`大家好，我叫 ${uname}，我今年贵庚 ${age} 岁了`);
+
+    // 按照 HTML文档流 顺序 执行JavaScript代码
+
+    // alert()  和  prompt() 它们会跳过 页面渲染 先被执行（目前作为了解）
+
+
+    var num = confirm('确定取消吗？');
+    alert(num);   // true
+
+
+  </script>
+</body>
+
+</html>

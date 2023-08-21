@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML+CSS+JS体验</title>
+
+  <style>
+    .pink {
+      background-color: pink;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <button>按钮1</button>
+  <button>按钮2</button>
+  <button class="pink">按钮3</button>
+  <button>按钮4</button>
+
+  <script>
+    let btns = document.querySelectorAll('button');
+
+    for (let i = 0; i <= btns.length - 1; i++) {
+
+      // console.log(btns[i]);
+
+      btns[i].addEventListener('click', function () {
+
+        // btns[i].style.backgroundColor = 'red';   
+
+        /* 排他思想:就是排除掉其他的（包括自己），然后再给自己设置想要实现的效果。 */
+        document.querySelector('.pink').className = '';
+
+        // btns[i].className = 'pink';
+
+        this.className = 'pink';
+
+      })
+    }
+  </script>
+
+</body>
+
+</html>
