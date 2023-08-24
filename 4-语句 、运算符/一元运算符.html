@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>一元运算符</title>
+</head>
+
+<body>
+  <script>
+
+    // 二元运算符
+    let num = 10 + 20;
+    console.log(num);   // 30
+
+
+    // 一元运算符：
+
+    // 前置自增 运算符
+    let i = 1;
+    console.log(++i + 2);   // 4
+
+    /* 注意 ： 此时 i 是 2；
+    i 先自加 1，变成 2 之后，再 和 后面的 2 相加  */
+
+
+    // 后置自增 运算符
+    let s = 1;
+    console.log(s++ + 2);  // 3
+
+    /* 注意 ： 此时 s 是 1；
+    s 先和 2 相加 ，先运算输出完毕后，s 再 自加 是 2 */
+
+
+    // 面试题
+    let j = 1;
+    console.log(j++ + ++j + j);  // 7
+    //           1  +  3  + 3  =  7
+    // j++ 先运算 再来自加  1 ，然后此时 j 就是 2 了；
+    // ++j 先自加 1，再来运算，根据前面一个运算 此时 j 就是 2，就是 2 + 1  然后此时 j 就是 3 了；
+    
+     
+
+  </script>
+</body>
+
+</html>

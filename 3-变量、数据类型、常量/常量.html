@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>常量</title>
+</head>
+
+<body>
+  <script type="module">
+
+    //1、声明 常量，并赋值   
+    const age = 18;
+    console.log(age);
+
+    age = 20;   // Uncaught TypeError: Assignment to constant variable.
+    console.log(age);
+
+    /*
+      常量 不允许更改值
+      常量 声明 的时候 ，必须赋值
+
+      对于基本类型的数据（数值、字符串、布尔值），其值
+      就保存在变量指向的那个内存地址，因此等同于常量。
+    */
+
+  </script>
+
+  <script>
+
+    const obj = {
+      name: 'lisi',
+      age: 38,
+    };
+
+    console.log(obj);
+
+    obj.name = 'walking';
+    console.log(obj);
+
+    /*
+       对于 引用类型的数据（主要是对象和数组）来说，变量指向数据的 内存地址，保存的只是一个指针，
+       const 只能保证这个指针是固定不变的，至于它指向的数据结构是不是可变的，就完全不能控制了。
+    */
+
+  </script>
+</body>
+
+</html>

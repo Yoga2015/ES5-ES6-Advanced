@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>判断一个数是4的倍数且不是100的倍数</title>
+</head>
+
+<body>
+
+  <script>
+
+    // 需求 ： 用户输入一个数字，判断这个数字 能被 4 整除，但并且不能被 100 整除，满足条件 ，页面弹出 true, 否则弹出 false 
+
+    // 1、用户输入
+    let num = +prompt('请输入一个数字：');
+
+    // 2、判断 条件 弹出结果
+    alert(num % 4 === 0 && num % 100 !== 0);
+
+    // 当不是用 严格相等运算符 === ，而是用 相等运算符 ==，会发生 隐式转换数据类型，这样不安全。
+
+  </script>
+  
+</body>
+
+</html>
