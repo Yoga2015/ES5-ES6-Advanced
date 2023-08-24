@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>简单计算器</title>
+</head>
+
+<body>
+  <script>
+
+    /*
+      需求: 用户输入2个数字，然后输入 +* /任何一个，可以计算结果
+      
+      分析:
+          1、用户输入数字
+          2、用户输入不同算术运算符，可以去执行不同的运算(switch)
+    */
+
+    let num1 = +prompt(`请输入第一个数字`);
+    let num2 = +prompt(`请输入第二个数字`);
+    let operator = prompt(`请输入 *、 /、 + 、- 任意一个运算符 来计算结果`);
+
+    switch(operator){
+      case '+':
+        alert(`两个数的加法操作是 ${num1 + num2}`)  
+        break;
+      case '-':
+        alert(`两个数的减法操作是 ${num1 - num2}`)  
+        break;
+      case '*':
+        alert(`两个数的加法操作是 ${num1 * num2}`)
+        break;
+      case '/':
+        alert(`两个数的减法操作是 ${num1 / num2}`)
+        break;
+      default:
+        alert(`你干啥咧？ 请输入 + - * /`)
+    }
+    
+  </script>
+  
+</body>
+
+</html>
