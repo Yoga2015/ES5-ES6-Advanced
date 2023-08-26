@@ -9,32 +9,49 @@
 
 <body>
   <script>
-    /*  需求 ： 用户可以选择 存钱、取钱、查看余额 和 退出 功能
-        
-        分析： 
-          1、首次，需要自动弹出 prompt（）询问
-          2、循环的时候，需要反复提示输入框，所以提示框写到循环里面
-          3、退出的条件 是 用户输入了 4 ，如果是 4, 则结束循环，不再弹窗
-          4、需要提前准备一个 装 余额 的变量
-     
-     */
-    while (num !== 4) {
+    /*  需求 ： 用户可以选择 存钱、取钱、查看余额 和 退出功能
+              
+        分析：
+            1、开始循环 输入框 写到 循环里面
+            2、如果用户输入的 是 4 则退出循环，break
+            3、准备一个总的金额
+            4、根据用户输入做操作
+    */
 
-      let num = +prompt(`请选择您的操作：
-        1、取款
-        2、存款
-        3、查看余额
-        4、退出 
-      `)
+    let viewM = 100;     // 查看余额  3、准备一个总的金额 
 
-      switch (num) {
-        case 1:
-        
+    // 1、开始循环 输入框 写到 循环里面
+    while (true) {
 
+      let result = +prompt(`
+                    请选择您的操作：
+                        1、存款
+                        2、取款
+                        3、查看余额
+                        4、退出
+                  `);
 
+      // 2、如果用户输入的 是 4 则退出循环，break
+      if (result === 4) {
+        break;
       }
-    }
 
+      // 4、根据用户输入做操作
+      switch (result) {
+        case 1:
+          let saveM = +prompt('请您输入存款金额');    // 存钱
+          viewM = viewM + saveM
+          break;      // 它在 switch 里面, 退出的 就是 switch 
+        case 2:
+          let getM = +prompt('请您输入取款金额');   // 取钱
+          viewM = viewM - getM
+          break;
+        case 3:
+          alert(`您的账户余额是：${viewM}`)
+          break;
+      }
+
+    }
 
   </script>
 </body>

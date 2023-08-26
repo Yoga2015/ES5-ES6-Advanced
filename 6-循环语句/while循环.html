@@ -1,13 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>while循环</title>
 </head>
+
 <body>
-    目标 ： 掌握while 循环语法，能重复执行某段代码
-    循环 ： 重复执行一些操作，while : 在 ... 期间，所以 while循环 就是在 满足条件 期间 ，重复执行某些代码。
-    比如 我们运行 相同的代码 输出 5 次（输出5句 '革命尚未成功，同志仍需努力'）
+  目标 ： 掌握while 循环语法，能重复执行某段代码
+  循环 ： 重复执行一些操作，while : 在 ... 期间，所以 while循环 就是在 满足条件 期间 ，重复执行某些代码。
+  比如 我们运行 相同的代码 输出 5 次（输出5句 '革命尚未成功，同志仍需努力'）
+
+  <script>
+    /* 1、while 循环的作用 是 什么？
+              在 满足条件 期间，重复执行某些代码
+         2、while 循环三要素 是 什么 ？
+              （1）变量起始值
+              （2）终止条件 （没有终止条件，循环会一直执行，造成死循环）
+              （3）变量的变化量 （用 自增 或 自减）
+      */
+
+    // 1、变量起始值
+    let i = 1
+
+    // 2、终止条件
+    while (i <= 3) {
+
+      document.write('革命尚未成功，同志仍需努力 <br>')
+
+      // 3、变量的变化量
+      i++
+
+    }
+
+
+    // 能不能改进，让用户输入 打印 输出的个数 呢？
+
+    let end = +prompt('请输入需打印的次数');
+
+    let j = 1;
+
+    while (j <= end) {
+
+      document.write('革命尚未成功，同志仍需努力 <br>')
+
+      j++
+
+    }
+
+  </script>
 </body>
+
 </html>
