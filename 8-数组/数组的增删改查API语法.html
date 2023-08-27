@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数组的增删改查API语法</title>
+</head>
+
+<body>
+
+  <script>
+
+    let arr = [10, 20, 30, 40, 50];
+
+    // push() 在 数组的末端 添加一个 或 多个元素
+    arr.push(60);   //  [10,20,30,40,50,60]
+    arr.push(70, 80, '90');     //  [10,20,30,40,50,60,70,80,'90']
+
+    document.write(arr + '<br>')  // [10,20,30,40,50,60,70,80,'90']
+
+    // unshift() 在 数组的第一位置 添加一个 或 多个元素
+    arr.unshift(9);     // [9,10,20,30,40,50,60,70,80,90]
+    arr.unshift(6, 7, 8);     // [6,7,8,9,10,20,30,40,50,60,70,80,90]
+
+    document.write(arr + '<br>')  // [6,7,8,9,10,20,30,40,50,60,70,80,90]
+
+    //  pop（）删除 数组的最后一个元素
+    arr.pop();
+    document.write(arr + '<br>')   // [6,7,8,9,10,20,30,40,50,60,70,80]
+
+    // shift() 删除 数组的第一个元素
+    arr.shift();
+    document.write(arr + '<br>')   // [7,8,9,10,20,30,40,50,60,70,80]
+
+    // splice() 删除 数组的一部分元素 
+    arr.splice(0, 3);   // 第一个参数为起始位置（从0开始），第二个参数为终止位置（但该位置的元素本身不包括在内）
+    document.write(arr + '<br>')   // [10,20,30,40,50,60,70,80]
+
+    // slice() 提取目标数组的一部分元素，返回一个新数组，原数组不变。
+    let arr2 = arr.slice(0, 2);  // 第一个参数为起始位置（从0开始），第二个参数为终止位置（但该位置的元素本身不包括在内）
+    document.write(arr2)  // [10,20] 
+
+  </script>
+  
+</body>
+
+</html>
