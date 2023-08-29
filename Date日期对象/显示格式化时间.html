@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>显示格式化时间</title>
+  <style>
+    div {
+      width: 300px;
+      height: 40px;
+      border: 1px solid pink;
+      text-align: center;
+      line-height: 40px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div></div>
+
+  <script>
+    // YYYY-MM-DD HH:mm 形式显示在页面  2023-08-28 22:40
+
+    let div = document.querySelector('div');
+
+    function getMyDate() {
+
+      let date = new Date();
+
+      let h = date.getHours();
+      let m = date.getMinutes();
+      let s = date.getSeconds();
+
+      h = h < 10 ? '0' + h : h;
+      m = m < 10 ? '0' + m : m;
+      s = s < 10 ? '0' + s : s;
+
+
+      return `今天 是 ${date.getFullYear()} 年 ${date.getMonth() + 1} 月 ${date.getDate()} 号 
+              ${h} : ${m} : ${s}`
+    }
+
+    // div.innerHTML = getMyDate();  //2、 但刷新页面后，时间 出现空白，所以在进入页面时就进行立即调用一次  
+
+    // 1、为了能够让时间自动变化，使用 setInterval(回调函数，间隔时间毫秒级 就触发 回调函数)
+
+    setInterval(function () {
+
+      div.innerHTML = getMyDate();
+
+    }, 1000)
+
+  </script>
+
+</body>
+
+</html>
