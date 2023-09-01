@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>函数返回值练习</title>
+</head>
+
+<body>
+  <script>
+
+    // 求任意2个数中的最大值，并返回
+    function getMax(x = 0, y = 0) {
+
+      return x < y ? y : x
+
+    }
+
+    let maxNum = getMax(6, 5);
+
+    console.log(maxNum);
+
+
+
+    // 求 任意数组 中的最大值 并 返回 这个最大值
+    function getArrMax(arr = []) {
+
+      let max = arr[0];   // 1、先准备一个max变量 存放数组的第一个值
+
+      for (let i = 0; i < arr.length; i++) {    //  2、遍历比较
+
+        if (max < arr[i]) {
+          max = arr[i]
+        }
+
+      }
+
+      return max;   // 3、返回值
+    }
+
+    let arrMax = getArrMax([3, 2, 1, 6, 99]);
+
+    console.log(arrMax)
+
+
+
+
+    // 求 任意数组 中的最小值 并 返回 这个最小值
+    function getArrMin(arr = []) {
+
+      let min = arr[0];   // 1、先准备一个max变量 存放数组的第一个值
+
+      for (let i = 0; i < arr.length; i++) {    //  2、遍历比较
+
+        if (min > arr[i]) {
+          min = arr[i]
+        }
+
+      }
+
+      return min;   // 3、返回值
+    }
+
+    let arrMin = getArrMin([8, 22, 4, 6, 99]);
+
+    console.log(arrMin)
+
+
+
+    function getMaxMin(arr = []) {
+
+      let max = arr[0];
+      let min = arr[0];
+
+      for (let i = 0; i < arr.length; i++) {
+        if (max < arr[i]) {
+          max = arr[i]
+        }
+
+        if (min > arr[i]) {
+          min = arr[i]
+        }
+      }
+
+      return [max, min]
+    }
+
+    let MaxMin = getMaxMin([5, 34, 78, 44, 78]);
+
+    console.log(`数组中的最大值：${MaxMin[0]},最小值 ${MaxMin[1]}`);
+
+
+
+
+
+  </script>
+</body>
+
+</html>

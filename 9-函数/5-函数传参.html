@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>函数传参</title>
+</head>
+
+<body>
+  <script>
+    /* 声明语法
+         function 函数名(参数列表) {
+           函数体
+         }
+
+         参数列表
+             传入数据列表
+             声明这个函数需要传入几个数据 
+
+      形参 可以理解为是 这个函数内声明的 变量 (比如 num1 = 10) 实参可以理解为 给这个变量赋值
+      开发中尽量保持形参和实参个数一致。
+    */
+
+
+    function getSum(num1) {       // 形参  形式上的参数
+      document.write(num1)
+      document.write(num1 * num1)
+    }
+
+    getSum(20);   // 实参  实际的参数
+
+
+    function getSum2(start, end) {
+      document.write(start * end)
+    }
+
+    getSum2(20, 10)
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>实参可以是变量</title>
+</head>
+
+<body>
+  <script>
+
+    // 实参可以是变量
+    
+    function getSum(n = 0, m = 0) {
+      let sum = 0;
+      for (let i = n; i <= m; i++) {
+        sum += i
+      }
+      console.log(sum);
+    }
+
+    // getSum();   // 0
+    // getSum(1, 5);   // 15
+
+    let num1 = +prompt('请输入起始值：');   // 1
+    let num2 = +prompt('请输入结束值：');   // 5
+
+    getSum(num1, num2);    // 15
+
+  </script>
+</body>
+
+</html>

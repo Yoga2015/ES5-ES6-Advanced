@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>函数封装--求学生总分</title>
+</head>
+
+<body>
+  <script>
+    /* 需求： 学生的分数 是 一个数组，计算每个学生的总分
+       分析：
+         1、封装一个求和函数, 给 参数 默认值
+         2、传递过去的参数 是 一个数组
+         3、函数内部遍历数组求和 
+     */
+
+    function getArrSum(arr = []) {
+
+      // console.log(arr);    [1, 2, 3, 4, 5]
+
+      let sum = 0;
+
+      for (let i = 0; i < arr.length; i++) {
+        sum += arr[i];
+      }
+
+      console.log(sum);
+
+    }
+
+    getArrSum([1, 2, 3, 4, 5]);     // 15
+    getArrSum([10, 20, 30, 40, 50]);    // 150
+    getArrSum();   // 0
+
+  </script>
+</body>
+
+</html>

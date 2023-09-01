@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>使用函数复用代码</title>
+  <style>
+    span {
+      display: inline-block;
+      padding: 5px 10px;
+      width: 100px;
+      border: 1px solid yellowgreen;
+      margin: 2px;
+    }
+  </style>
+</head>
+
+<body>
+  <script>
+    // 把 99乘法表 封装到 函数 里面，重复调用3次
+
+    function getSheet() {
+      for (let i = 1; i <= 9; i++) {
+        for (let j = 1; j <= i; j++) {
+          document.write(`<span> ${j} * ${i} = ${j * i}</span>`)
+        }
+        document.write(`<br>`)
+      }
+    }
+
+    getSheet();
+    getSheet();
+    getSheet();
+  </script>
+</body>
+
+</html>

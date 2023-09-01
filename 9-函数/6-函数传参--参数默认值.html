@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>函数传参--参数默认值</title>
+</head>
+
+<body>
+
+  <script>
+    /* 函数传参--参数默认值
+
+       如果 用户 用 这个函数 ，但 不输入 实参 , 可以给 形参 默认值 ，
+       可以默认为 0，这样程序 更严谨，不会出现 NaN 的情况。
+    */
+
+    function getSum(x, y) {
+      document.write(x * y)
+    }
+
+    getSum(2, 5);
+    getSum();      //NaN
+
+
+    function getSum2(a = 0, b = 0) {
+      document.write(a + b)
+    }
+
+    getSum2();      // 结果是 0，而不是 NaN
+    getSum2(11, 11);      // 22
+
+  </script>
+  
+</body>
+
+</html>
