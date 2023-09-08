@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>匿名函数之立即执行函数</title>
+</head>
+
+<body>
+  <script>
+
+    // let num = 10;    
+    // let num = 20;   和上一行的变量名冲突了
+
+    // 第一种写法 :  声明 立即执行函数 ，并调用       
+    (function () {
+      let num = 10;
+      console.log(num);
+    })();
+
+    (function () {
+      let num = 20;
+      console.log(num);
+    })();
+
+    // 注意：多个立即执行函数 要用 ; 隔开 ，要不然会报错
+
+
+    (function (x, y) {
+      console.log(x + y);   // 99
+    })(33, 66)
+
+
+
+      // 第二种写法 :  声明 立即执行函数 ，并调用     
+
+      (function () {
+        let num = 10;
+        console.log(num);
+      }());
+
+    (function (x, y) {
+      console.log(x + y);     // 99
+    }(33, 66))
+
+  </script>
+</body>
+
+</html>

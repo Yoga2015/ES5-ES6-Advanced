@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>闭包</title>
+</head>
+
+<body>
+
+  <script>
+
+    // 在 一个函数里面 再定义 一个函数，并且内部函数引用了 外部函数的变量时，就形成了闭包。
+
+    function f1() {
+
+      var n = 999;
+
+      var m = 333;
+
+      function f2() {
+        console.log(n);
+      }
+
+      return f2;
+
+    }
+
+    var result = f1();
+
+    result(); // 999
+
+    let sum = result().n;   // Uncaught TypeError TypeError: Cannot read properties of undefined (reading 'n')
+
+    console.log('sum:', sum);    // VScode 会屏蔽了 某些出错！！！
+
+    let sum2 = result().m;  // 这是没有作用的
+
+    console.log('sum2:', sum2);
+
+
+    /* VScode 会屏蔽了 某些出错 ！！  
+       需要 判断的代码  需考虑 ：
+       直接复制到 浏览器控制台里 去执行  或者 换浏览器  或者   调试    */
+
+  </script>
+
+
+</body>
+
+</html>

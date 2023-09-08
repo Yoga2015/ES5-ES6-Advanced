@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>变量的特殊情况</title>
+</head>
+
+<body>
+  <script>
+    // 如果 函数内部，变量没有声明，直接赋值，也当全局变量看，但是强烈不推荐
+
+    let num = 20;
+
+    function fn() {
+
+      num = 10;   // num 当 全局变量 来看    强烈不允许
+
+    }
+
+    fn();
+
+    console.log(num);   // 10
+
+
+    function fun(x, y) {
+
+      console.log(x);   // 形参 可以看做是 函数的局部变量
+
+    }
+
+    fun(1, 2);
+
+    console.log(x);   // 1  错误的
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>总秒数转换成时间案例</title>
+</head>
+
+<body>
+  <script>
+    /*  总秒数转换成时间
+
+        需求：用户输入秒数，可以自动转换为 时、分、秒
+
+        分析：
+            1、用户输入秒数  
+            2、封装一个 计算 时、分、秒 的 函数，里面包含数字不满10就补0  
+            3、页面输出
+    */
+
+    // 1、用户输入
+    let seconds = +prompt('请输入秒数：');
+
+    // 2、封装计算函数
+    function getSeconds(t = 0) {
+
+      // console.log(t);   输入的总秒数
+
+      // 3、转换计算为时、分、秒 （可能会产生小数，记得用 parseInt() 转为整数）
+      let h = parseInt(t / 60 / 60 % 24);
+      let m = parseInt(t / 60 % 60);
+      let s = parseInt(t % 60);
+
+      h = h < 10 ? '0' + h : h;
+      m = m < 10 ? '0' + m : m;
+      s = s < 10 ? '0' + s : s;
+
+      return `用户输入的总秒数是${t}，转换为 ${h}小时 ${m}分钟 ${s}秒`
+
+    }
+
+    // 3、调用函数
+    let str = getSeconds(seconds);
+
+    document.write(str);
+
+  </script>
+
+</body>
+
+</html>

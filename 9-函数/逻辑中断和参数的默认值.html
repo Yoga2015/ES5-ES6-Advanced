@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>逻辑中断和参数的默认值</title>
+</head>
+
+<body>
+  <script>
+
+    // function fn(x, y) {
+    //   console.log(x + y);
+    // }
+
+    // fn(2, 3);    // 5
+    // fn();        // NaN
+
+
+    // 给函数 设置 参数的默认值
+    // function fn(x = 0, y = 0) {
+    //   console.log(x + y);
+    // }
+
+    // fn(2, 3);    // 5
+    // fn();        // 0
+
+
+    // 逻辑中断 ：类似 参数的默认值写法
+    function fn(x, y) {
+      x = x || 0;
+      y = y || 0;
+      console.log(x + y);
+    }
+
+    fn(2, 3);   // 5
+    fn();       // 0
+
+
+    let age = 18;
+
+    console.log(false && age++);   // false  age++就不执行，&& 是 一假则假
+
+    console.log(age);   // 18
+
+
+    console.log(true || age++);   // true   age++就不执行， || 是 一真则真
+
+    console.log(age);   // 18
+
+
+
+    console.log(11 && 22);    // 22   都是真，这返回最后一个真值
+    console.log(33 && 44);    // 44   输出第一个真值
+
+
+
+
+  </script>
+</body>
+
+</html>

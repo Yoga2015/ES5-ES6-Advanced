@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>匿名函数之函数表达式</title>
+</head>
+
+<body>
+  <script>
+
+    // 声明 函数表达式
+    let fn = function () {
+      console.log('我是一个函数表达式');
+    }
+
+    // 调用  
+    console.log(fn);  //结果返回 ： ƒ () { console.log('我是一个函数表达式'); }
+
+    // 同上 也是调用 
+    fn();   // 结果返回 ：我是一个函数表达式
+
+
+
+    // 函数表达式  和 具名函数 的 不同   function fn(){ }
+    //  1、具名函数 的 调用， 可以写到任何位置，函数表达式不行！
+    //  2、函数表达式，必须先声明函数表达式，后调用
+
+    fun();
+
+    function fun() {
+      console.log(1);
+    }
+
+    // fun();  
+
+
+    sum();  // Uncaught SyntaxError: Identifier 'sum' has already been declared
+
+    let sum = function () {
+      console.log(1);
+    }
+
+
+    console.log(num);  // Uncaught SyntaxError: Identifier 'num' has already been declared
+    let num = 10;
+
+
+    // 其中 函数的形参 和 实参 使用 跟 具名函数 一致。
+
+    let result = function (x, y) {
+      console.log(x + y);
+    }
+
+    result(1, 2);   // 3
+
+  </script>
+</body>
+
+</html>

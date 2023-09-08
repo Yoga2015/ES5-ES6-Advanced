@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>函数细节</title>
+</head>
+
+<body>
+  <script>
+    function getSum(x, y) {
+
+      return x + y;
+
+      // 返回值 返回给了谁？ 函数调用者
+      // getSum(1,2) = 3
+    }
+
+    // let result = getSum(1,2) = 3
+
+    let result = getSum(1, 2)
+    console.log(result);
+
+
+    // 实参的个数 和 形参的个数 可以不一致
+    // 实参多余形参 剩余的实参 不参与运算，会被忽略
+    // 实参少于形参 剩余的形参 不参与运算，会被忽略
+    function fn(a, b) {
+      console.log(a + b);
+    }
+
+    fn(1, 2, 3);  // 1 + 2 = 3
+
+    fn(1);    // 1 + undefined = NaN
+
+
+
+
+
+  </script>
+</body>
+
+</html>
