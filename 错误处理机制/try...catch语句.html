@@ -1,0 +1,50 @@
+!
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>try...catch语句</title>
+</head>
+
+<body>
+  <script>
+
+    try {
+
+      throw new Error('出错了!');
+
+    } catch (e) {
+
+      console.log(e.name + ": " + e.message + new Date());
+      console.log(e.stack);
+
+    }
+
+
+    function cleansUp() {
+      try {
+        throw new Error('出错了...');
+        console.log('1、此行不会执行');
+      } catch (e) {
+        console.log(e.name + ':' + e.message);
+        return e.message
+        console.log('2、此行不会执行');
+      } finally {
+        console.log('3、此行会执行');
+      }
+      console.log('4、此行不会执行');
+    }
+
+    cleansUp();
+
+    // Error:出错了...
+    // 3、此行会执行
+    // '出错了...'
+
+
+  </script>
+</body>
+
+</html>

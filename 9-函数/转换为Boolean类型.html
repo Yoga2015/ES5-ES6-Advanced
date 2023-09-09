@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>转换为Boolean类型</title>
+</head>
+
+<body>
+  <script>
+
+    console.log(Boolean('walking'));      // true
+
+    console.log(Boolean(undefined));  // false
+    console.log(Boolean(NaN));        // false
+    console.log(Boolean(0));          // false
+    console.log(Boolean(false));      // false
+    console.log(Boolean(null));       // false
+    console.log(Boolean(''));         // false
+
+    console.log('-----------------------');
+
+
+    if (true) {
+      console.log(33);
+    }
+
+
+    // 注意
+    let age;      // 这边 age 变量 是 声明了，但没赋值，所以其实是 undefined
+
+    if (age) {
+      console.log(11);    // 控制台没有输出
+    }
+
+
+    // 逻辑与 :  左边 为假，就 逻辑中断
+
+    console.log(false && 50);   // false    逻辑与 是 左边为假，就 逻辑中断
+
+    console.log(6 < 2 && 20);   // false
+
+    console.log(undefined && 30);   // undefined  ，逻辑与 不会转换类型，只是当 假 来看
+
+    console.log(null && 44);   // null ，逻辑与 是 不会转换类型，只是当 假 来看
+
+    console.log(0 && 77);   // 0    0 是 false 是 假，左边为假，就 逻辑中断 
+
+    console.log(55 && 80);   // 80    两侧都为真，则 最后的真 为主
+
+
+    // 逻辑或 ： 左边 为真，就 逻辑中断 
+
+    console.log(false || 99);  // 99    逻辑或 是 一真则真 
+
+    console.log(6 < 2 || 99); // 99
+
+    console.log(undefined || 99);  // 99
+
+    console.log(null || 99);      // 99
+
+    console.log(0 || 99);     // 99
+
+    console.log(NaN || 99);   // 99
+
+    console.log(10 || 99);    // 10   两侧都为真，就取 第一个值 
+
+  </script>
+</body>
+
+</html>

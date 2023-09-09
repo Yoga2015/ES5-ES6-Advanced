@@ -1,0 +1,53 @@
+!
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>finally代码块的执行顺序</title>
+</head>
+
+<body>
+  <script>
+    // try...catch结构允许在最后添加一个finally代码块，表示不管是否出现错误，都必需在最后运行的语句。
+
+    // try...catch...finally这三者之间的执行顺序：
+
+    function cleansUp() {
+
+      try {
+
+        throw new Error('出错了...');
+
+        console.log('1');       // 不会运行
+
+      } catch (e) {
+
+        console.log(e.name + ':' + e.message);     // 会运行
+
+        return e.message;        // 这句原本会延迟到 finally 代码块结束再执行  
+
+        console.log('2');   // 不会运行
+
+      } finally {
+
+        console.log('3');   // 会运行
+
+      }
+
+      console.log('4、此行不会执行');    // 不会运行
+
+    }
+
+    cleansUp();
+
+    // Error:出错了...
+    // 3、此行会执行
+    // '出错了...'
+
+
+  </script>
+</body>
+
+</html>
