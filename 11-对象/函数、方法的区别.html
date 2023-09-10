@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>变量、属性的区别</title>
+</head>
+
+<body>
+  <script>
+
+    // 函数 和  方法 的相同点  都是实现某种功能 做某件事
+    function fn() {
+      console.log('hi~');
+    }
+
+    fn();
+
+    var obj1 = {
+      speak: function () {  // 函数放在对象里面就叫方法
+        console.log('hi~');
+      }
+    }
+    
+    obj1.speak();
+
+    /**
+     * 函数 是单独声明 并且 调用的 ， 函数名（） ， 单独存在的
+     * 
+     * 方法 在对象里面 调用的时候 对象.方法（）
+    */
+
+  </script>
+</body>
+
+</html>

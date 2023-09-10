@@ -26,13 +26,21 @@
 
         console.log(e.name + ':' + e.message);     // 会运行
 
-        return e.message;        // 这句原本会延迟到 finally 代码块结束再执行  
+        let x = e.message;
+
+        return x;        // 这句原本会延迟到 finally 代码块结束再执行  
 
         console.log('2');   // 不会运行
 
       } finally {
 
         console.log('3');   // 会运行
+
+        let a = 4;
+
+        return a; // 这句 会覆盖掉 前面 那句 return
+
+        console.log(5);    // 不会运行
 
       }
 

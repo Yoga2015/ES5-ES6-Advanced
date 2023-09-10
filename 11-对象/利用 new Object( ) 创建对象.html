@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>利用new Object( )创建对象</title>
+</head>
+
+<body>
+  <script>
+
+    // 利用new Object 创建对象
+    let obj2 = new Object();  // 创建了一个空的对象
+
+    obj2.username = '张三';
+
+    obj2.age = 19;
+
+    obj2.sex = '男';
+
+    obj2.speak = function () {
+      console.log('hello~~');
+    };
+
+    // 1、调用对象的属性 我们采取  对象名.属性名 
+    console.log(obj2.username);
+
+    //  2、调用属性 还有一种方法  对象名['属性名']
+    console.log(obj2['age']);
+
+    //  3、调用对象的方法 speak  对象名.方法名()
+    obj2.speak();
+
+  </script>
+</body>
+
+</html>

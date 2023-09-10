@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>什么是对象</title>
+</head>
+
+<body>
+
+  <script>
+
+    let person = {};     // 变量person 指向 一个空的对象
+
+    // 变量obj 就指向 一个 包含 两个键值对 的 对象
+    let obj1 = {
+      foo: 'Hello',
+      bar: 'World'
+    };
+
+    let obj = {
+      'foo': 'Hello',
+      'bar': 'World'
+    };
+
+    let obj = {
+      1: 'a',
+      3.2: 'b',
+      1e2: true,
+      1e-2: true,
+      .234: true,
+      0xFF: true
+    };
+
+
+    // 报错
+    let obj = {
+      1p: 'Hello World'
+    };
+
+    // 不报错
+    let obj = {
+      '1p': 'Hello World',
+      'h w': 'Hello World',
+      'p+q': 'Hello World'
+    };
+
+
+    let obj = {
+      p: function (x) {
+        return 2 * x;
+      }
+    };
+
+    obj.p(1)  // 2
+
+    let o1 = {};
+    let o2 = { bar: 'hello' };
+
+    o1.foo = o2;
+
+    o1.foo.bar   // "hello"
+
+  </script>
+
+  大括号就定义了一个对象，它被赋值给变量obj，所以变量obj就指向一个对象。
+  该对象内部包含两个键值对（又称为两个“成员”），第一个键值对是foo:'Hello'，其中foo是“键名”（成员的名称），字符串Hello是“键值”（成员的值）。
+  键名与键值之间用冒号分隔。
+  第二个键值对是bar: 'World'，bar是键名，World是键值。两个键值对之间用逗号分隔。
+
+
+  <script>
+
+    // 用 字面量的形式 创建 一个名字为可可 的 狗对象
+
+    let dog = {
+      username: '可可',
+      type: '犬系：阿拉斯加犬',
+      age: 5,
+      color: 'yellow',
+      bark: function () {
+        console.log('汪汪汪');
+      },
+      showFilm: function () {
+        console.log('演电影');
+      }
+    };
+
+    console.log(dog.username);
+    console.log(dog.age);
+    console.log(dog.type);
+
+    dog.bark();
+    dog.showFilm();
+
+  </script>
+
+</body>
+
+</html>
