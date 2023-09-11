@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>对象的引用</title>
+</head>
+
+<body>
+  <script>
+
+    // 如果不同的变量名指向同一个对象，那么它们都是这个对象的引用，也就是说指向同一个内存地址。
+    // 修改其中一个变量，会影响到其他所有变量。
+
+    let o1 = {};
+    let o2 = o1;
+
+    o1.a = 1;
+    o2.a // 1
+
+    o2.b = 2;
+    o1.b // 2
+
+
+    let o1 = {};
+    let o2 = o1;
+
+    o1 = 1;
+    o2 // {}
+
+    let x = 1;
+    let y = x;
+
+    x = 2;
+    y // 1
+
+  </script>
+</body>
+
+</html>

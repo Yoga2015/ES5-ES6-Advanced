@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>for...in循环把对象的属性名拷贝一份给数组</title>
+</head>
+
+<body>
+  <script>
+
+    let obj = {
+      username: '李四',
+      age: 18,
+      sex: '男',
+      fn: function () {
+        console.log('我是obj对象')
+      }
+    }
+
+    let arrs = [];
+
+    let i = 0;
+
+    for (let k in obj) {
+
+      arrs[i++] = k;    // 这里仅把 属性名 赋值 给 arrs 数组
+
+    }
+
+    console.log(arrs);     // ['username', 'age', 'sex', 'fn']
+
+  </script>
+</body>
+
+</html>

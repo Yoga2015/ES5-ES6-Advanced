@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>利用 构造函数 创建对象</title>
+</head>
+
+<body>
+  <script>
+
+    /** 案例：利用构造行数创建两个英雄对象。
+     * 
+     *  函数中的公共部分包括 ：
+     * 
+     *      姓名属性（name），类型属性（type）,
+     *      血量属性（blood）和攻击方式 （attack）
+     * 
+     * 英雄对象的信息如下：
+     * 
+     *      霍元甲   力量型      500 血量  攻击：近战
+     *      李小龙   速度力量型  800血量   攻击：近战、远程
+    */
+
+    // 1、构造函数  英雄  泛指的某一大类    它类似于Java 语言 里面的  类(class) 
+    function Hero(username, type, blood) {
+      this.name = username;
+      this.type = type;
+      this.blood = blood;
+      this.attack = function (skills) {
+        console.log(skills)
+      }
+    }
+
+    //  对象  特指 是一个具体的事物  
+    //  霍元甲  == { name: "霍元甲", type: "力量型", blood: 500 }
+
+    // 2、我们利用构造函数创建对象的过程我们也称为对象的实例化
+    var hyj = new Hero('霍元甲', '力量型', 500);
+    console.log(hyj);   // Hero {name: '霍元甲', type: '力量型', blood: 500, attack: ƒ}
+
+    var lxl = new Hero('李小龙', '速度力量型', 800);
+    console.log(lxl);   // Hero {name: '李小龙', type: '速度力量型', blood: 800, attack: ƒ}
+
+    
+
+
+  </script>
+</body>
+
+</html>

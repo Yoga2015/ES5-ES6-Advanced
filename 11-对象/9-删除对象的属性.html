@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>删除对象的属性</title>
+</head>
+
+<body>
+  <script>
+
+    // 删除对象的属性
+
+    var obj = {
+      username: '李四',
+      age: 18,
+      sex: '男',
+      fn: function () {
+        console.log('我是obj对象')
+      }
+    }
+
+    delete obj.sex;   // true   删除成功后返回true
+
+    // Object.keys()方法的返回值也不再包括该属性
+
+    console.log(Object.keys(obj));   //  ['username', 'age', 'fn']   
+
+    delete obj.sex;  // true    此时，删除一个不存在的属性，delete不报错，而且返回true
+
+
+    // 注意：delete命令只能删除 对象本身的属性，无法删除 继承的属性
+    var person = {};
+    delete person.toString // true
+    person.toString // function toString() { [native code] }
+    
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>for...in循环 把 obj对象 的属性 以及 属性值 拷贝一份 给 另一个对象</title>
+</head>
+
+<body>
+  <script>
+
+    let obj = {
+      username: '李四',
+      age: 18,
+      sex: '男',
+      fn: function () {
+        console.log('我是obj对象')
+      }
+    }
+
+    let foo = {};
+
+    for (let k in obj) {        // k 是属性名   obj[k] 是属性值
+
+      foo[k] = obj[k];
+
+    }
+
+    console.log(foo);  // {username: '李四', age: 18, sex: '男', fn: ƒ}
+
+  </script>
+</body>
+
+</html>
