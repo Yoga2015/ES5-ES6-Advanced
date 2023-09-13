@@ -9,7 +9,7 @@
 
 <body>
   <script>
-    /*  做一个倒计时
+    /*  倒计时算法
 
         1、核心算法： 输入的时间 减去 现在的时间 就是 剩余的时间，
         即 倒计时，但是不能拿着时分秒相减，比如 05分 减去 25分，结果会是负数的 ,所以要用 时间戳 来做。
@@ -51,8 +51,11 @@
 
     document.write(getCountTime('2023-9-6 12:00:00') + '<br>');
 
-    var date = new Date();
-    document.write(date);
+    setInterval(function () {
+
+      document.write(getCountTime('2023-9-6 12:00:00') + '<br>');
+
+    }, 1000)
 
   </script>
 </body>

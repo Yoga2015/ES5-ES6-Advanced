@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>找出 数组中 元素为10的下标</title>
+</head>
+
+<body>
+  <script>
+
+    // 找出 数组中 元素为10的下标，有 则打印该下标，没有 则打印 - 1
+
+    let arr = [88, 20, 30, 100, 50];
+
+    let flag = -1
+
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] === 10) {
+        flag = i
+      }
+    }
+
+    document.write(flag)
+
+  </script>
+</body>
+
+</html>

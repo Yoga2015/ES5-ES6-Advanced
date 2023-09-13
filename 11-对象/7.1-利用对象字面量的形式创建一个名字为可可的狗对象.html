@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>利用对象字面量的形式创建一个名字为可可的狗对象</title>
+</head>
+
+<body>
+  <script>
+
+    // 利用对象字面量的形式创建一个名字为可可的狗对象
+
+    let dog = {
+      username: '可可',
+      type: '犬系：阿拉斯加犬',
+      age: 5,
+      color: 'yellow',
+      bark: function () {
+        console.log('汪汪汪');
+      },
+      showFilm: function () {
+        console.log('演电影');
+      }
+    };
+
+    console.log(dog.username);
+    console.log(dog.age);
+    console.log(dog.type);
+
+    dog.bark();
+    dog.showFilm();
+
+  </script>
+
+</body>
+
+</html>

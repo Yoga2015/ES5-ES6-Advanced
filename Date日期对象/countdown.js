@@ -7,8 +7,10 @@ let seconds = document.querySelector('.seconds');
 
 function getMyDate() {
 
-  let nowTime = +new Date();   //返回的是现在时间的总的毫秒数
-  let futureTime = +new Date('2023-9-16 12:00:00');   //返回的是用户输入的时间总的毫秒数
+  let nowTime = +new Date();   //获取 当前系统时间 的 总的毫秒数
+
+  let futureTime = +new Date('2023-9-16 12:00:00');   //获取 用户输入的将来时间 的 总的毫秒数
+
   let timeSum = (futureTime - nowTime) / 1000;  //timesum 是剩余时间总的 毫秒数
 
 
@@ -30,7 +32,7 @@ function getMyDate() {
 
 }
 
-getMyDate(); //2、 但刷新页面后，时间 出现空白，所以在进入页面时就进行立即调用一次  
+getMyDate(); // 2、 但刷新页面后，时间 出现空白，所以在进入页面时就进行立即调用一次  
 
 // 1、为了能够让时间自动变化，使用 setInterval(回调函数，间隔时间毫秒级 就触发 回调函数)
 

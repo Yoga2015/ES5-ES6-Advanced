@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>显示格式化时间</title>
+  <title>做一个时钟（显示格式化时间）</title>
   <style>
     div {
       width: 300px;
@@ -42,7 +42,7 @@
               ${h} : ${m} : ${s}`
     }
 
-    // div.innerHTML = getMyDate();  //2、 但刷新页面后，时间 出现空白，所以在进入页面时就进行立即调用一次  
+    div.innerHTML = getMyDate();  //2、 但刷新页面后，时间 出现空白，所以在进入页面时就进行立即调用一次  
 
     // 1、为了能够让时间自动变化，使用 setInterval(回调函数，间隔时间毫秒级 就触发 回调函数)
 

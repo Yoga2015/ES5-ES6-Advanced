@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>根据用户选择计算两个数的结果</title>
+</head>
+
+<body>
+  <script>
+    /* 
+          打开页面出现一个提示框，注意是一直提示的，'请您选择 + - * / ，如果输入q，则是退出结束程序
+    
+          - 如果输入的是 + - * / 其中任何一个，比如用户输入是 + ，则是计算求和，如果用户输入是 *  则是计算乘积
+          - 则提示第一个弹窗，提示用户：'请您输入第一个数字'
+          - 输入完毕则继续提示第二个弹窗，提示用户：'请您输入第二个数字'
+          - 都输入完毕，则通过警示框 alert 输出结果
+          - 如果输入是 q，则结束程序
+    
+          提示：多分支请使用 if 多分支来完成
+          
+    */
+
+    while (true) {
+
+      let re = prompt(` 
+          请您选择输入 + - * / ,
+          如果输入q，则是退出结束程序`
+      );
+
+      if (re === 'q') {
+        break;
+      }
+
+      let num1 = +prompt('请输入第一个数字');
+
+      let num2 = +prompt('请输入第二个数字');
+
+
+      if (re === '+') {
+        alert(num1 + num2);
+      }
+      if (re === '-') {
+        alert(num1 - num2);
+      }
+      if (re === '*') {
+        alert(num1 * num2);
+      }
+      if (re === '/') {
+        alert(num1 / num2);
+      }
+
+    }
+
+  </script>
+</body>
+
+</html>
