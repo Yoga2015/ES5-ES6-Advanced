@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>随机点名</title>
+</head>
+
+<body>
+  <script>
+
+    let arrObj = ['李四', '张三', '李小龙', '叶问', '陈真', '威哥'];
+
+    let random = Math.floor(Math.random() * arrObj.length);
+
+    document.write(random);
+
+    document.write(arrObj[random]);
+
+    // splice(起始位置 (下标) , 删除几个元素 );  用于删除某个名字
+    arrObj.splice(random, 1)
+
+    console.log(arrObj);
+
+
+
+
+    function getRadomName(arr) {
+
+      arr = arr || [];
+
+      let random = Math.floor(Math.random() * arr.length);
+
+      return arr[random];
+    }
+
+    let Name = getRadomName(['李四', '张三', '李小龙', '叶问', '陈真', '威哥'])
+
+    console.log(Name);
+
+
+  </script>
+</body>
+
+</html>

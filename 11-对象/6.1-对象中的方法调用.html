@@ -19,7 +19,17 @@
 
     obj.p(5);    // 对象中的方法调用方式 是  obj.p()
 
-    console.log(obj.p(5));   // 10       
+    console.log(obj.p(5));   // 10     
+
+
+    let person = {
+      name: 'lili',
+      eat: function (x) {
+        console.log(`eat方法被调用了，今天吃 ${x} 喽`);
+      }
+    }
+
+    console.log(person.eat('玉米'));  //  eat方法被调用了，今天吃 玉米 喽
 
   </script>
 </body>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>遍历数组对象</title>
+</head>
+
+<body>
+  <script>
+
+    let student = [
+      { name: 'walking', age: 18, sex: '男' },
+      { name: 'yoga', age: 28, sex: '男' },
+      { name: 'lisi', age: 28, sex: '女' },
+    ];
+
+    // 由于是数组，我们就用 传统 的 for 循环
+
+    for (let i = 0; i < student.length; i++) {
+
+      console.log(i);   // 数组下标  索引号
+
+      console.log(student[i]);      // 每个对象
+
+      console.log(student[i].name);   // 每个对象 的 name
+
+      console.log(student[i].age);   // 每个对象 的 age
+
+    }
+
+  </script>
+</body>
+
+</html>

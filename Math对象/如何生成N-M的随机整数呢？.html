@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    //  如何生成 0 - 10 的 随机整数 呢？ Math.floor(Math.random() * (10 + 1))
+    console.log(Math.floor(Math.random() * (10 + 1)));
+
+
+    let arr = ['red', 'green', 'yellow'];
+    let random = Math.floor(Math.random() * arr.length);
+    console.log(random);
+    console.log(arr[random]);
+
+
+    //  如何生成 5 - 10 的 随机整数 呢？  Math.floor(Math.random() * (5 + 1)) + 5
+    console.log(Math.floor(Math.random() * (5 + 1)) + 5);
+
+
+    //  如何生成 N - M 的 随机整数 呢？ Math.floor(Math.random() * (M - N + 1)) + N
+    let N = 5;
+    let M = 10;
+    console.log(Math.floor(Math.random() * (M - N + 1)) + N);
+
+
+    function getRandom(x, y) {
+
+      return Math.floor(Math.random() * (y - x + 1)) + x;
+      
+    }
+
+    console.log(getRandom(30, 99));
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>随机生成颜色</title>
+  <style>
+    div {
+      height: 300px;
+      width: 300px;
+      background-color: yellow;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div></div>
+
+  <script>
+    // 1、自定义一个随机颜色函数  （形参的命名，可根据场景任意定义）
+
+    function getRandomColor(flag = true) {
+
+      // 3、如果 flag 是 true 或者 为空，则返回 #ffffff
+      if (flag) {
+
+        let arr = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
+
+        let str = '#';
+
+        for (let i = 1; i <= 6; i++) {
+          // 每次要随机从数组里面抽取一个。   random 是 数组 的 索引号 是 随机的
+          let random = Math.floor(Math.random() * arr.length);
+          str += arr[random];
+        }
+
+        return str;
+
+      } else {
+
+        // 4、否则 flag 是 false , 则返回 rgb(255,255,255,255)
+
+        let r = Math.floor(Math.random() * (255 + 1));      // 55
+        let g = Math.floor(Math.random() * (255 + 1));     // 71
+        let b = Math.floor(Math.random() * (255 + 1));    // 36
+
+        return `rgb(${r},${g},${b})`;
+
+      }
+
+    }
+
+    // 2、调用函数  getRandomColor(布尔值)
+    console.log(getRandomColor(false));   // rgb(55,71,36)
+    console.log(getRandomColor(true));    // 十六进制 的 颜色格式
+    console.log(getRandomColor());      // 十六进制 的 颜色格式
+
+    let div = document.querySelector('div');
+
+    div.style.backgroundColor = getRandomColor(true);
+
+  </script>
+
+</body>
+
+</html>
