@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>对Array对象进行增、删 操作</title>
+</head>
+
+<body>
+  <script>
+    let arr = [1, 2, 3];
+
+    // valueOf() : 返回 数组本身。
+    console.log(arr.valueOf());   // [1, 2, 3]
+
+    // toString() : 检测 是否为 数组类型
+    console.log(arr.toString());    // 1,2,3
+
+
+    // 下面对Array对象进行 增、删 操作， 都 会改变 原数组。
+
+    // push() : 用于 在数组的末尾 添加 一个 或 多个 元素。并返回添加新元素后的数组长度。   
+    console.log(arr.push('4', 5, '6'));  // 6  
+    console.log(arr);   //  [1, 2, 3, '4', 5, '6']
+
+    // unshift() : 用于 在数组的第一个位置 添加 一个 或 多个元素。并返回添加新元素后的数组长度。
+    console.log(arr.unshift('walking', '张三', '老六'));   // 9
+    console.log(arr);   // ['walking', '张三', '老六', 1, 2, 3, '4', 5, '6']
+
+    // pop() : 用于 删除 数组的最后一个元素 , 返回值 是 被删除的元素。   
+    console.log(arr.pop());  // 6
+    console.log(arr);   //   ['walking', '张三', '老六', 1, 2, 3, '4', 5]
+
+    // shift() : 用于 删除 数组的第一个元素，返回值 是 被删除的元素。  
+    console.log(arr.shift());  // walking
+    console.log(arr);   //  ['张三', '老六', 1, 2, 3, '4', 5]
+
+
+    // splice() : 用于删除 原数组的一个部分元素，并可以在删除的位置 添加 新的数组元素，返回值 是 被删除的元素。
+    // arr.splice(start,end,addElement,addElement,......)
+    console.log(arr.splice(5, 2));    // ['4', 5]
+    console.log(arr);   // ['张三', '老六', 1, 2, 3]
+
+  </script>
+</body>
+
+</html>

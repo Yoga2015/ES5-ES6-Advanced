@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>对Array对象进行合并、排序、颠倒排序操作</title>
+</head>
+
+<body>
+  <script>
+
+    let arr = [1, 2, 3];
+
+    console.log(arr);
+
+    // 下面 对Array对象 进行 合并、排序、颠倒排序 操作 。
+
+    // concat() :  用于 合并 两个 或 多个 数组 它将新数组的成员，添加到原数组成员的后部，然后返回一个新数组，原数组不变。
+    let arr2 = ['walking', '张三', '老六'];
+    console.log(arr.concat(arr2));   //  [1, 2, 3,'walking', '张三', '老六']
+
+    // sort() : 对 数组的元素 进行排序 (冒泡排序) ，没有参数的。  改变原数组
+    // sort方法 不是 按照大小排序，而是按照字典顺序。
+    let arr3 = [7, 3, 1, 2];
+    console.log(arr3.sort());   // [1, 2, 3, 7]
+    console.log(arr3);   // [1, 2, 3, 7]
+
+    // reverse() : 用于 颠倒排列 数组元素， 返回改变后的数组 。   改变原数组
+    console.log(arr3.reverse());    // [7, 3, 2, 1]
+
+
+  </script>
+</body>
+
+</html>

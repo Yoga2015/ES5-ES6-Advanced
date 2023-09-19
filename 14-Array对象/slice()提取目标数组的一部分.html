@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>slice()提取目标数组的一部分</title>
+</head>
+
+<body>
+  <script>
+    let arr = ['walking', 1, { age: 18 }, [2, 3]];
+
+    // slice(): 用于 提取 目标数组的一部分元素，返回一个新数组，不会改变 原数组.
+    // arr.slice(start,end); 第一个参数为起始位置（从0开始），第二个参数为终止位置（但该位置的元素本身不包括在内）。
+    // 如果省略第二个参数，则一直返回到原数组的最后一个成员。
+    console.log(arr.slice(0, 2));  // ['walking', 1]
+
+
+    // sort()方法 ： 对数组的元素进行排序(冒泡排序) ，无需参数的。原数组发生变化。
+    // sort()当没有写参数时，按位比较ASCII码的大小进行排序
+
+    var arr1 = [13, 4, 77, 1, 7];
+
+    console.log(arr1.sort()); // [1, 13, 4, 7, 77]   
+
+    console.log(arr1);  // [1, 13, 4, 7, 77] 
+    // 按理是 [1, 4, 7, 13, 77] ，结果是 [1, 13, 4, 7, 77] ?
+    // 是因为 数值 会被先 转成 字符串，再按照 字典顺序 进行比较，进行顺序。
+    
+
+    arr1.sort(function (a, b) {
+
+      // return a - b;   //升序的顺序排列
+
+      return b - a;  //降序的顺序排列
+
+    });
+
+    // console.log(arr1); // [1, 4, 7, 13, 77]
+
+    console.log(arr1); // [77, 13, 7, 4, 1]
+
+  </script>
+</body>
+
+</html>

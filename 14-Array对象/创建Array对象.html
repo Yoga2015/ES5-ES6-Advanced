@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>创建Array对象</title>
+</head>
+
+<body>
+  <script>
+
+    // 1、利用 new Array()     bad
+    var arr = new Array(1, 2);
+
+    // 2、利用数组字面量       good
+    var arr = [1, 2];
+    console.log(arr);
+
+
+    // typeof运算符 只能显示 数组的类型是 Object。   Array.isArray方法可以识别 数组。
+    var arr = [1, 2, 3];
+
+    typeof arr;         // "object"
+    Array.isArray(arr);   // true
+
+
+    //（1） instanceof  运算符  它可以用来检测 是否为 数组
+    var arr = [];
+    var obj = {};
+    console.log(arr instanceof Array); // true
+    console.log(obj instanceof Array); // false
+
+    // (2) Array.isArray(参数);
+    console.log(Array.isArray(arr)); // true
+    console.log(Array.isArray(obj)); // false
+
+    // Array.isArray 优于 instanceof
+
+  </script>
+</body> 
+
+</html>

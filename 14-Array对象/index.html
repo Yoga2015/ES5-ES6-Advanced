@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>index页面</title>
+</head>
+
+<body>
+
+  <div></div>
+
+  <script>
+
+    // location.href 可以 获取到 整个完整 的 URL
+    // console.log(location.href);   //  http://www.xxx.com/index.html?username=walking
+
+    // console.log(location.search);   // 获取到  ?username=walking
+
+    // 1、用 String对象的 用 substr() 先去掉 ？
+    // 用 substr('起始的位置'，截取几个字符)  如果省略第二个参数，就默认写到最后一个字符串。
+    var params = location.search.substr(1); // username=walking
+
+    // 2、利用 = 把 字符串 分隔为 数组  split('=')
+    var arr = params.split('=');
+    console.log(arr);   //  ['username', 'walking']
+
+    let div = document.querySelector('div');
+
+    // 3、把 数据 写入 div 中
+    div.innerHTML = arr[1] + ' 欢迎您回来！';
+
+  </script>
+
+</body>
