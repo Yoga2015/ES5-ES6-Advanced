@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>渲染出table内部结构</title>
+  <style>
+    table,
+    tr,
+    th,
+    td {
+      border: 1px solid black;
+      text-align: center;
+    }
+
+    tr,
+    th,
+    td {
+      width: 100px;
+      height: 50px;
+
+    }
+  </style>
+</head>
+
+<body>
+  <table>
+    <h3>小米成绩表</h3>
+    <tr>
+      <th>编号</th>
+      <th>科目</th>
+      <th>成绩</th>
+      <th>删除</th>
+    </tr>
+
+    <script>
+      let data = [
+        { subject: '语文', score: 82 },
+        { subject: '数学', score: 76 },
+        { subject: '英文', score: 98 }
+      ];
+
+      let total = 0;  // 计算总分
+      for (let i = 0; i < data.length; i++) {
+        document.write(`
+               <tr>
+                  <td>${i + 1}</td>
+                  <td>${data[i].subject}</td>
+                  <td>${data[i].score}</td>
+                  <td><a href="#">删除</a></td>
+                </tr>
+         `)
+
+        total += data[i].score
+      }
+
+      let average = total / data.length;   // 平均分
+
+      document.write(`
+          <tr>
+              <td colspan="4">暂无数据</td>
+          </tr>
+          <tr>
+            <td colspan="4">
+              <span>总分:  ${total}</span> &nbsp;&nbsp;
+              <span>平均分: ${average}</span>
+            </td>
+          </tr>
+      `)
+    </script>
+  </table>
+</body>
+
+</html>

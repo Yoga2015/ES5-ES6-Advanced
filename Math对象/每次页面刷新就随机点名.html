@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>每次页面刷新就随机点名</title>
+</head>
+
+<body>
+  <script>
+
+    window.onload = function () {
+
+      let arr = ['小米', '荣耀', '华为', '小黑'];
+
+      let random = Math.floor(Math.random() * arr.length);
+
+      console.log(arr[random]);
+
+      for (let i = 0; i < arr.length; i++) {
+
+        if (arr[i] === arr[random]) {
+
+          arr.splice(i, 1);
+
+          console.log(arr);
+
+        }
+
+      }
+
+    }
+
+  </script>
+</body>
+
+</html>

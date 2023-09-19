@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>prototype属性是函数的属性</title>
+</head>
+
+<body>
+  <script>
+
+    // prototype 是 函数的属性 ，构造函数 也是 函数，
+    // 同时 ，prototype 属性 也是 一个对象 
+
+    // function Fn(name) {
+    //   this.name = name;
+    // }
+
+    // let zs = new Fn('zhangsan');
+    // let ll = new Fn('laoliu');
+
+    // console.log(zs);  // Fn { name: 'zhangsan' }
+    // console.log(ll); // Fn { name: 'laoliu' }
+
+
+    function Fn(name) {
+      this.name = name;
+    }
+
+    Fn.prototype.age = 18;
+    Fn.prototype.sex = '男';
+
+    let zs = new Fn('zhangsan', 19, '女');
+    let ll = new Fn('laoliu', 20, '男');
+
+    console.log(zs._proto_(age));
+    console.log(ll);
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>新增、修改对象属性</title>
+</head>
+
+<body>
+  <script>
+
+    // 创建对象完毕之后，才再来 添加属性、方法
+    let obj = {
+
+      name: 'zhangsan',
+
+    };
+
+    obj.age = 18;   // 新增 对象属性
+
+    obj.name = 'walking';  // 修改 对象属性
+
+    obj.sayHi = function () {
+      alert(`我是 ${obj.name} , 我 ${obj.age} 岁了`)
+    }
+
+    console.log(obj);    // {name: 'walking', age: 18, sayHi: ƒ}
+
+
+    // 动态修改属性 、方法
+
+    obj.name = 'walking';     
+
+    obj.age = 23;
+
+    obj.sayHi = function () {
+      alert(`我是 ${obj.name} , 我 ${obj.age} 岁了`)
+    }
+
+    console.log(obj);    //  { name: 'walking', age: 23, sayHi: ƒ }
+
+
+  </script>
+</body>
+
+</html>

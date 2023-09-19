@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    // 需求：将 obj对象 的属性以及属性值 拷贝一份 给 o 对象
+
+    let obj = {
+      id: 1,
+      name: 'walking',
+    };
+
+    let o = {
+      age: 18
+    };
+
+    for (let k in obj) {    // k 是属性名   obj[k] 是属性值
+      // console.log(k + ':' + obj[k]); // 把 obj对象 的属性以及属性值全部遍历出来
+      o[k] = obj[k];
+    }
+
+    console.log(o);   // {age: 18, id: 1, name: 'walking'}
+
+    // 浅拷贝 是把 obj2对象 里 更深层次的对象的地址 拷贝给了 person对象，
+    // 那么他们两个指向的是同一个数据，你修改了一个对象里其中任意一个数据，都会影响另外一个对象的数据。
+    let obj2 = {
+      id: 1,
+      name: 'walking',
+      msg: {
+        age: 18
+      }
+    };
+
+    let person = {};
+
+    for (let k in obj2) {
+      person[k] = obj2[k];
+    }
+    console.log(person);   //  {id: 1, name: 'walking', msg: {age: 18}}
+
+    person.msg.age = 20; // 修改 拷贝完之后的 person ,进行修改属性值后，结果反而影响了 obj2 对象里面的数据
+
+    console.log(obj2);  // { id: 1, name: 'walking', msg: {age: 20} }
+
+    // Object.assign() 方法 用来 拷贝对象 或者 合并多个对象，替换 for...in    
+    // 语法： Object.assign( 拷贝给 哪个对象, 拷贝对象)  
+    Object.assign(person, obj2);
+    console.log(person);   // { id: 1, name: 'walking', msg: {age: 30} }
+
+    person.msg.age = 30;
+    console.log(obj2);   // { id: 1, name: 'walking', msg: {age: 30} }
+
+  </script>
+
+</body>
+
+</html>
