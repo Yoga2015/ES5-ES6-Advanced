@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>map（）</title>
+</head>
+
+<body>
+  <script>
+
+    // const numbers = [1, 2, 3, 4, 5];
+
+    // const doubled = numbers.map(function (item) {
+    //   return item * 2;
+    // });
+
+    // console.log(doubled);  //  输出：[2, 4, 6, 8, 10]
+
+    // console.log(numbers);  // numbers 没变，还是  [1, 2, 3, 4, 5]
+
+    const number = [1, 2, 3, 4, 5];
+
+    const doubled = number.map(number => number * 2);
+
+    console.log(doubled); //  输出：[2, 4, 6, 8, 10]
+
+
+    const strings = ['apple', 'banana'];
+
+    const upperCaseStrings = strings.map(string => string.toUpperCase());
+
+    console.log(upperCaseStrings); // 输出：['APPLE', 'BANANA']
+
+
+    // const numbers = [1, 2, 3];
+
+    // const objects = numbers.map(number => ({ number: number, square: number * number }));
+
+    // console.log(objects); // 输出：[{number: 1, square: 1}, {number: 2, square: 4}, {number: 3, square: 9}]
+
+
+    [1, 2, 3].map(function (element, index, array) {
+
+      return element * index;       //  [0, 2, 6]
+
+    });
+
+    var arr = ['a', 'b', 'c'];
+
+    [1, 2].map(function (e) {
+
+      return this[e];            // ['b', 'c']
+
+    }, arr)
+
+
+    let arr1 = [11, 22, 33];
+    arr1.map(function ())
+
+
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>indexOf( )与lastIndexOf( ) 获取数组元素的索引号</title>
+</head>
+
+<body>
+  <script>
+    /*  
+      indexOf() 用于 获取 数组元素索引号，返回值 是 该数组元素的索引号 ，从左往右查找
+      
+      语法： 数组名.indexOf(数组元素)
+
+      在数组里面中：
+        若找到了，它只返回 第一个满足条件 的 索引号 。
+        若找不到元素，则返回的是 - 1 
+    
+    */
+
+    let numbers = [1, 3, 5, 7, 9, 3];
+
+    //indexOf 从左往右查找，如果找到 与你输入的参数相等的数，则 只返回 第一个满足条件 的 索引号
+    console.log(numbers.indexOf(3)); // 索引号从 0 开始， 所以返回 索引号 1
+
+    // lastIndexOf 从右往左查找,如果找到与你输入的参数相等的数，则只返回 第一个满足条件 的 索引号
+    console.log(numbers.lastIndexOf(3)); // 所以返回 索引号 5
+
+    var arr = ['red', 'green', 'yellow', 'blue', 'black'];
+    console.log(arr.indexOf('blue')); // 所以返回 索引号 3
+
+    //2、lastIndexOf(数组元素) 作用 就是 返回该数组元素的索引号 从右往左查找，但 索引号 还是 从左开始的！！
+    var arr1 = ['red', 'yellow', 'pink', 'blue', 'green', 'black'];
+    console.log(arr1.lastIndexOf('pink'));  // 所以返回 索引号 2
+
+  </script>
+</body>
+
+</html>

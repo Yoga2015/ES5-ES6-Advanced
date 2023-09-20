@@ -26,15 +26,15 @@
 
       } else {
 
-        return 'error 这个参数要求必须是数组格式[1,2,3]'
+        throw new Error('error 这个参数要求必须是数组格式[1,2,3]');
 
       }
 
     }
 
-    console.log(reverseArray([3, 6, 9])); //[9, 6, 3]
+    console.log(reverseArray());   // 不传参 就 报错 ,下面的代码不再会执行
 
-    console.log(reverseArray());   // 不传参 就 提示 error
+    console.log(reverseArray([3, 6, 9])); //[9, 6, 3]
 
     // 因为传递过去的不是数组，所以会原封不动的把 newArr这个空数组 返回 
     console.log(reverseArray(1, 2, 3)); // []    不传参 就 提示 error

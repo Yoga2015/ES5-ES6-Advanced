@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>封装一个函数做数组去重</title>
+</head>
+
+<body>
+  <script>
+    /* 
+      有一个数组['c', 'a', 'z', 'a', 'x', 'a', 'x', 'c', 'b'],
+
+      要求去除数组中重复的元素。
+
+      目标：把 旧数组 里面 不重复的元素 选取出来放到 新数组 中，重复的数组元素只保留一个。
+
+      1、封装一个去重的函数 quChong ，以后可以重复使用。
+
+      2、判断传递过来的参数是否为数组 ，若不是数组 就return '输入的参数不合法'
+
+      3、若是数组，就声明一个新的空数组 newArr
+
+      3.1 然后 for循环遍历 “这个传递过来的数组”（俗称：旧数组）
+
+      3.2 通过拿着旧数组的每一个元素去查询新数组，
+          如果该元素在新数组里面没有出现过就添加到新数组newArr中，否则不添加
+
+          我们怎么知道该元素没有存在呢？   
+          利用： 新数组.indexOf(旧数组的元素)
+          如果返回是 - 1，就说明新数组里面没有该元素
+
+      4、return 返回 newArr 
+    
+    */
+
+    function quChong(arr) {
+
+      if (Array.isArray(arr)) {
+
+        let newArr = [];
+
+        for (let i = 0; i < arr.length; i++) {
+
+          if (newArr.indexOf(arr[i]) === -1) {
+
+            newArr.push(arr[i])
+
+          }
+
+        }
+
+        return newArr;
+
+      } else {
+
+        throw new Error('error：参数格式不合法！必须是数组格式，如：[1,2,3]');
+
+      }
+    }
+
+    let Elements = quChong([4, 2, 3, 4, 9, 6, 3, 10, 10]);
+    console.log(Elements);
+
+    let Elements2 = quChong(['red', 'yellow', 'pink', 'red', 'pink']);
+    console.log(Elements2);
+
+    let Elements3 = quChong({ bb: 12 });    // 不传参 就 报错 ,下面的代码不再会执行
+    console.log(Elements3);
+
+    let Elements4 = quChong([6, 6, 6, 3, 7, 8, 8, 9]);
+    console.log(Elements);
+
+  </script>
+
+</body>
+
+</html>

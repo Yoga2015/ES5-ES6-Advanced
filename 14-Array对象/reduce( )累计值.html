@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>reduce( )累计值</title>
+</head>
+
+<body>
+  <script>
+
+    // reduce(callbackfn, initialVal)
+
+    //          累积变量, 当前变量, 数组正在处理的元素的索引, 原数组本身
+    // reduce((previousVal, currentVal, currentIndex, array) => { 
+
+    //   return previousVal + currentVal 
+
+    // }, initialVal)   
+
+    /* 
+ 
+       reduce( ) 方法 接收 2 个参数：
+ 
+       1、第一个参数是 回调函数 ，指定计算规则，并将计算规则返回
+ 
+         该函数接受以下四个参数：   
+ 
+         previousVal: 累积变量，第一次调用 reduce 函数的返回值，如果传入了 initialVal ，
+                     previousVal 的值为 initialVal ，否则为数组索引为 0的 那一项 （数组第一个成员）
+ 
+         currentVal: 当前变量，数组正在处理的元素项，第一次调用reduce时，如果传入了 initialVal 
+                     currentVal 的值为数组第一项，否则 为数组的第二项 （数组第二个成员）
+ 
+         currentIndex: 数组正在处理的元素的索引号 ，第一次调用时，如果传入了initialVal，索引号从0开始，
+                       否则索引从1 开始
+                       
+         array: 原数组本身 
+ 
+         以上 回调函数 的 四个参数之中，只有前两个是必须的，后两个则是可选的。
+ 
+       2、第二个参数是  initialVal  可选参数，作为第一次调用 reduce 时前一次的结果
+ 
+     */
+
+    [1, 2, 3, 4, 5].reduce(function (a, b) {
+
+      console.log(a, b);
+      
+      return a + b;
+
+    })
+
+    // 1 2    // 3 3    // 6 4    // 10 5    //最后结果：15
+
+  </script>
+
+  
+  <script>
+
+    // reduce() 数组求和
+
+    const arr = [1, 2, 3, 4, 5];
+
+    // reduce( callbackfn, initValue )
+    const sum = arr.reduce((prev, curr, currIndex) => {
+
+      console.log(prev, curr, currIndex);
+
+      return prev + curr;
+
+    }, 10)        // 初始化时，上一次的累积值 10
+
+    console.log(sum);   // 25
+
+    // 10   1   0
+    // 11   2   1
+    // 13   3   2
+    // 16   4   3
+    // 20   5   4
+    // 25
+
+
+    // reduce 数组扁平化
+    const arr2 = [[1, 2], [3, 4], [5, 6]];
+
+    function flat(arr) {
+
+      return arr.reduce((prev, curr) => {
+
+        return prev.concat(Array.isArray(curr) ? flat(curr) : curr)
+
+      }, [])
+
+    }
+
+    console.log(flat(arr2));   // [1, 2, 3, 4, 5, 6]
+
+  </script>
+
+</body>
+
+</html>
