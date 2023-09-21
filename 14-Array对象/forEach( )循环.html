@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  for 循环 是 js提出时 就有的 循环方法。
+  forEach 是 ES5 提出的，挂载在 可迭代对象原型上 的方法，例如 Array、 Set 、Map。
+  forEach 是 一个迭代器，负责遍历 可迭代对象 （ Array、 Set 、Map等）。
+  forEach 与 for 循环本质上的区别：
+  forEach 是 负责遍历（Array、Set、 Map）可迭代对象 的
+  for 循环 是 一种循环机制，只是能通过它遍历出数组 。
+  forEach 循环 可以遍历 所有实现 Iterable 接口 的 所有对象 ，所以只要让我们的类实现 Iterable 接口就可以了 。
+  forEach 也不是全能的 ， forEach() 方法 没有 返回值。
+
+  <script>
+    // forEach语法：
+
+    // 当前元素, 当前元素位置, 整个数组
+    function getLog(element, index, array) {
+
+      console.log('[' + index + '] = ' + element);
+
+    }
+
+    [2, 5, 9].forEach(getLog);    // [0] = 2    // [1] = 5    // [2] = 9
+
+
+
+    // forEach的底层实现
+
+
+
+
+    // forEach没有返回值
+
+    // (1) 例
+    const array = [1, 2, 3]
+
+    const result = array.forEach((element) => {
+
+      return element * 2; // 这个返回值不会被 forEach 捕获或使用
+
+    });
+
+    console.log(result);     // 输出: undefined
+
+
+    // (2) 例2
+    let arr1 = [10, 20, 30];
+
+    arr1.forEach((element, index, array) => {
+
+      console.log(element);     // 输出每个元素的值 : 10  20  30 
+
+      return array[index] = element * 2;  // 试图改变原数组，但实际上不会影响原数组
+
+    })
+
+    console.log(arr1);     // 输出: undefined
+
+
+
+
+
+
+
+  </script>
+
+  <script>
+
+    arrObj.forEach(function (element, index, array) {
+
+      // 在这里执行对数组元素的操作
+      
+    });
+
+    let arr = [1, 2, 3, 4, 5];
+
+    arr.forEach(function (element, index, array) {
+
+      console.log('Index: ' + index + ', element: ' + element);
+
+    });
+
+
+
+
+
+
+  </script>
+
+
+</body>
+
+</html>

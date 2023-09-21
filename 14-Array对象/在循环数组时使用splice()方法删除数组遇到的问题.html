@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>在循环数组时使用splice()方法删除数组遇到的问题</title>
+</head>
+
+<body>
+  <!-- 正常人都是不会删除原数组，而是使用 filter -->
+
+  <script>
+
+    let person = [
+      { name: "lilei", age: "45" },
+      { name: "hanmeimei", age: "16" },
+      { name: "rose", age: "18" },
+      { name: "jack", age: "22" },
+      { name: "david", age: "25" },
+      { name: "bruce", age: "30" },
+      { name: "roby", age: "26" },
+      { name: "TMC", age: "11" },
+      { name: "lee", age: "40" },
+    ]
+
+    let arr = person.forEach((value, index) => {
+      if (value.age > 18) {
+        person.splice(index, 1)
+      }
+    })
+
+    console.log(person);
+
+
+    let arr1 = [1, 2, 5, 6, 8, 9];
+
+    for (let i = 0; i < arr1.length; i++) {
+      if (arr1[i] > 4) {
+        arr1.splice(i, 1)
+      }
+    }
+
+    console.log(arr1);   // [1, 2,  6, 9]
+
+    // 这时我们发现，奇怪了，为什么 6和9被保存了下来呢？这是因为我们每次找到大于4的元素之后，就直接splice剔除掉了，
+    // 需要注意的是，splice是一个会变异方法，也就是会改变原数组的方法，
+    // 所以当i等于2的时候，会找到元素‘5’，然后splice的时候，由于元素‘5’剔除之后，有空位，后面的元素‘6’ ‘8’ ‘9’就都往前补一位，
+    // 但是此时i的值在结束此次循环之后，经过了i++语句，就是直接跳到元素‘8’的位置了，元素‘6’因为补位 躲过了一劫！ 
+    // 再次循环9又因为补位也躲过了一劫，所以结果就是1269
+
+
+
+    // 使用for循环逆向遍历.这种方法相当于每次执行splice方法的时候都将数组的长度减1
+    for (let i = arr1.length - 1; i >= 0; i--) {
+      if (arr1[i] > 4) {
+        arr1.splice(i, 1)
+      }
+    }
+
+    console.log(arr1);
+
+
+    // filter()
+    let arr3 = [1, 2, 5, 6, 8, 9];
+
+    let newArr = arr3.filter((item) => item < 4)
+
+    console.log(newArr);   // [1, 2]
+
+  </script>
+</body>
+
+</html>

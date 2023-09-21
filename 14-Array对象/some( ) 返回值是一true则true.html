@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>some()返回值 一true则true</title>
+</head>
+
+<body>
+  <script>
+
+    // some() 方法 是 只要一个成员的返回值 是 true，则 整个some方法的返回值 就是 true，否则返回 false。
+
+    var arr = [1, 2, 3, 4, 5];
+
+    arr.some(function (elem, index, arr) {
+
+      return elem >= 3;
+
+    });
+
+    // true
+  </script>
+</body>
+
+</html>

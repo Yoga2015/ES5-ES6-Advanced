@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  什么是filter()
+
+  filter()是JavaScript的数组方法，它创建并返回一个新数组，该数组只包含通过提供的函数实现的测试的所有元素。这个函数返回一个布尔值来决定是否保留当前元素。
+
+  filter()的语法
+
+  filter(callback(element, index, array), thisArg)
+
+  callback：一个函数，它接受三个参数：
+
+  element：数组中正在处理的当前元素。
+  index：数组中正在处理的当前元素的索引。
+  array：filter()方法正在操作的数组。
+
+
+  thisArg：在执行 callback 函数时用作 this 的值。如果省略了 thisArg 参数，或者设为 null 或 undefined，则 this 会被视为全局对象。
+
+
+  filter()方法会为数组中的每个元素执行一次callback()函数，并且返回一个新数组，只包含使callback()返回true`的元素。原始数组不会被改变。
+
+  filter()的优点和缺点
+
+  优点：
+
+  简单易用：filter()函数使用简单，只需要提供判断条件即可快速实现数组筛选功能。
+
+  高效率：相比传统的循环遍历方式，filter()函数内部实现了优化，可以更高效地处理大量数据。
+
+  灵活性强：filter()函数支持自定义回调函数作为参数，可以根据实际需求灵活实现各种筛选逻辑。
+
+
+  缺点：
+
+  不能直接修改原数组：filter()函数返回的是一个新的数组，不能直接修改原数组，需要额外处理才能实现修改。
+
+  对大型数组处理时可能占用内存较多：因为filter()函数会创建一个新的数组，如果原始数组非常大，可能会导致内存占用较高，影响性能。
+
+  对基本数据类型识别不准确：filter()函数主要依靠字符串类型和Symbol类型的唯一性进行区分，
+  对于原始类型如number、boolean等不能准确区分和比较，可能会产生不符合预期的结果。
+
+
+  filter()的应用场景
+
+  filter()方法在JavaScript中主要应用于数组操作，以下是一些常见的应用场景：
+
+  去重：可以通过filter()方法实现数组去重功能，只保留唯一的元素。
+  筛选：可以通过filter()方法实现数组筛选功能，根据特定条件筛选出符合要求的元素。
+  排序：可以通过filter()方法配合其他数组方法实现排序功能，例如与sort()方法结合使用进行自定义排序。
+  数据处理：在处理大量数据时，可以通过filter()方法筛选出需要的数据，减少处理量。
+  列表生成器：在生成列表时，可以通过filter()方法筛选出符合条件的元素，并生成相应的列表。
+
+
+  filter()总结
+
+  filter()函数是JavaScript中非常常用的数组方法之一，它可以方便地进行数组筛选、去重、排序等操作，具有简单易用、高效率、灵活性强等优点。
+  但是需要注意的是，它不能直接修改原数组，对于大型数组处理时可能会占用较多内存，同时需要注意对基本数据类型的识别问题。
+  在实际应用中，需要根据实际需求和场景选择合适的方法和工具，以充分发挥它们的作用和优势。
+
+  <script>
+
+    // let arr = [1, 2, 3, 4, 5];
+
+    // arr.filter(function (elem) {
+
+    //   return elem > 3;
+
+    // })
+
+    // console.log(arr);   // [4, 5]
+
+    // 同上
+
+    let arr1 = [1, 2, 3, 4, 5];
+
+    arr.filter((elem) => elem > 3);
+
+    console.log(arr1);   // [4, 5]
+
+
+
+
+    [1, 2, 3, 4, 5].filter(function (element, index, array) {
+
+      return index % 2 === 0;       // [1, 3, 5]
+
+    });
+
+
+    var obj = { MAX: 3 };
+
+    var myFilter = function (item) {
+
+      if (item > this.MAX) return true;
+
+    };
+
+    var arr = [2, 8, 3, 4, 1, 3, 2, 9];
+    
+    arr.filter(myFilter, obj) // [8, 4, 9]
+
+
+  </script>
+
+</body>
+
+</html>

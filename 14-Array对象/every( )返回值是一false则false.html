@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>every( )返回值是一false则false</title>
+</head>
+
+<body>
+  <script>
+
+    var arr = [1, 2, 3, 4, 5];
+
+    arr.every(function (elem, index, arr) {
+
+      return elem >= 3;
+
+    });
+
+    // false
+
+  </script>
+</body>
+
+</html>
