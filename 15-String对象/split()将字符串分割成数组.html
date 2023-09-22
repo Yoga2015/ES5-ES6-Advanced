@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>将 字符串 分割成 数组</title>
+</head>
+
+<body>
+
+
+
+  <script>
+    /*
+        JavaScript的split()方法用于将字符串分割成数组。
+
+        基本语法如下：
+
+        javascriptstring.split(separator, limit)
+
+        separator：是分隔符，用于指定如何分割字符串。
+        如果没有提供分隔符，则默认分隔符为" "，即字符串中的空格。
+        如果分隔符为空字符串（""），则返回的数组将包含单个元素，即原始字符串。
+
+        limit： 可选参数，指定分割后的子串的最大数量。
+        如果没有指定此参数，则返回的数组将包含所有子串。
+        如果指定了此参数，则最多返回limit个子串。 
+    */
+
+
+    // 在下面例子中，我们使用 ',' 作为分隔符，将 字符串 分割成 数组。
+
+    let str = "apple,banana,orange";
+
+    let arr = str.split(",");
+
+    console.log(arr);   // ["apple", "banana", "orange"]
+
+
+    // 在下面例子中，我们指定了 最大子串数量 为 2，因此只返回了两个子串。
+
+    let str1 = "apple,banana,orange";
+
+    let arr2 = str1.split(",", 2);
+
+    console.log(arr2); // ["apple", "banana"]
+
+
+    // 没有 参数，就把 字符串 转换为 数组 。
+
+    // 如果省略参数，则返回 数组的唯一成员 就是 原字符串。
+
+    'abc'.split()     // ["abc"]
+
+    'a|b|c'.split()     // ["a|b|c"]
+
+    'a{ba}c'.split();   // ['a{ba}c']
+
+
+    // 参数 为 空字符串 , 则返回 数组的成员 是 原字符串的每一个字符。
+
+    'abc'.split('');   //  ['a', 'b', 'c']
+
+    'a|b|c'.split('')   // ["a", "|", "b", "|", "c"]
+
+    'a-b-c'.split('');['a', '-', 'b', '-', 'c']
+
+
+    // 有 参数
+
+    'a-b-c'.split('-');  //  ['a', 'b', 'c']
+
+    'a|b|c'.split('|');   // ['a', 'b', 'c']
+
+    'a{b1}c'.split('{b1}');   //  ['a', 'c']
+
+    'a=c'.split('=');   //  ['a', 'c']
+
+    'username=walking'.split('=');   //  ['username', 'walking']
+
+    '?username=walking&password=123456'.split('?')  //  ['', 'username=walking&password=123456']
+
+
+
+    // 如果满足分割规则的两个部分紧邻着（即两个分割符中间没有其他字符），则 返回数组之中 会 有一个空字符串。
+
+    'a||c'.split('|');    // ['a', '', 'c']
+
+    'a,,c'.split(',');     // ['a', '', 'c']
+
+    'a,,,c'.split(',');   // ['a', '', '', 'c']
+
+
+    'a{b}{b}c'.split('{b}');   // ['a', '', 'c']
+
+    'a[b][b]c'.split('[b]');   // ['a', '', 'c']
+
+
+
+    // 如果 满足分割规则 的 部分 处于字符串的开头 或 结尾（即它的前面或后面没有其他字符），
+    // 则 返回数组 的 第一个 或 最后一个成员 是  一个空字符串。
+
+    '|b|c'.split('|');  // ["", "b", "c"]
+
+    'a|b|'.split('|');   // ["a", "b", ""]
+
+    '?username?password'.split('?');  // ['', 'username', 'password']
+
+    'username?password?'.split('?');  //  ['username', 'password', '']
+
+
+    
+
+
+
+
+    let str2 = 'a|b|c';
+    console.log(str2.split('|'));
+
+    let str3 = 'red&green&blue';
+    console.log(str3.split('&'));  // ['red', 'green', 'blue']
+
+
+  </script>
+
+</body>
+
+</html>

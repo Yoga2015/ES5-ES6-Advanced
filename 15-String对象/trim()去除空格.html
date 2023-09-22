@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>trim()去除空格</title>
+</head>
+
+<body>
+
+  <script>
+
+    // trim（）方法 用于 去除 字符串 两端的空格，返回一个新字符串，不改变原字符串。
+
+    '  hello world  '.trim()            // "hello world"
+
+
+    // 该方法去除的不仅是空格，还包括 制表符（\t、\v）、换行符（\n）和 回车符（\r）。
+
+    '\r\n ABC \t'.trim()   // 'ABC'
+
+    '\r\r\r\n 123 \t'.trim()   // '123'
+
+
+    // 但 如果 中间有 空格 就去不掉，需要借助其他方法
+
+    '\r{age:18} 123\v'.trim()   // '{age:18} 123'
+
+
+    let obj = { prop: 123 }; 
+
+    obj.prop = 456; // 这会改变 obj 的 prop 属性的值
+
+    obj.newProp = 789; // 这会向 obj 添加一个新的属性
+
+  </script> 
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>concat()连接两个字符串，返回一个新字符串</title>
+</head>
+
+<body>
+  concat()连接两个字符串，返回一个新字符串
+
+  <script>
+
+    // concat() 用于 连接两个字符串，返回一个新字符串，不改变原字符串。
+    // 语法：concat('字符串1'，'字符串2'......)
+
+    let s1 = 'abc';
+    let s2 = 'def';
+    let s3 = 'ghi';
+
+    console.log(s1.concat(s2, s3)); // "abcdef"  该方法可以接受多个参数。
+
+    console.log(s1); // "abc"
+
+    // 如果参数不是字符串，concat() 方法 会 将 其 先转为 字符串，然后再连接。
+
+    let str2 = 'hello';
+
+    console.log( str2.concat('world') ); // helloworld
+
+    console.log( str2.concat(' !', 123) ); // hello!123
+
+
+
+    // concat（）的底层实现：
+
+    function myConcat(str1, str2) {
+
+      str1 = String(str1);
+      str2 = String(str2);
+
+      return str1 + str2;
+
+    }
+
+    console.log(myConcat(11, 22));   // '1122'
+    console.log(myConcat('', 22));   // '22'
+
+  </script>
+</body>
+
+</html>

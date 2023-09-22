@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>charAt()返回指定位置的字符</title>
+</head>
+
+<body>
+  <script>
+
+    // charAt() 方法 返回 指定位置的字符，参数 是从 0 开始编号 的 位置。
+
+    let s = new String('konka');
+
+    console.log(s.charAt(2));   // n
+    console.log(s.charAt(3));   // k
+
+
+    // 这个方法完全可以用数组下标替代
+    console.log('abc'.charAt(1));   // "b"
+    console.log('abc'[1]);          // "b"    HTML5新增
+
+
+    // 如果 参数 为 负数，或大于等于字符串的长度，charAt返回空字符串。
+    console.log(s.charAt(-1));  // ''
+    console.log(s.charAt(5));  // ''
+
+
+    // 遍历所有的字符
+    for (let i = 0; i < s.length; i++) {
+
+      console.log(s.charAt(i))       // k o n k a
+
+    }
+
+  </script>
+
+  <script>
+
+    // 判断对象中是否有该属性
+
+    /*
+      * 有一个对象   调用对象属性的方法：  对象名['属性名']
+      * 通过  对象名['属性名'] 调用对象属性时，
+      * 当对象中没有此属性时，此时也相当于给该对象添加这个属性，然后才调用
+    */
+
+    var o = {
+
+      age: 18
+
+    };
+
+    if (o['age']) {
+
+      console.log('里面有该属性')   // 里面有该属性
+
+    } else {
+
+      console.log('没有该属性')
+
+    }
+
+  </script>
+
+</body>
+
+</html>

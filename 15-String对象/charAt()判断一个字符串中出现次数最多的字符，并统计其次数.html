@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>判断 一个字符串 中 出现次数最多 的 字符，并统计其次数</title>
+</head>
+
+<body>
+  <script>
+
+    /** 判断 str字符串 'sdfaffafnzaxcv' 中出现次数最多的字符，并统计其次数
+     * 
+     * 核心算法： 
+     * 
+     * 利用 charAt(index) 根据 位置 返回 字符 , 再 利用 for循环 遍历 这个字符串
+     * 
+     * 然后把每个字符都存储给对象，如果对象没有该属性，就等于 1，如果存在了就 +1
+     * 
+     * 遍历对象，得到最大值和该字符。
+     * 
+        1、声明一个空对象 obj 
+  
+        2、for循环遍历 str字符串，
+  
+        3、把 str字符串 里面的每个字符一一取出来，
+        
+            利用 charAt(index) 根据位置返回字符 并把该字符就赋值给 chars 变量；
+  
+        4、 条件判断 obj[chars] ， obj 对象中是否有 chars 属性，
+  
+        4.1 若 obj对象中没 chars属性 就给 obj对象添加这个chars属性 ,并给 chars 属性 赋值 1
+  
+        4.2  //若 obj 对象中有 chars 属性 就 chars 属性值 +1
+    */
+
+    let str = 'qwertbpbasdfbssb';
+
+    let obj = {};
+
+    for (let i = 0; i < str.length; i++) {
+
+      let chars = str.charAt(i);
+
+      if (obj[chars]) {
+
+        obj[chars]++;
+
+      } else {
+        obj[chars] = 1;
+      }
+    }
+
+    console.log(obj);
+
+    // {q: 1, w: 1, e: 1, r: 1, t: 1, b:4, a:1, s:3, d:1 , f:1 ,}
+
+    /**
+     * 当 把 str 字符串 中 每一个字符都 添加给obj对象作为属性后，用for in循环遍历对象，
+     * 遍历出 对象 中出现次数最多的字符 ，以及其出现的次数
+     *  5、声明一个变量 max 并赋值 0，作为最大值
+     *  6、声明一个空字符串 char 用来存放出现次数最多的字符
+     *  7、用 for in循环遍历对象
+    */
+
+    let max = 0;
+
+    let char = '';
+
+    for (let k in obj) {
+
+      if (obj[k] > max) {
+
+        max = obj[k];
+
+        char = k;
+
+      }
+    }
+                                     // b
+    console.log(`出现次数最多的字符是: ${char}`); 
+
+    console.log(`出现了 ${max} 了`); // 4次
+
+
+
+  </script>
+</body>
+
+</html>

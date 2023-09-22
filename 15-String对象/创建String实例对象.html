@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>创建String实例对象</title>
+</head>
+
+<body>
+  <script>
+
+    // 1、利用 字符串字面量 来 创建 String 实例对象
+    let s1 = 'abc';     // 这里 会在 内存中 开辟一个空间，
+    let s2 = 'abc';     // 由于 值 同上，所以不会在内存中开辟一个空间了
+
+    s2 = 'def';
+
+    console.log(s1);
+    console.log(s2);
+
+
+    // 2、利用 new 来 创建 String 实例对象
+    let s3 = new String('abc');     //  在内存中开辟一个空间
+    let s4 = new String('abc');     //  又在内存中开辟一个空间
+
+    typeof s1   // "string"
+    typeof s3   // "Object"
+
+    s3.valueOf() // "abc"
+
+  </script>
+</body>
+
+</html>

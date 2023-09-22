@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    /*
+      查找 字符串 'abcoerfojkwofedo'  中所有 o 出现的额位置以及次数
+      
+      核心算法： 先查找到第一个 o 出现的位置 ，
+      然后只要 indexOf返回的结果不是-1 ，就继续往后查找，
+      因为indexOf 只能查找到第一个，所以后面的查找，一定是当前索引 + 1 ,从而继续查找
+      
+      1、通过indexOf()方法获取 指定内容在字符串中的位置，如果没找到返回 -1
+      若找到了就返回索引号，然后继续往下查找，从刚返回的索引号的后一位又开始查找
+      找到没有了返回 -1 了，才停止继续寻找 'o'.
+
+      2、声明一个变量index 存储 返回来的索引号
+
+      3、声明一个变量num  记录'指定内容'出现的次数
+
+      4、使用 while循环 根据条件  index !== -1 说明找到了,指定 内容 在字符串中的位置
+
+      4.1 若找到就打印出来，然后记录出现的次数
+
+      4.2 找到第一个 o 出现的位置后，根据返回的索引号的后一位继续往后查找
+    */
+
+    let str1 = 'abcoerfojkwofedo';
+
+    let index = str1.indexOf('o');
+
+    let num = 0;
+
+    while (index !== -1) {
+
+      console.log('o 出现的位置索引号：' + index); 
+                              // 3   7   11   15
+      num++;
+
+      index = str1.indexOf('o', index + 1);
+
+    }
+
+    console.log('o 出现的次数：' + num);
+
+  </script>
+</body>
+
+</html>
