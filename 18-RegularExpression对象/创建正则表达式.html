@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>创建正则表达式</title>
+</head>
+
+<body>
+  <script>
+    // 创建 regular expression 正则表达式 有 两种 方式：
+
+
+    let reg = /xyz/;      // 1、使用 字面量 的 方式 创建 正则表达式
+
+    // 等价于
+
+    let regex = new RegExp();     // 2、使用 RegExp 构造函数 创建 正则表达式
+
+
+    let regexp = new RegExp('xyz', 'i');  //  ===  let regex2 = /xyz/i ; 
+
+  </script>
+</body>
+
+</html>
