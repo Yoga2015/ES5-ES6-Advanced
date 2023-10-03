@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    // 一、字面量字符  又叫  普通字符
+
+    // 大部分字符在正则表达式中，就是字面的含义，比如 / a / 匹配a，/b/匹配b。
+
+    // 如果在正则表达式之中，某个字符只表示它字面的含义（就像前面的a和b），
+
+    // 那么它们就叫做“字面量字符”（literal characters）。
+
+    /dog/.test('old dog'); // true
+
+
+    // 除了字面量字符以外，还有一部分字符有特殊含义，不代表字面的意思，它们叫做“元字符”（metacharacters）。
+
+
+
+
+
+    // 二、元字符
+
+    // （1）字符类（.)   匹配 除 回车（\r）、换行(\n) 、行分隔符（\u2028）和段分隔符（\u2029）以外的所有字符。
+
+    //  注意，对于码点大于0xFFFF的 Unicode 字符，点字符不能正确匹配，会认为这是两个字符。
+
+    /c.t/.test('cft');  // true
+
+    // （2） 字符类 []  有 若干 代表 什么意思 ？
+
+
+  </script>
+</body>
+
+</html>

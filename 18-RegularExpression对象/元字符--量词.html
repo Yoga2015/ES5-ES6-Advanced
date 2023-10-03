@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>元字符</title>
+</head>
+
+<body>
+
+  <script>
+
+    // 元字符
+
+    // （1）点字符（.)
+    console.log(/ c.t /.test('cft'));  // true
+
+    console.log('------------------------------');
+
+
+
+    // （2）边界符  又叫  位置符
+
+    //      正则表达式 中 的 边界符 （位置符）  用来 提示 字符所处的位置。主要 有两个字符
+
+    // ^ 表示 匹配行首的文本 （以谁开始）
+
+    // $ 表示 字符串的结束位置 （以谁结束）
+
+    // 注意： 如果 ^ 和 $ 在一起，表示 必须 是 精确匹配。
+
+    console.log(/^one/.test('123one'));    // false
+
+    console.log(/^哈/.test('哈\two'));   // true
+
+    console.log(/one$/.test('one\two\one'));   // true
+
+    console.log(/^one$/.test('one\two\one'));    // false
+
+    console.log(/^哈&/.test('哈哈'));   // false   这种只能出现一个 哈 ，才返回 true
+
+    console.log(/^one$/.test('one'));    // true
+
+    console.log('------------------------------');
+
+
+    // （3）选择符（|）
+
+    console.log(/22|33/.test('11223'));  // true
+
+    console.log(/weige|walking|lige /.test('weige'));   // true
+
+    let str = 'weige';
+    console.log(/ weige | walking | lige /.test(str));   // true
+
+    console.log('------------------------------');
+
+
+    // 正则表达式中，需要反斜杠转义的，一共有12个字符：^、. 、[、$、(、)、|、*、+、?、{ 和\\。
+    // 需要特别注意的是，如果使用RegExp方法生成正则对象，转义需要使用两个斜杠，因为字符串内部会先转义一次。
+
+    console.log(/1+1/.test('1+1'));   // false
+
+    console.log(/1\+1 /.test('1+1'));  // true
+
+    console.log('------------------------------');
+
+
+
+    // (4) 量词 
+    //     用来 设定某个模式出现的次数。
+
+
+    // 量词 *  类似  >= 0 次
+
+    console.log(/^哈$/.test('哈'));   // true
+
+    console.log(/^哈$/.test(''));   // false
+
+    console.log(/^哈*$/.test('哈'));   // true
+
+    console.log(/^哈*$/.test('哈哈'));  // true
+
+    console.log(/^哈*$/.test('二哈'));  // false   必须 '哈' 开头 才为 true
+
+    console.log(/^哈*$/.test('哈很傻'));   // false  必须 '哈' 结尾 才为 true
+
+    console.log(/^哈*$/.test('哈很哈'));   // false
+
+    console.log('------------------------------');
+
+
+    // 量词 +  类似  >= 1 次
+
+    console.log(/^哈$/.test('哈'));   // true
+
+    console.log(/^哈+$/.test(''));   // false
+
+    console.log(/^哈+$/.test('哈'));   // true
+
+    console.log(/^哈+$/.test('哈哈'));  // true
+
+    console.log(/^哈+$/.test('二哈'));  // false   必须 '哈' 开头 才为 true
+
+    console.log(/^哈+$/.test('哈很傻'));   // false  必须 '哈' 结尾 才为 true
+
+    console.log(/^哈+$/.test('哈很哈'));   // false
+
+    console.log('------------------------------');
+
+
+    // 量词 ？  类似  0 || 1 次
+
+    console.log(/^哈$/.test('哈'));   // true
+
+    console.log(/^哈?$/.test(''));   // true
+
+    console.log(/^哈?$/.test('哈'));   // true
+
+    console.log(/^哈?$/.test('哈哈'));  // false
+
+    console.log(/^哈?$/.test('二哈'));  // false   必须 '哈' 开头 才为 true
+
+    console.log(/^哈?$/.test('哈很傻'));   // false  必须 '哈' 结尾 才为 true
+
+    console.log(/^哈?$/.test('哈很哈'));   // false
+
+    console.log('------------------------------');
+
+
+
+    // 量词 ｛n｝ 写几，就必须出现几次    重复 n 次
+
+    console.log(/^哈{4}$/.test('哈'));  // false
+
+    console.log(/^哈{4}$/.test('哈哈'));  // false
+
+    console.log(/^哈{4}$/.test('哈哈哈'));  // false
+
+    console.log(/^哈{4}$/.test('哈哈哈哈'));  // true
+
+    console.log(/^哈{4}$/.test('哈哈哈哈哈'));  // false
+
+    console.log(/^哈{4}$/.test('哈哈哈哈哈哈'));  // false
+
+    console.log('------------------------------');
+
+
+    // 量词 ｛n，｝   >= n     重复 n 次 或 更多次
+
+    console.log(/^哈{4,}$/.test('哈'));  // false
+
+    console.log(/^哈{4,}$/.test('哈哈'));  // false
+
+    console.log(/^哈{4,}$/.test('哈哈哈'));  // false
+
+    console.log(/^哈{4,}$/.test('哈哈哈哈'));  // true
+
+    console.log(/^哈{4,}$/.test('哈哈哈哈哈'));  // true
+
+    console.log(/^哈{4,}$/.test('哈哈哈哈哈哈'));  // true
+
+    console.log('------------------------------');
+
+
+    // 量词 ｛n，m｝    >= n && <= m     重复 n 到 m 次
+
+    // 注意 逗号左右两侧千万不能有空格
+
+    console.log(/^哈{2,4}$/.test('哈'));  // false
+
+    console.log(/^哈{2,4}$/.test('哈哈'));  // true
+
+    console.log(/^哈{2,4}$/.test('哈哈哈'));  // true
+
+    console.log(/^哈{2,4}$/.test('哈哈哈哈'));  // true
+
+    console.log(/^哈{2,4}$/.test('哈哈哈哈哈'));  // false
+
+    console.log(/^哈{2,4}$/.test('哈哈哈哈哈哈'));  // false
+
+    console.log('------------------------------');
+
+
+    // console.log(/^1+\W{10}/.test('13702890684'));
+
+
+
+
+
+  </script>
+
+</body>
+
+</html>

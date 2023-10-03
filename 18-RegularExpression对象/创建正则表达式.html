@@ -9,8 +9,8 @@
 
 <body>
   <script>
-    // 创建 regular expression 正则表达式 有 两种 方式：
 
+    // 创建 regular expression 正则表达式 有 两种 方式：
 
     let reg = /xyz/;      // 1、使用 字面量 的 方式 创建 正则表达式
 
@@ -20,6 +20,20 @@
 
 
     let regexp = new RegExp('xyz', 'i');  //  ===  let regex2 = /xyz/i ; 
+
+
+    // 使用 正则表达式：
+
+    const str = '我们在学习前端，希望学习前端能就业'
+
+    // 1、定义规则
+    const rege = /前端/;
+
+    // 2、是否匹配
+    const result = rege.test(str);
+
+    console.log(result);    // true
+
 
   </script>
 </body>

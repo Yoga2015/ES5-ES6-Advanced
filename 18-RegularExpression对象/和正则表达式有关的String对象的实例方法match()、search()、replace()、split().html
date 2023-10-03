@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>和正则表达式有关的String对象的实例方法match()、search()、replace()、split()</title>
+</head>
+
+<body>
+  <script>
+
+    // String.prototype.match()：用于确定 原字符串 是否匹配 某个子字符串，返回一个数组，成员为匹配的第一个字符串。
+    //                           如果没有找到匹配，则返回null。
+
+    // 字符串的match方法 与 正则对象的exec方法 非常类似：匹配成功返回一个数组，匹配失败返回null。
+
+    // 如果 正则表达式 带有 g 修饰符，则该方法 与 正则对象的exec方法 行为不同，会 一次性返回所有匹配成功的结果。
+
+    let str = 'pkkp';
+
+    let regex = /p/g;
+
+    console.log(str.match(regex));   //  ['p', 'p']
+
+    console.log(regex.exec(str));   // ['p', index: 0, input: 'pkkp', groups: undefined]
+
+
+
+    // String.prototype.search()：用法 基本 等同于 match() ，返回 第一个满足条件 的 匹配结果 在整个字符串中的位置。
+    //                            如果没有找到匹配，则返回-1。
+
+    'cat,bat,sat,bat,fat'.search('bat');   // 4
+
+    'cat,bat,sat,bat,fat'.search(/bat/);  // 4   第一个匹配结果出现在字符串的4号位置。
+
+
+
+    // String.prototype.replace()：replace方法 用于 替换 匹配的子字符串。
+    //                             一般情况下只替换第一个匹配（除非使用带有g修饰符的正则表达式）。
+    let s = 'cat,bat,sat,bat,fat';
+
+    console.log(s.replace('s', 'b'));   // cat,bat,bat,bat,fat
+
+    // 字符串对象 的  replace() 方法 可以替换 匹配的值。  
+    // str.replace ( search , replacement ) 它接受两个参数， 第一个是正则表达式，表示 搜索模式，第二个是替换的内容。
+    'aaa'.replace('a', 'b'); // "baa"
+    'aaa'.replace(/a/, 'b');  // "baa"
+    'aaa'.replace(/a/g, 'b'); // "bbb"   最后一个正则表达式使用了g修饰符，导致所有的b都被替换掉了。
+
+    const str1 = 'Golang是一门编程语言，学完Golang马上就业';
+
+    const result = str1.replace(/golang/ig, 'java');
+
+    console.log(result);   // 'java是一门编程语言，学完java马上就业'
+
+
+
+
+    // String.prototype.split()：按照给定规则进行字符串分割，返回 一个 由分割后 的 各个部分组成 的 数组。
+
+    // str.split( separator , [limit] ) 该方法接受两个参数，第一个参数是正则表达式，表示分隔规则，第二个参数是返回数组的最大成员数。
+
+    // 非正则分隔
+    'w, a,l,  k,i,n,g'.split(',');  // ['w', ' a', 'l', '  k', 'i', 'n', 'g']
+
+    // 正则分隔，去除多余的空格
+    'w, a,l,  k,i,n,g'.split(/, */);  // ['w', 'a', 'l', 'k', 'i', 'n', 'g']
+
+    // 指定返回数组的最大成员
+    'w, a,l,  k,i,n,g'.split(/, */, 4);   // ['w', 'a', 'l', 'k']
+
+  </script>
+</body>
+
+</html>

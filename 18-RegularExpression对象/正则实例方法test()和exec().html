@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>正则实例方法test()和exec()</title>
+</head>
+
+<body>
+  RegExp 实例置了 test() 和 exec() 这两个方法 来 校验 正则表达式
+
+  <script>
+
+    // test() : 用于 检测 一个字符串 是否 匹配 某个模式 ，会返回一个布尔值。
+
+    // 如果 字符串中 含有 匹配的文本， 则返回 true, 否则返回false
+
+    let regex = /dog/ig;
+
+    let str = 'dog/s/cat/dog';
+
+    let result = regex.test(str);
+
+    console.log(result);   // 返回 true , 因 含有 匹配的文本
+
+
+
+    /* lastIndex 属性 ：返回 一个数值，表示 下一次开始搜索的位置，从 0 算起。
+                       该属性 可读写，但是 只在进行连续搜索时 有意义。 
+    */
+    console.log(regex.lastIndex);    // 3
+
+
+
+    // exec() :  用于 检索 字符串中的  正则表达式 的 匹配。
+
+    // 如果 找到 匹配， ，exec() 函数 会返回 一个数组，其中存放 匹配的结果。
+
+    // 如果 未找到 匹配， 则 返回值 为 null 
+
+    // 语法 ： regObj.exec(被检测字符串);  
+
+    let str2 = 'dog/s/cat/dog';
+
+    let result2 = regex.exec(str2);
+
+    console.log(result2);  // ['dog', index: 10, input: 'dog/s/cat/dog', groups: undefined]
+
+    console.log(regex.lastIndex);    // 13
+
+
+
+
+  </script>
+</body>
+
+</html>

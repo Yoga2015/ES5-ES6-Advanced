@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>过滤敏感词</title>
+</head>
+<body>
+  <textarea name="" id="" cols="30" rows="10"></textarea>
+  <button>发布</button>
+  <div></div>
+
+  <script>
+
+    /*    需求 ：要求 用户 不能输入敏感字
+
+          比如 ：walking 老师上课 很有 **
+
+            分析：
+            1、用户输入内容，获取 用户输入内容
+            2、对 用户输入内容 进行 正则替换查找，找到敏感词，进行 ** 替换
+            3、要 全局替换 使用修饰符 g 
+    */
+
+    const tx = document.querySelector('textarea');
+
+    const btn = document.querySelector('button');
+
+    const div = document.querySelector('div');
+
+    btn.addEventListener('click', function () {
+
+      // console.log(tx.value);
+
+      div.innerHTML = tx.value.replace(/骚气|激情|基情/ig, '**');
+
+      tx.value = '';
+
+    })
+
+  </script>
+
+</body>
+
+</html>

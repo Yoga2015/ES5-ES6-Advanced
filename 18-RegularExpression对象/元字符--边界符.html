@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    // （2）边界符  又叫  位置符
+
+    // ^ 表示字符串的开始位置
+
+    // $ 表示字符串的结束位置
+
+    /^one/.test('123one');    // false
+
+    /^one/.test('one\two');   // true
+
+    /one$/.test('one\two\one');   // true
+
+    /^one$/.test('one\two\one');    // false
+
+    /^one$/.test('one');    // true
+
+
+  </script>
+</body>
+
+</html>

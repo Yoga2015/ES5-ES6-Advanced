@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>正则实例属性</title>
+</head>
+
+<body>
+  <script>
+
+    /*  正则对象 的 实例属性 分成 两类：
+    
+        修饰符
+    
+        一类是修饰符相关，返回一个布尔值，表示 对应的修饰符 是否 设置。
+        ignoreCase： i
+        返回一个布尔值，表示是否设置了 i 修饰符。    即匹配时忽略字符串的大小写
+    
+        global：   g
+        返回一个布尔值，表示是否设置了 g 修饰符。         全局匹配
+    
+        multiline： m
+        返回一个布尔值，表示是否设置了 m 修饰符。      multiline
+    
+        上面 三个属性 都是 只读 的。 
+    */
+
+    let regex = /abc/igm;
+
+    regex.ignoreCase;      // true
+
+    regex.global;          // true
+
+    regex.multiline;       // true
+
+
+    // 与修饰符无关的属性，主要是下面两个:
+
+    // RegExp.prototype.lastIndex：返回 一个数值，表示 下一次开始搜索的位置，从 0 算起。
+    //                             该属性 可读写，但是 只在进行连续搜索时 有意义。
+
+    // RegExp.prototype.source：返回 正则表达式 的 字符串形式（不包括反斜杠），该属性只读。
+
+    let r = /abc/igm;
+
+    r.lastIndex     // 0
+    r.source     // "abc"
+
+
+    var reg = /a/g;
+    var str = 'abc_abc_abc'
+
+    var r1 = reg.exec(str);
+    r1      // ["a"]
+    r1.index      // 0
+    reg.lastIndex     // 1
+
+    var r2 = reg.exec(str);
+    r2  // ["a"]
+    r2.index  // 4
+    reg.lastIndex   // 5
+
+    var r3 = reg.exec(str);
+    r3  // ["a"]
+    r3.index  // 8
+    reg.lastIndex   // 9
+
+    var r4 = reg.exec(str);
+    r4  // null
+    reg.lastIndex   // 0
+
+
+  </script>
+</body>
+
+</html>

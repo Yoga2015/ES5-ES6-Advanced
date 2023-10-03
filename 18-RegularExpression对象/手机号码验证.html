@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>验证手机号码</title>
+</head>
+
+<body>
+  <script>
+
+    // 验证手机号码
+
+    /^[1][0-9]{10}$/.test('13702890684');   // true
+
+    /^[1][0-9]{10}$/.test('137028906849');  // false
+
+    /^[1][0-9]{10}$/.test('1370289068');   // false
+
+    /^[1][0-9]{10}$/.test('23702890684');   // false
+
+  </script>
+</body>
+
+</html>
