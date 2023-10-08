@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dom对象</title>
+</head>
+
+<body>
+  <div>123</div>
+
+  <script>
+
+    // DOM对象：浏览器 根据 HTML标签 生成 的 JS对象。
+    // 所有的标签属性 都可以在 这个对象 上面找到。
+    // 修改这个对象的属性会自动映射到标签身上。
+
+    const div = document.querySelector('div');
+
+    console.log(typeof div);   // object
+
+    console.dir(div);
+
+  </script>
+
+</body>
+
+</html>
