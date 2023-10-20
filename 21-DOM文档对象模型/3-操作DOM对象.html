@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>获取特殊元素（body,html）</title>
+</head>
+
+<body>
+
+  <div id="onediv">123</div>
+
+  <script>
+
+    /** 页面中任何一个元素都可以添加事件的。
+     * 执行事件步骤    
+     *  1、点击div ,弹出 "我被选中了".
+     */
+
+    let onediv = document.querySelector('#onediv');
+    
+    onediv.onclick = function () {
+      alert("我被选中了");
+    }
+
+  </script>
+
+</body>
+
+</html>

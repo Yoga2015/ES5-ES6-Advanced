@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>改变元素内容</title>
+</head>
+
+<body>
+
+  <button>显示当前系统时间</button>
+  <div>某个时间</div>
+  <p>某个时间</p>
+
+  <script>
+    // 执行过程：当我们点击了按钮，div 里面的文字发生变化
+
+    //1、 事件源 获取元素
+    let btn = document.querySelector('button');
+    let div = document.querySelector('div');
+
+    //2、注册事件（给事件源添加事件）  点击谁 就给谁添加事件
+    btn.onclick = function () {
+      // let CurrentHTML = new Date();
+      // div.innerText = CurrentTime.toLocaleDateString();  //2022/11/4
+      div.innerHTML = getTime();
+    }
+
+    function getTime() {
+      let date = new Date();
+      let year = date.getFullYear();
+      let month = date.getMonth();
+      let dates = date.getDate();
+      let arr = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六',];
+      let day = date.getDay();
+
+      let hours = date.getHours();  //返回当前小时
+      hours = hours < 10 ? '0' + hours : hours;
+      let minutes = date.getMinutes();  //返回当前分钟
+      minutes = minutes < 10 ? '0' + minutes : minutes;
+      let seconds = date.getSeconds();  //返回当前秒钟
+      seconds = seconds < 10 ? '0' + seconds : seconds;
+      return '今天是 ' + year + '年 ' + month + '月 ' + dates + '号 ' + arr[day] + hours + ':' + minutes + ':' + seconds;
+    }
+
+    // 我不想点击按钮才显示当前时间，而是一打开页面就显示时间。
+    let p = document.querySelector('p');
+    p.innerHTML = getTime();
+
+  </script>
+
+</body>
+</html>
