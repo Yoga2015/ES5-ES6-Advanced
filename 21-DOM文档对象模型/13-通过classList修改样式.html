@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>通过classList修改样式</title>
+  <style>
+    .box {
+      width: 200px;
+      height: 200px;
+      color: #333;
+    }
+
+    .active {
+      font-weight: 700;
+      color: red;
+      background-color: yellow;
+    }
+
+    .change {
+      color: pink;
+      background-color: green;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="box">文字</div>
+
+  <script>
+
+    // 通过 classList 修改样式
+
+    // 1、获取元素
+    const box = document.querySelector('.box');
+
+    // 2、追加类  ，add() 类名不加点，并且是字符串 ，在 box 类 后面 追加 active 类
+    box.classList.add('active');
+
+    // 3、删除类 ，remove() 类名不加点，并且是字符串
+    box.classList.remove('box')
+
+    // 4、切换类 toggle（） 有还是没有啊，有就删掉，没有就加上
+    box.classList.toggle('change');
+
+  </script>
+
+</body>
+
+</html>

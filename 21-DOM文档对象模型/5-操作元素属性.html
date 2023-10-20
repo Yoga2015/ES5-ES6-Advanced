@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>修改元素属性</title>
+</head>
+
+<body>
+
+  <div>
+    <button id="llj">李连杰</button>
+    <button id="zwz">赵文卓</button>
+  </div><br>
+
+  <img src="lilianjie.png" alt="" title="李连杰">
+
+  <script>
+
+    // 1、获取 元素
+    let llj = document.getElementById('llj');
+    let zwz = document.getElementById('zwz');
+    let img = document.querySelector('img');
+
+    // 2、操作 元素 ：当 点击元素 时，并进行触发 修改 元素属性值
+    zwz.onclick = function () {
+      img.src = './img/2.png';
+      img.title = '赵文卓';
+    }
+
+    llj.onclick = function () {
+      img.src = './img/1.png';
+      img.title = '李连杰';
+    }
+
+  </script>
+
+</body>
+
+</html>

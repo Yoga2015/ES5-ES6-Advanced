@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>通过style属性操作CSS</title>
+
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: yellow;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div>123</div>
+
+  <script>
+
+    // 操作元素样式方式有两种：
+
+    // 元素.style     行内样式操作
+
+    // 元素.className 类名样式操作
+
+    // 通过style属性操作CSS
+
+    // 1、事件源 获取元素
+    let div = document.querySelector('div');
+
+    // 2、注册事件 ，事件处理程序
+    div.onclick = function () {
+      // div.style 里面的属性 采用驼峰命名法
+      div.style.backgroundColor = 'red';
+      div.style.width = '300px';
+      div.style.height = '300px';
+      div.style.border = '2px solid green';
+    }
+
+
+    // 1、设置/修改 元素样式属性 通过 style属性引出来
+    // 2、如果需要 修改 一个 div盒子的样式，比如 padding-left，如何写？
+    // 元素.style.paddingLeft = '300px'     
+    // 小驼峰命名法
+    // 3、因为我们是样式属性，一定别忘记，大部分数字后面 都需要 加单位
+
+  </script>
+
+</body>
+
+</html>

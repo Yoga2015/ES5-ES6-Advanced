@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>京东显示隐藏文本框内容</title>
+  <style>
+    input {
+      color: #999;
+    }
+
+    span {
+      border: 1.5px solid rgb(27, 177, 236);
+      font-size: 13px;
+      padding: 2px;
+    }
+  </style>
+</head>
+
+<body>
+
+  思考：获得焦点onfocus 、失去焦点onblur 分别会怎么样 <br><br>
+
+  <input type="text" value="跨店满299减50" class="messages">
+
+  <span>搜索</span>
+
+  <script>
+
+    /** 显示隐藏文本框内容  思考：获得焦点onfocus 、失去焦点onblur 分别会怎么样  
+    1、当鼠标点击文本框时，里面的默认文字隐藏，当鼠标离开文本框时，里面的文字显示。
+    2、首先表单需要2个事件 ，获得焦点 onfocus 、失去焦点 onblur
+    3、如果获得焦点，判断表单里面内容是否为默认文字，如果是默认文字，就清空表单内容
+    4、如果失去焦点，判断表单里面内容是否为空，如果为空，则表单内容改为默认字体
+    */
+   
+    //  1、获取元素 
+    let text = document.querySelector('.messages');
+
+    // 2、注册事件  获得焦点事件  ，事件处理程序
+    text.onfocus = function () {
+      // console.log('得到了焦点')
+      if (this.value === '跨店满299减50') {
+        this.value = '';
+      }
+      //获得焦点需要把文本框里面的文字颜色变黑
+      this.style.color = '#333';
+
+    }
+
+    //3、注册事件  失去焦点事件 ，事件处理程序
+    text.onblur = function () {
+      // console.log('失去了焦点')
+      if (this.value === '') {
+        this.value = '跨店满299减50';
+      }
+      //失去焦点需要把文本框里面的文字颜色变浅色
+      this.style.color = '#999';
+    }
+
+  </script>
+
+</body>
+
+</html>

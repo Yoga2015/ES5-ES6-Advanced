@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>className更改元素样式</title>
+  <style>
+    .first {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+    }
+
+    .change {
+      background-color: red;
+      color: #fff;
+      font-size: 25px;
+      margin-top: 100px;
+    }
+    
+  </style>
+
+</head>
+
+<body>
+
+  <div class="first">文本</div>
+
+  <script>
+
+    try {
+      await this.filterAndReduce();
+    } catch (error) {
+      console.log(error);
+    }
+
+    // 1、使用element.style 修改元素样式  如果样式比较少 或者 功能简单的情况下使用
+    let test = document.querySelector('div');
+
+    // 2、注册点击事件
+    test.onclick = function () {
+      //   this.style.backgroundColor = 'red';
+      //   this.style.color = '#fff';
+      //   this.style.fontSize = '25px';
+      //   this.style.marginTop = '100px';
+
+      //2、使用 element.className 更改元素样式 适合于样式比较多或者 功能比较复杂的情况
+      //      优点是：其他元素还可以复用
+      // 让我们当前元素的类名改为了change   change提前定义好的样式，
+      //   this.className = 'change';
+
+      //3、但是我想只有点击了才发生变化，没点击就还是原来的样式
+      //如果想要保留原先的类名，我们可以这么做  多类名选择器
+      this.className = 'first change';
+    }
+
+  </script>
+
+</body>
+
+</html>
