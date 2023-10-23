@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>排他思想</title>
+</head>
+
+<body>
+
+  <div>
+    <button>按钮1</button> <button>按钮2</button>
+    <button>按钮3</button> <button>按钮4</button>
+    <button>按钮5</button> <button>按钮6</button>
+  </div>
+
+  <script>
+
+    /* 排他思想：
+       点击 按钮1，按钮1 颜色 从 默认色 变 pink；点击 按钮2，按钮1 颜色 
+       从 pink 变回 默认色，按钮2 颜色从默认色变pink ；依次类推。。。。。。
+    */
+
+    //1、事件源  获取元素
+    let btns = document.querySelectorAll('button');
+    // console.log(btns);   // btns 得到的是伪数组 
+
+    // 2、遍历所有元素    btns 里面的每一个元素  btn[i]
+    for (let i = 0; i < btns.length; i++) {
+
+      // 注册事件  ，事件处理函数
+      btns[i].onclick = function () {
+
+        // (1) 我们先把所有的按钮背景颜色去掉
+        for (let i = 0; i < btns.length; i++) {
+          btns[i].style.backgroundColor = '';
+        }
+
+        //(2) 然后才让当前的元素背景颜色 为 pink
+        btns[i].style.backgroundColor = 'yellow';
+
+      }
+
+    }
+  </script>
+
+</body>
+
+</html>

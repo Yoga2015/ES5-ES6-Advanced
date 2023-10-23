@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>表单隔行变色效果</title>
+  <link href="./bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <table class="table">
+
+    <thead style="background-color: rgb(111, 221, 225);">
+      <tr style="color:rgba(255, 0, 0, 0.592) ;">
+        <th>编号</th>
+        <th>产品</th>
+        <th>交互时间</th>
+        <th>价格</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>HTML</td>
+        <td>2022</td>
+        <td>19.9$</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>JavaScript</td>
+        <td>2023</td>
+        <td>99.9$</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>CSS</td>
+        <td>2024</td>
+        <td>29.9$</td>
+      </tr>
+    </tbody>
+
+  </table>
+
+  <script>
+    
+  // 1、事件源 获取元素    准确定位是哪个元素
+  let trs = document.querySelector('tbody').querySelectorAll('tr');
+  // console.log(trs);   NodeList(5)[tr, tr, tr, tr, tr]
+
+  // 2、给每一行注册事件:鼠标经过 onmouseover、鼠标离开onmouseout 
+  for (let i = 0; i < trs.length; i++) {
+
+    // 3、给每一行 注册鼠标经过事件  onmouseover
+    trs[i].onmouseover = function () {
+      trs[i].style.backgroundColor = '#99D9EA';
+    }
+    
+    // 4、给每一行 注册鼠标离开事件  onmouseout
+    trs[i].onmouseout = function () {
+      trs[i].style.backgroundColor = '';
+    }
+
+  }
+
+  </script>
+
+</body>
+
+</html>
