@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>开关灯案例</title>
+</head>
+
+<body>
+
+  <button class="light">开关灯</button>
+
+  <script>
+
+    /** 开关灯案例
+    *  1、点击按钮 ，把body的背景颜色 切换为 黑色
+    *  2、再点击按钮 ，把body的背景颜色 切换为 白色
+    *  3、说明按钮的功能可复用
+    * 
+    *   利用一个flag变量，来判断flag的值，flag的值 默认是 0  白色
+    *   如果flag的值是 0 就把body的背景颜色 切换为 黑色，然后将 flag的值设置为 1
+    *   如果flag的值是 1 就把body的背景颜色 切换为 白色，然后将 flag的值设置为 0 
+    */
+
+    //1、事件源  获取元素
+    let btn = document.querySelector('.light');
+    let elebody = document.body;
+    var flag = 0;
+
+    //2、注册事件  ，事件处理程序
+    btn.onclick = function () {
+      if (flag == 0) {
+        elebody.style.backgroundColor = 'black';
+        flag = 1;
+      } else {
+        elebody.style.backgroundColor = 'white';
+        flag = 0;
+      }
+    }
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <button>按钮</button>
+
+  <input type="text" value="输入内容">
+
+  <script>
+    // 点击按钮 ，就修改表单元素内容，点击一次后就禁用
+    
+    // 1 、事件源  获取元素
+    let btn = document.querySelector('button');
+    let input = document.querySelector('input');
+
+    // 2、给事件源注册事件（添加事件） ，然后事件处理
+    btn.onclick = function () {
+      // input.innerHTML = '点击了'; //这个是普通和 比如 div 标签里面的内容
+      // 表单里面的值 文字内容是通过 value 来修改的
+      input.value = '点击了';
+      // 如果想要某个表单 被禁用  不能再点击 disabled  想要这个按钮 button 禁用
+      // btn.disabled = true;
+      this.disabled = true;
+      //this 指向的是 事件函数 的 调用者
+    }
+  </script>
+
+</body>
+
+</html>

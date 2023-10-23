@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>给表单input密码框类型转换为文本框</title>
+</head>
+
+<body>
+
+  <form action="#">
+    <input type="text" class="username" value="请输入用户名"><br>
+    <input type="password" class="password"><br>
+
+    <label for="hoppy">爱好：</label>
+    <input type="checkbox" id="hoppy">吃饭
+  </form>
+
+  <script>
+
+    // 给 表单 input密码框类型 转换为 文本框
+
+    // 1、获取表单里面的值
+    const uname = document.querySelector('.username');
+
+    // 2、控制台查看 表单里面的值   请用   表单.value 
+    console.log(uname.value);   // innerHTML 得不到表单的内容
+
+    uname.value = 'walking';
+    uname.type = 'password';
+
+
+    // 1、 获取元素
+    const pwd = document.querySelector('.password');
+
+    // 2、修改元素
+    pwd.type = 'text';
+
+    const hoppy = document.querySelector('#hoppy');
+
+    console.log(hoppy.checked);   // false
+
+    // hoppy.checked = 'checked';
+    hoppy.checked = true;        // 同 上 下  
+
+    // hoppy.checked = 'true';  // 会选中，不提倡，有隐式转换
+    // 字符串只有一种情况为false，那就是 空字符串
+
+    console.log(hoppy.checked);   // true
+
+  </script>
+
+</body>
+
+</html>

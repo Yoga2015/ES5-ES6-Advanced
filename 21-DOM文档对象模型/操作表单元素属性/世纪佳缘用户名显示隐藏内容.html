@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>世纪佳缘 用户名 显示隐藏内容</title>
+
+  <style>
+    #ipt,
+    #pwd {
+      color: #999;
+    }
+
+    span {
+      border: 1.5px solid rgb(27, 177, 236);
+      font-size: 12px;
+      padding: 1.5px;
+      margin-left: 2px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <h4>世纪佳缘</h4>
+  <input type="text" value="邮箱/ID/手机号" id="ipt">
+  <input type="password" id="pwd" placeholder="密码">
+  <span>登录</span>
+
+</body>
+
+</html>
+
+
+<script>
+  //1、事件源  获取元素
+  let ipt = document.getElementById('ipt');
+  let pwd = document.getElementById('pwd');
+
+  //2、注册事件  onfocus 获得焦点 ，事件处理程序
+  ipt.onfocus = function () {
+    if (ipt.value === '邮箱/ID/手机号') {
+      ipt.value = '';
+      ipt.style.color = '#333';
+    }
+  }
+
+  // 3、注册事件 onblur 失去焦点 ，事件处理程序
+  ipt.onblur = function () {
+    if (ipt.value === '') {
+      ipt.value = '邮箱/ID/手机号';
+      ipt.style.color = '#999';
+    }
+  }
+
+  //4、注册事件  onfocus 获得焦点 ，事件处理程序
+  pwd.onfocus = function () {
+    if (pwd.value === '密码') {
+      pwd.value = '';
+      pwd.style.color = '#333';
+    }
+  }
+  // 5、注册事件 onblur 失去焦点 ，事件处理程序
+  pwd.onblur = function () {
+    pwd.style.color = '#333';
+  }
+  
+</script>

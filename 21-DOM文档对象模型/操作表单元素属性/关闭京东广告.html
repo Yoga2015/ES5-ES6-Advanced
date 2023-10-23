@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>关闭京东广告</title>
+  <style>
+    .box {
+      position: relative;
+      width: 1000px;
+      height: 55px;
+      margin: 0px auto;
+      color: rgb(255, 99, 58);
+      display: block;
+    }
+
+    .box img {
+      margin-top: -25px;
+      width: 1000px;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: -4px;
+      right: -0px;
+      width: 14px;
+      height: 14px;
+      border: 1px solid #ffac00;
+      line-height: 14px;
+      font-family: Arial, Helvetica, sans-serif;
+      cursor: pointer;
+      color: #a5ff00;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="box">
+    <i class="close-btn">X</i>、
+    <img src="./guanggao.png" alt="">
+  </div>
+
+  <script>
+
+    //1、事件源  获取元素
+    let btn = document.querySelector('.close-btn');
+    let box = document.querySelector('.box');
+
+    //2、注册事件    事件处理程序
+    btn.onclick = function () {
+      box.style.display = 'none';  //广告并没有删除而是隐藏
+    }
+
+  </script>
+  
+</body>
+
+</html>
