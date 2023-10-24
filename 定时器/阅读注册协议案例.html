@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>阅读注册协议 案例</title>
+  <style>
+    div {
+      width: 200px;
+      height: 300px;
+      border: 2px solid black;
+    }
+  </style>
+</head>
+
+<body>
+
+  <textarea name="" id="" cols="30" rows="10">
+        注册协议
+   注册协议是指用户在注册成为网站或APP的会员时，需要同意的一系列条款和条件。
+   这些条款通常包括用户提供个人信息的准确性、保护隐私、遵守法律法规、知识产权保护、安全责任等方面。      
+   注册协议的目的是为了明确用户和网站或APP之间的权利和义务，保障用户的合法权益。   
+  </textarea>
+
+  <input type="submit" value="已阅读用户协议 (5) ">
+
+  <script>
+
+    // 1、获取 按钮元素
+    let input = document.querySelector('input');
+
+    // 2、把 按钮元素  禁用 （disable 属性） 
+    input.disabled = true;
+
+    // 3、用作 倒计时
+    let i = 5;
+
+    // 4、开启 定时器
+    let timer = setInterval(function () {
+
+      i--;
+
+      input.value = `已阅读用户协议 (${i})`;
+
+      if (i === 0) {
+
+        clearInterval(timer);   // 5、关闭 定时器
+
+        input.disabled = false;
+
+        input.value = `同意`;
+
+      }
+
+    }, 1000)
+
+  </script>
+
+</body>
+
+</html>

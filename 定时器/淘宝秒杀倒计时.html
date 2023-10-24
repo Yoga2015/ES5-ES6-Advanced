@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./淘宝秒杀倒计时.css">
+
+<body>
+
+  <div class="box">
+    淘宝秒杀
+    <div class="timevalue">
+      <span class="hour">1</span>
+      <span class="minute">2</span>
+      <span class="second">3</span>
+    </div>
+  </div>
+
+  <script>
+
+    // 1、 事件源 获取元素  需要改变的元素
+    let hour = document.querySelector('.hour');
+    let minute = document.querySelector('.minute');
+    let second = document.querySelector('.second');
+
+    // 3、这时间，自己可以设置为 未来的 或者 过去的 时间 ，来看倒计时效果  
+    var inputTime = +new Date('2022-11-16 21:30:00'); //记录用户输入的时间总的毫秒数
+
+    // 2、获取系统当前的时间, 并且把 用户输入的时间（未来或过去的）减去 系统当前的时间 进行计算
+    function CountTime(time) {
+      var nowTime = +new Date(); //返回的是 现在时间的 总的毫秒数
+      var timer = (inputTime - nowTime) / 1000;  //times 是剩余时间总的 毫秒数
+      var h = parseInt(timer / 60 / 60 % 24);  //计算小时
+      h = h < 10 ? '0' + h : h;
+      hour.innerHTML = h;   // 把剩余的时间给 小时 黑色盒子
+      var m = parseInt(timer / 60 % 60) //计算分钟
+      m = m < 10 ? '0' + m : m;
+      minute.innerHTML = m;  // 把剩余的时间给 分钟 黑色盒子
+      var s = parseInt(timer % 60)  //计算当前秒数
+      s = s < 10 ? '0' + s : s;
+      second.innerHTML = s;   // 把剩余的时间给 秒数 黑色盒子
+    }
+
+    //5、我们先调用一次这个函数，避免防止第一次刷新页面有空白。  
+    CountTime();
+
+    // 4、开启定时器
+    setInterval(CountTime, 1000);
+
+  </script>
+
+</body>
+
+</html>

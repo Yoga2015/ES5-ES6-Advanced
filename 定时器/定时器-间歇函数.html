@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>定时器-间歇函数</title>
+</head>
+
+<body>
+  <script>
+
+    //  setInterval(函数,间隔时间)
+
+    // 开启定时器 （又叫设置定时器） 
+    // setInterval(function () {
+    //   console.log('一秒执行一次');
+    // }, 1000)
+
+
+
+    function fn() {
+      console.log('一秒执行一次');
+    }
+
+    // 避免首次进入页面会出现 页面留白
+    fn();
+
+    let n = setInterval(fn, 1000);        // 这里开启第一个定时器 
+
+    console.log(n);  // 会返回的是 1 ，即： 第一个定时器的 id 号
+
+
+    let m = setInterval(function () {     // 这里又开启一个定时器 
+      console.log(11);
+    }, 2000)
+
+    console.log(m);  // 会返回的是 2 ，即： 第二个定时器的 id 号
+
+
+    // 关闭定时器
+    clearInterval(m);
+
+
+    /*   一个页面里 可以有 多个定时器。
+    
+      注意：
+        1、首次进入页面会出现 页面留白
+        2、定时器 会返回的是 一个数字类型 的 id 号 
+           是一个 独一无二的 id 号，所以关闭时需要根据 id 号 来精准关闭
+    */
+
+
+    let i = 1;
+
+    setInterval(function () {
+      i++;
+      document.write(i)
+    }, 1000)
+
+  </script>
+</body>
+
+
+</html>
