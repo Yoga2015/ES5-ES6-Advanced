@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>this 环境对象</title>
+</head>
+
+<body>
+
+  环境对象
+
+  目标 ： 能够分析判断 函数 运行在不同环境中 this 所指代 的 对象
+
+  环境对象： 指的是 函数内部 特殊的 变量 this ，它代表着 当前函数 运行时所处的环境。
+
+  作用： 弄清楚 this 的 指向， 可以让我们代码更简洁
+
+  this 的 指向：
+
+  1、函数 的 调用方式不同，this 指代 的 对象 也不同
+
+  【谁调用 ，this 就是 谁】， 是判断 this 指向 的粗略规则
+
+  直接调用 函数 (如：fn() ) , 其实 相当于 是 window.函数，所以 this 指向 window
+
+  <button>点击</button>
+
+  <script>
+
+    //  每个函数 里面都有 this 环境对象。      普通函数里面 this  指向的是 window
+    function fn() {
+      console.log(this);  // 此时的 this 是 Window对象，故称为  this  指向的是 Window对象
+    }
+
+    fn();  // === window.fn()
+
+
+    const btn = document.querySelector('button');
+
+    btn.addEventListener('click', function () {
+
+      console.log(this);  // 此时的 this 是 <button>点击</button>
+
+      // btn.style.backgroundColor = 'pink';  
+
+      // 同上。     
+      this.style.backgroundColor = 'pink';  // this 的作用： 就是让我们代码更简洁   
+
+    })
+
+
+
+    // this 的 指向
+
+    // 1、 对象方法中的 this
+    var obj = {
+      value: "我是 obj 的值",
+      show: function () {
+        console.log(this.value);
+      }
+    };
+
+    obj.show();  // 输出 "我是 obj 的值"
+
+
+    // 2、在一个构造函数中，this 指向新创建的对象。
+    
+    function MyObject() {
+      this.value = "我是 MyObject 的值";
+      this.show = function () {
+        console.log(this.value);
+      }
+    }
+
+    var obj = new MyObject();
+
+    obj.show();  // 输出 "我是 MyObject 的值"
+
+  </script>
+
+</body>
+
+</html>
