@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>模拟顺丰快递单号查询</title>
+  <style>
+    .search {
+      position: relative;
+      width: 178px;
+      margin: 100px;
+    }
+
+    .con {
+      display: none;
+      position: absolute;
+      top: -40px;
+      width: 171px;
+      border: 1px solid rgba(0, 0, 0, .2);
+      /* box-shadow 实现图层阴影效果 */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+      padding: 5px 0;
+      font-size: 18px;
+      line-height: 20px;
+      color: #333;
+    }
+
+    .con::before {
+      content: '';
+      width: 0;
+      height: 0;
+      position: absolute;
+      top: 28px;
+      left: 18px;
+      border: 8px solid #000;
+      border-color: #fff transparent transparent;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="search">
+    <div class="con">123 </div>
+    <input type="text" placeholder="请输入您的快递单号" class="shunfeng">
+  </div>
+
+  <script>
+    /* 案例分析：
+     1、快递单号输入内容时，上面的大号字体盒子（con）显示(这里面的字号更大_)。
+     2、表单检测用户输入，给表单添加键盘事件。
+     3、同时把快递单号里面的值（value）获取过来 赋值给con盒子（innerText）作为内容
+     4、如果快递单号里面内容为空，则隐藏大号字体盒子（ con盒子） 
+    */
+
+    // 1、事件源 获取元素
+    let con = document.querySelector('.con')
+    let shunfeng_input = document.querySelector('.shunfeng');
+
+    // 2、事件监听 （又叫 注册事件 或 绑定事件） 
+    shunfeng_input.addEventListener('keyup', function (e) {
+      // console.log('输入内容啦');
+      if (this.value == '') {
+        con.style.display = 'none'
+      } else {
+        con.style.display = 'block';
+        con.innerHTML = this.value;
+      }
+    })
+
+    // 3、当input 失去焦点，就隐藏 这个 con 盒子
+    shunfeng_input.addEventListener('blur', function () {
+      con.style.display = 'none'
+    })
+
+    // 4、当 input 获得 焦点，如果input 中内容不为空，就显示 这个 con 盒子
+    shunfeng_input.addEventListener('focus', function () {
+      if (this.value !== '') {
+        con.style.display = 'block';
+      }
+    })
+
+  </script>
+
+</body>
+
+</html>

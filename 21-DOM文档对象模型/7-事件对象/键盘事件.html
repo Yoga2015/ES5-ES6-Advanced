@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>键盘事件</title>
+
+</head>
+
+<body>
+
+  <input type="text">
+
+  <script>
+
+    const input = document.querySelector('input');
+
+    input.addEventListener('keyup', function (e) {
+
+      console.log(e.key);    //  打印 你 按下 的 按键名
+
+      if (e.key === 'Enter') {
+
+        console.log('我按下了回车键');
+
+      }
+
+    })
+
+  </script>
+
+  <!-- <script>
+
+    //常用的键盘事件
+
+    // 1、keyup  按键弹起的时候触发   键盘上任意一个按键
+    document.addEventListener('keyup', function (e) {
+      console.log('我弹起了keyup');
+    })
+
+    // 2、keydown  按下按键的时候触发
+    document.addEventListener('keydown', function (e) {
+      console.log('我按下了keydown');
+    })
+
+    // 3、keypress 按键按下的时候触发 ,它不识别功能键  比如 ctrl 、 shift、 箭头等
+    document.addEventListener('keypress', function (e) {
+      console.log('我按下了keypress');
+    })
+
+    //4、三个事件的执行顺序 ： keydown <-- keypress <-- keyup
+
+  </script> -->
+
+  <!-- <script>
+
+    // 键盘事件对象 的 keycode属性 可以得到 相应键的 ASCII码值
+    // 1、keyup 和 keydown 事件 不区分字母大小写，a 和 A 得到的ASCII码值都是65
+    // 2、keypress 区分字母大小写，a 得到的ASCII码值是 97 , A 得到是 65
+    document.addEventListener('keyup', function (e) {
+
+      // console.log(e);   // KeyboardEvent {isTrusted: true, key: 's',  …}
+      console.log('keyup : ' + e.keyCode);    //键盘按下 a 键 返回的是 65
+
+      if (e.keyCode === 65) {
+        alert('您按下的是 a 键')
+      } else {
+        alert('你没有按下 a 键')
+      }
+
+    })
+
+    document.addEventListener('keypress', function (e) {
+
+      console.log('keypress : ' + e.keyCode);
+
+    })
+
+  </script> -->
+
+</body>
+
+</html>

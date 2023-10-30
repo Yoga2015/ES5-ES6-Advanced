@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>模拟京东按键输入内容</title>
+</head>
+
+<body>
+
+  <div>
+    <h3>模拟京东按键输入内容</h3>
+    按下 s 键， 光标就定位到搜索框 ，input 就是 事件源 获取它 <br>
+    在页面中按下某个按键，所以需要给document注册 keyup 事件 ，keyup不区分字母大小写。
+  </div>
+
+  <input type="text" placeholder="手机" class="search">
+
+  <button>搜索</button>
+
+  <script>
+    /** keyup 事件 ，keyup 不区分 字母大小写。
+        1、检测用户是否按下了S键，如果按下了S键，就把光标定位到搜索框里面，
+        2、使用键盘事件对象里面的keyCode判断用户按下的是否是S键，
+        3、搜索框获得焦点，使用JS里面的 focus(）方法
+    */
+    // 1、事件源  获取元素
+    let search = document.querySelector('.search');
+
+    //2、在页面中按下某个按键，故 需要给 document注册 keyup 事件
+    document.addEventListener('keyup', function (e) {
+      console.log(e.keyCode);
+      if (e.keyCode === 83 || e.keyCode === 115) {
+        search.focus();
+      }
+    })
+
+  </script>
+
+</body>
+
+</html>

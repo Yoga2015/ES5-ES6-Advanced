@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>禁用右键</title>
+</head>
+
+<body>
+
+  <p>我是一段不愿意分享的文字</p>
+
+  <script>
+
+    // 1、contextmenu  禁用上下文菜单（右键菜单）
+    document.addEventListener('contextmenu', function (e) {
+      e.preventDefault();
+    })
+
+    // 2、禁止选中文字  selectstart
+    document.addEventListener('selectstart', function (e) {
+      e.preventDefault();
+    })
+
+    //其实去到 F12里 还是能复制文字的
+    
+  </script>
+
+</body>
+
+</html>

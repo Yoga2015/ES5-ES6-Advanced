@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件监听+定时器--随机点名案例</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .box {
+            width: 600px;
+            margin: 50px auto;
+            display: flex;
+            font-size: 25px;
+            line-height: 40px;
+        }
+
+        .qs {
+
+            width: 450px;
+            height: 40px;
+            color: red;
+
+        }
+
+        .btns {
+            text-align: center;
+        }
+
+        .btns button {
+            width: 120px;
+            height: 35px;
+            margin: 0 50px;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <h2>随机点名</h2>
+
+    <div class="box">
+        <span>名字是：</span>
+        <div class="qs">这里显示姓名</div>
+    </div>
+
+    <div class="btns">
+        <button class="start">开始</button>
+        <button class="end">结束</button>
+    </div>
+
+    <script>
+       
+        const arr = ['马超', '黄忠', '赵云', '关羽', '张飞'];  // 数据数组
+
+        // 定时器 的 全局变量
+        let timerId = 0;
+
+        // 随机数 要全局变量
+        let random = 0;
+
+        // 1、 开始按钮模块
+        const qs = document.querySelector('.qs');
+
+        // 1.1 获取 开始按钮对象
+        const start = document.querySelector('.start');
+
+        // 1.2 给 开始按钮对象  添加 点击事件，当触发 点击事件 后，做某些事情
+        start.addEventListener('click', function () {
+
+            timerId = setInterval(function () {
+
+                // 随机数
+                random = parseInt(Math.random() * arr.length);
+
+                // 随机抽取出来的数组元素 渲染到 指定位置上
+                qs.innerHTML = arr[random];
+
+                // 如果数组里面只有一个数组元素了，就禁用开始按钮、结束按钮
+                if (arr.length === 1) {
+                    start.disabled = end.disabled = true
+                }
+
+            }, 40)
+
+        })
+
+        // 2、 结束按钮模块
+        // 2.1 获取 结束按钮对象
+        const end = document.querySelector('.end');
+
+        // 2.2 给 结束按钮对象  添加 点击事件，当触发 点击事件 后，做某些事情
+        end.addEventListener('click', function () {
+
+            clearInterval(timerId);
+
+            // 2.3  结束了，可以删除 当前随机抽取的那个数组元素。
+            arr.splice(random, 1);
+
+            console.log(arr);
+
+        })
+
+    </script>
+</body>
+
+</html>

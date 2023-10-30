@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>获取鼠标在页面中的坐标</title>
+</head>
+
+<body style="height: 2000px;">
+
+  以整个文档页面 获取鼠标在页面中的坐标pageX、pageY
+
+  <script>
+
+    document.addEventListener('click', function (e) {
+      console.log(e);
+      //会获得 MouseEvent 事件对象 ，里面有很多属性和方法
+      //比如：鼠标在页面中的坐标
+    });
+
+    //鼠标事件对象    MouseEvent
+    document.addEventListener('click', function (e) {
+
+      //1、client 它可以得到 鼠标在可视区的 x  和 y 坐标
+      console.log(e.clientX);   //40
+      console.log(e.clientY);   //84
+      console.log('----------------------------');
+
+      //2、page 它可以得到鼠标在页面的 x 坐标 和 y 坐标   页面很长，有滚动条 （常用）
+      console.log(e.pageX);   // 98
+      console.log(e.pageY);   //  1970
+      console.log('----------------------------');
+
+      //3、screen 它可以得到 鼠标在电脑屏幕的  x 坐标 和 y 坐标
+      console.log(e.screenX);   
+      console.log(e.screenY);     
+
+    });
+
+  </script>
+
+</body>
+
+</html>

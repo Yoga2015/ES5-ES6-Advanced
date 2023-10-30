@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>跟随鼠标移动的天使 (京东、淘宝图片放大预览)</title>
+  <style>
+    img {
+      position: absolute;
+      top: 2px;/* 如果这个图加了定位，它的top值，我们是不是可以给个坐标啊 */
+    }
+  </style>
+</head>
+
+<body>
+
+  1、每次鼠标移动，需要给document注册鼠标移动事件 ：mousemove。<br>
+  2、先把图片改成绝对定位！！！<br>
+
+  <img src="./elf.gif" alt="">
+
+  <script>
+
+    let pic = document.querySelector('img');
+
+    document.addEventListener('mousemove', function (e) {
+      // 1、mousemove 只有我们鼠标移动 1px 就会触发这个事件
+      // console.log(1);
+
+      // 2、每次移动鼠标，我们都会获得最新的鼠标坐标，
+      //   把这个x和y坐标做为这个图片的top 和 left值就可以移动图片。
+      let x = e.pageX;
+      let y = e.pageY;
+      console.log('x的坐标是: ' + x, 'y的坐标是: ' + y);
+
+      // 3、让这个图接收传过来的坐标,  千万不要忘记给 left 和 top 添加px单位
+      //鼠标没在精灵图中间怎么办？ x - 100 + 'px' 、 y - 100 + 'px'
+      pic.style.left = x - 100 + 'px';
+      pic.style.top = y - 100 + 'px';
+
+    })
+
+  </script>
+  
+</body>
+
+</html>

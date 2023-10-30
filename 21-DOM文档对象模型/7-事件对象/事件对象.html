@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>事件对象</title>
+</head>
+
+<body>
+
+  <button>点击</button>
+
+  <script>
+
+    const btn = document.querySelector('button')
+
+    btn.addEventListener('click', function (event) {
+
+      console.log(event);  // 事件对象 PointerEvent {isTrusted: true, ...}
+
+    })
+
+  </script>
+
+  <div style="background-color: pink ; width: 200px; height: 200px;">123</div>
+
+  <script>
+
+    let div = document.querySelector('div');
+
+    div.addEventListener('click', function (event) {
+
+      console.log(event);   //  鼠标事件 mouseEvent   获取 事件对象
+
+      console.log(window.event);   // 事件对象 也有兼容性问题  IE6\7\8 通过window.event  兼容性的写法 
+
+      e = e || window.event;    // 兼容性的处理方法
+
+    });
+
+  </script>
+
+</body>
+
+</html>
