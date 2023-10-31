@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>表单全选反选</title>
+  <link rel="stylesheet" href="./bootstrap.min.css">
+</head>
+
+<body>
+
+  <table class="table table-bordered">
+    <thead>
+      <th class="allCheck">
+        <input type="checkbox" class="checkAll"> 全选
+      </th>
+      <th>商品</th>
+      <th>商家</th>
+      <th>价格</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td><input type="checkbox" class="ck"></td>
+        <td>小米手机</td>
+        <td>小米</td>
+        <td>3999</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" class="ck"></td>
+        <td>华为手机</td>
+        <td>华为</td>
+        <td>6499</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" class="ck"></td>
+        <td>OPPO手机</td>
+        <td>OPPO</td>
+        <td>4299</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script>
+
+    // 1、获取 大复选框  
+    const checkAll = document.querySelector('.checkAll');
+
+    // 2、获取 所有 小复选框
+    const cks = document.querySelectorAll('.ck');
+
+    // 3、点击 大复选框  注册 点击 事件
+    checkAll.addEventListener('click', function () {
+
+      // 4、遍历所有的小复选框 ，让 小复选框 的 checked = 大复选框 的 checked
+      for (let i = 0; i < cks.length; i++) {
+
+        cks[i].checked = this.checked;
+
+      }
+
+    })
+
+    // 5、小复选框 控制 大复选框
+    for (let i = 0; i < cks.length; i++) {
+
+      // 5.1、给所有的 小复选框 添加 点击事件
+      cks[i].addEventListener('click', function () {
+
+        // 5.2 判断 选中 的 小复选框个数 是不是等于 总的小复选框个数
+        // 一定要写到点击里面，因为每次要获得最新的个数
+        // console.log(document.querySelectorAll('.ck:checked'));
+        // console.log(document.querySelectorAll('.ck:checked').length);
+        // console.log(document.querySelectorAll('.ck:checked').length === cks.length);
+
+        // 5.3把 结果 给 全选按钮 ，需要运用 css 复选框选择器 input:checked 
+        checkAll.checked = document.querySelectorAll('.ck:checked').length === cks.length;
+
+      })
+
+    }
+    
+  </script>
+
+</body>
+
+</html>

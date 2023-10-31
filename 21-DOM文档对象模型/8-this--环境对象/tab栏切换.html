@@ -95,6 +95,13 @@
 
   <script>
 
+    /* 需求 ： 用户点击 全选，则下面复选框全部选择，取消全选 则全部取消。
+
+       分析：
+        1、全选 复选框 点击，可以得到 当前按钮的 checked
+        2、 把下面所有的小复选框状态 checked, 改为 和 全选复选框 一致。 
+    */
+
     // 1、 a 模块制作  要给 5个链接 绑定 鼠标经过事件
     // 1.1 获取 a 元素
     const as = document.querySelectorAll('.tab-nav ul li a');
@@ -110,6 +117,7 @@
         // 2、下面 5个 大盒子   一一对应  .item
         // 先干掉别人，然后才给 对应序号 的 那个 item 添加 active 类
         document.querySelector('.tab-content .active').classList.remove('active');
+
         // 注意：  :nth-chlid() css 选择器 是 从 1 开始的，所以 要加 + 1
         document.querySelector(`.tab-content .item:nth-child(${i + 1})`).classList.add('active');
 
