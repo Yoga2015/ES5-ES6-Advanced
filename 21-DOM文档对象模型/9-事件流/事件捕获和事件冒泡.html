@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>事件捕获阶段和冒泡阶段</title>
+<style>
+  #father {
+    border: 1px green solid;
+    background-color: green;
+    width: 250px;
+    height: 250px;
+  }
+
+  #son {
+    border: 1px yellow solid;
+    background-color: yellow;
+    width: 150px;
+    height: 150px;
+  }
+</style>
+</head>
+
+<body>
+
+  <div id="father"> father
+    
+    <div id="son"> son </div>
+
+  </div>
+
+  <script>
+
+    // 1、捕获阶段  
+    // 如果 addEventListenser 第三个参数是true 那么则处于捕获阶段， 
+    // document --> html--> body --> father --> son
+
+    let father = document.getElementById('father');
+    let son = document.getElementById('son');
+
+    son.addEventListener('click', function () {
+      alert('son');
+    }, true)
+
+    /**
+    * 上面代码运行后，虽然我是给son这个div添加了这个click点击事件 ,
+    * 但是呢，是document先得到这个点击，那document有没有绑定什么事件呀？
+    * 有没有事件处理程序呀。也没有吧。没有就不会执行。接着往下走，同样道理，
+    * html啊、body啊、father这个div啊,都没有绑定什么事件。只有son 这个div 有绑定事件，
+    * 所以在页面上点击 son 这个div 后，只有 son 会弹出，其余的不会
+    */
+
+    father.addEventListener('click', function () {
+      alert('father');
+    }, true)
+
+    /** 
+     *  在页面上点击 son 这个div 后 ,是先执行 father 还是先执行son?
+    *   这里 father 和 son 的事件监听 addEventListenser 第三个参数 都是 true
+    *   所以一定会先弹出 father  , 然后才再弹出 son
+    */
+
+
+
+
+    // 2、冒泡阶段  
+    // 如果 addEventListenser 第三个参数是false,那么则处于冒泡阶段，
+    // son 弹出之后再往上把这个点击事件往上冒 -->father-->body--> html-->document
+    son.addEventListener('click', function () {
+      alert('son');
+    }, false)
+
+    father.addEventListener('click', function () {
+      alert('father');
+    }, false)
+
+    document.addEventListener('click', function () {
+      alert(' document');
+    }, false)
+
+  </script>
+</body>
+</html>

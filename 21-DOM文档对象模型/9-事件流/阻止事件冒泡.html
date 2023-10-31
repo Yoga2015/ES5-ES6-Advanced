@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>阻止事件冒泡</title>
+  <style>
+    #father {
+      border: 1px green solid;
+      background-color: green;
+      width: 250px;
+      height: 250px;
+    }
+
+    #son {
+      border: 1px yellow solid;
+      background-color: yellow;
+      width: 150px;
+      height: 150px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="father"> father
+
+    <div id="son"> son </div>
+
+  </div>
+
+</body>
+
+<script>
+
+  // 事件对象.stopPropagation();
+
+  let father = document.querySelector('#father');
+
+  let son = document.querySelector('#son');
+
+  document.addEventListener('click', function () {
+    alert('爷爷');
+  }, false)
+
+  father.addEventListener('click', function () {
+    alert('爸爸');
+  }, false)
+
+  son.addEventListener('click', function (event) {
+
+    alert('儿子');
+
+    // 阻止流动传播
+    event.stopPropagation();
+
+    // 阻止事件冒泡的兼容性解决方案
+    if (event && event.stopPropagation) {
+
+      event.stopPropagation();
+
+    } else {
+
+      window.event.cancelBubble = true;
+
+    }
+
+  }, false)
+
+</script>
+
+</html>

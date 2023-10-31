@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>解绑事件</title>
+  <style>
+    #father {
+      border: 1px green solid;
+      background-color: green;
+      width: 250px;
+      height: 250px;
+    }
+
+    #son {
+      border: 1px yellow solid;
+      background-color: yellow;
+      width: 150px;
+      height: 150px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <button>点击</button>
+
+  <div id="father"> father
+
+    <div id="son"> son </div>
+
+  </div>
+
+  <script>
+
+    // removeEventListener(事件类型, 事件处理函数, [获取捕获或者冒泡阶段]) 
+    const btn = document.querySelector('button');
+
+    function fn() {
+      alert('点击了')
+    }
+
+    // 注册 点击事件
+    btn.addEventListener('click', fn);
+
+    // 事件移除解绑 
+    btn.removeEventListener('click', fn);
+
+
+    // 鼠标经过事件 的 区别：
+
+    // mouseover  和 mouseout  会有 冒泡效果
+    let father = document.querySelector('#father');
+    let son = document.querySelector('#son');
+
+    father.addEventListener('mouseenter', function () {
+      console.log('father鼠标经过');
+    })
+
+    father.addEventListener('mouseleave', function () {
+      console.log('father鼠标离开');
+    })
+
+    // mouseenter 和 mouseleave  没有 冒泡效果（推荐）
+    son.addEventListener('mouseenter', function () {
+      console.log('son鼠标经过');
+    })
+
+    son.addEventListener('mouseleave', function () {
+      console.log('son鼠标离开');
+    })
+
+
+  </script>
+</body>
+
+</html>

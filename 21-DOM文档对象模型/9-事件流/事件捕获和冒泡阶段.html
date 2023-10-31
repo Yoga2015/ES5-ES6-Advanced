@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>事件捕获和冒泡阶段</title>
+  <style>
+    #father {
+      border: 1px green solid;
+      background-color: green;
+      width: 250px;
+      height: 250px;
+    }
+
+    #son {
+      border: 1px yellow solid;
+      background-color: yellow;
+      width: 150px;
+      height: 150px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="father"> father
+
+    <div id="son"> son </div>
+
+  </div>
+
+  <script>
+
+    // 1、捕获阶段  
+    // 如果 addEventListenser 第三个参数是false 那么则处于捕获阶段， 
+    // document --> html--> body --> father --> son
+
+    let father = document.querySelector('#father');
+
+    let son = document.querySelector('#son');
+
+    // document.addEventListener('click', function () {
+    //   alert('爷爷');
+    // }, false)
+
+    // father.addEventListener('click', function () {
+    //   alert('爸爸');
+    // }, false)
+
+    // son.addEventListener('click', function () {
+    //   alert('儿子');
+    // }, false)
+
+
+    // 2、冒泡阶段  
+
+    // 如果 addEventListenser 第三个参数是 false (省略不写，默认就是 false),那么则处于 冒泡阶段，
+
+    // son 弹出之后再往上把这个点击事件往上冒 -->father-->body--> html-->document
+
+    document.addEventListener('click', function () {
+      alert('爷爷');
+    }, false)
+
+    father.addEventListener('click', function () {
+      alert('爸爸');
+    }, false)
+
+    son.addEventListener('click', function () {
+      alert('儿子');
+    }, false)
+
+  </script>
+
+</body>
+
+</html>
