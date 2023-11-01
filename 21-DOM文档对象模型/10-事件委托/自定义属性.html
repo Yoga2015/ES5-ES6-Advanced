@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>获取自定义属性</title>
+</head>
+
+<body>
+
+  <div data-id="0" data-color="pink">1</div>
+
+  <script>
+
+    const div = document.querySelector('div');
+
+    console.log(div.dataset);   // 自定义属性集合 DOMStringMap {id: '0', color: 'pink'}
+
+    console.log(div.dataset.id);
+
+    console.log(div.dataset.color);
+
+  </script>
+
+</body>
+
+</html>

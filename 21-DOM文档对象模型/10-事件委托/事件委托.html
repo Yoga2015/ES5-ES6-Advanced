@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>事件对象的常见属性</title>
+
+</head>
+
+<body>
+
+  <h5>事件委托</h5>
+
+  事件委托 也称为 事件代理，在jquery里 称为 事件委派
+
+  <h5>事件委托原理</h5>
+  <p>
+    不是给 每个子节点 单独设置 事件监听器，而是将事件监听器
+    设置在其父节点上，然后利用冒泡原理影响设置每个子节点。
+  </p>
+
+  <p>委托的作用：我们只是操作了一次DOM ，提高了程序的性能</p>
+
+  <p>描述下面的案例：
+    给ul 注册点击事件，然后利用 事件对象的target 来找到当前点击的li,
+    因为点击 li ，事件会冒泡到ul 上，ul 有注册事件，就会触发事件监听器
+  </p>
+
+  <ul class="ulFather">
+    <li>1、我是ul的子节点li</li>
+    <li>2、我是ul的子节点li</li>
+    <li>3、我是ul的子节点li</li>
+    <li>4、我是ul的子节点li</li>
+    <li>5、我是ul的子节点li</li>
+    <li>6、我是ul的子节点li</li>
+    <li>7、我是ul的子节点li</li>
+  </ul>
+
+  <script>
+
+    // 事件对象.target.tagName  可以获得 真正触发事件 的 元素 的 标签名
+
+    var ulFather = document.querySelector('.ulFather');
+
+    // 直接给 ul 注册 事件监听 ，而不是 给 每个 子节点 单独设置 事件监听
+
+    ulFather.addEventListener('click', function (e) {
+
+      alert('我是ul的子节点li');  // 在 ul中 点击 每一个li 时 都会触发 弹窗
+
+      console.log(e.target);  // e.target 可以得到 我们点击 的 对象
+
+      console.log(e.target.tagName);  // 可以得到 我们点击 的 对象 的 标签名
+
+      e.target.style.color = 'red';
+
+    }, false);
+
+  </script>
+
+</body>
+
+</html>
+
+</html>

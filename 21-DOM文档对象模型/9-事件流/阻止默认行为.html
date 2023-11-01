@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>阻止默认行为</title>
+</head>
+
+<body>
+
+  <form action="https://www.baidu.com/">
+
+    <input type="text" placeholder="请输入姓名" class="username">
+
+    <input type="password" placeholder="请输入密码" class="password">
+
+    <input type="submit" value="提交">
+
+  </form>
+
+  <script>
+
+    const form = document.querySelector('form');
+
+    form.addEventListener('submit', function (e) {
+
+      e.preventDefault();     //  阻止默认行为 , 阻止表单提交
+
+    })
+
+  </script>
+
+
+  <a href="https://www.baidu.com/">百度一下</a>
+
+  <script>
+
+    const a = document.querySelector('a');
+
+    a.addEventListener('click', function (e) {
+
+      e.preventDefault();   //  阻止默认行为， 阻止链接跳转
+
+    })
+
+  </script>
+
+</body>
+
+</html>

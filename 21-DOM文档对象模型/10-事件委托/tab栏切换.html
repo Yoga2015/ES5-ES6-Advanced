@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>tab栏切换</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .tab {
+      width: 590px;
+      height: 340px;
+      margin: 20px;
+      border: 1px solid #e4e4e4;
+    }
+
+    .tab-nav {
+      width: 100%;
+      height: 60px;
+      line-height: 60px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .tab-nav h3 {
+      font-size: 24px;
+      font-weight: normal;
+      margin-left: 20px;
+    }
+
+    .tab-nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .tab-nav ul li {
+      margin: 0 20px;
+      font-size: 14px;
+    }
+
+    .tab-nav ul li a {
+      text-decoration: none;
+      border-bottom: 2px solid transparent;
+      color: #333;
+    }
+
+    .tab-nav ul li a.active {
+      border-color: #e1251b;
+      color: #e1251b;
+    }
+
+    .tab-content {
+      padding: 0 16px;
+    }
+
+    .tab-content .item {
+      display: none;
+    }
+
+    .tab-content .item.active {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="tab">
+
+    <div class="tab-nav">
+      <h3>每日特价</h3>
+      <ul>
+        <li><a class="active" href="javascript:;" data-id="0">精选</a></li>
+        <li><a href="javascript:;" data-id="1">美食</a></li>
+        <li><a href="javascript:;" data-id="2">百货</a></li>
+        <li><a href="javascript:;" data-id="3">个护</a></li>
+        <li><a href="javascript:;" data-id="4">预告</a></li>
+      </ul>
+    </div>
+
+    <div class="tab-content">
+      <div class="item active"><img src="../images/tab00.png" alt="" /></div>
+      <div class="item"><img src="../images/tab01.png" alt="" /></div>
+      <div class="item"><img src="../images/tab02.png" alt="" /></div>
+      <div class="item"><img src="../images/tab03.png" alt="" /></div>
+      <div class="item"><img src="../images/tab04.png" alt="" /></div>
+    </div>
+
+  </div>
+
+  <script>
+
+    // 获取 ul 父元素，因为 ul 只有一个
+    const ul = document.querySelector('ul');
+
+    // 获取 5个 item
+    const items = document.querySelectorAll('.item');
+
+    // 直接给 ul 注册 事件监听 ，而不是 给 每个子节点中 的 abiaoq 单独设置 事件监听
+    ul.addEventListener('click', function (e) {
+
+      console.log(e.target);  // 可以得到 我们点击 的 对象
+
+      // 我们只有点击了 a 才会 进行 添加类 和 删除类操作 
+      console.log(e.target.tagName);  // 可以得到 我们点击 的 对象 的 标签名
+
+      if (e.target.tagName === 'A') {
+
+        console.log('我选的是 a');
+
+        // 1、 a 模块制作
+        // 排他思想，先移除原来的active，然后才给当前元素添加 active
+        document.querySelector('.tab-nav .active').classList.remove('active');
+
+        e.target.classList.add('active');
+
+        // 2、下面 5个 大盒子   一一对应  .item
+        console.log(e.target.dataset.id);
+        
+        const itemId = +e.target.dataset.id;
+
+        // 排他思想：先移除原来的 active ，然后才给 对应序号 的 那个 item 添加 active 类
+        document.querySelector('.tab-content .active').classList.remove('active');
+
+        // 方法一 ：对应的大盒子 添加 active
+        // document.querySelector(`.tab-content .item:nth-child(${itemId + 1})`).classList.add('active');
+
+        // 方法二 ：对应的大盒子 添加 active
+        items[itemId].classList.add('active');
+      }
+
+    })
+
+  </script>
+
+  <!-- <script>
+
+    /* 需求 ： 用户点击 全选，则下面复选框全部选择，取消全选 则全部取消。
+
+       分析：
+        1、全选 复选框 点击，可以得到 当前按钮的 checked
+        2、 把下面所有的小复选框状态 checked, 改为 和 全选复选框 一致。 
+    */
+
+    // 1、 a 模块制作  要给 5个链接 绑定 鼠标经过事件
+    // 1.1 获取 a 元素
+    const as = document.querySelectorAll('.tab-nav ul li a');
+
+    for (let i = 0; i < as.length; i++) {
+
+      as[i].addEventListener('mouseenter', function () {
+
+        document.querySelector('.tab-nav .active').classList.remove('active');
+
+        this.classList.add('active');
+
+        // 2、下面 5个 大盒子   一一对应  .item
+        // 先干掉别人，然后才给 对应序号 的 那个 item 添加 active 类
+        document.querySelector('.tab-content .active').classList.remove('active');
+
+        // 注意：  :nth-chlid() css 选择器 是 从 1 开始的，所以 要加 + 1
+        document.querySelector(`.tab-content .item:nth-child(${i + 1})`).classList.add('active');
+
+      })
+
+    }
+
+  </script> -->
+
+
+</body>
+
+</html>
