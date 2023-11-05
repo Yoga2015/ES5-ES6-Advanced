@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>元素内部滚动</title>
+  <style>
+    div {
+      margin: 100px 100px;
+      overflow: scroll;
+      width: 200px;
+      height: 200px;
+      border: 1px solid #000;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div>
+    我里面很多很多的文字我里面很多很多的文字我里面很多很多的文字
+    我里面很多很多的文字我里面很多很多的文字我里面很多很多的文字
+    我里面很多很多的文字我里面很多很多的文字我里面很多很多的文字
+    我里面很多很多的文字我里面很多很多的文字我里面很多很多的文字
+    我里面很多很多的文字我里面很多很多的文字我里面很多很多的文字
+    我里面很多很多的文字我里面很多很多的文字我里面很多很多的文字
+    我里面很多很多的文字我里面很多很多的文字我里面很多很多的文字
+    我里面很多很多的文字我里面很多很多的文字我里面很多很多的文字
+  </div>
+
+  <script>
+
+    // 元素内部滚动  
+    const div = document.querySelector('div')
+
+    // 检测 在元素内部 滚动到 某个位置，就触发回调函数
+    div.addEventListener('scroll', function () {
+
+      // 通过 scrollTop 属性 可以 获取 被卷去的头部 的 距离
+      console.log(this.scrollTop);  // 日常频繁使用
+
+    })
+
+  </script>
+
+</body>
+
+</html>

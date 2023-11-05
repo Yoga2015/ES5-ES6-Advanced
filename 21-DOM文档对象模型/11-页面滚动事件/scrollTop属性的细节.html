@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>页面滚动事件</title>
+  <style>
+    body {
+      height: 3000px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <script>
+
+    // 页面滚动事件 scroll 
+    // 检测 页面滚动到某个位置，就触发回调函数
+    window.addEventListener('scroll', function () {
+     
+      // 实际场景中，我们更想知道 页面 到底 滚动了多少像素, 被卷去了多少 scrollTop
+
+      // 获取 html元素 写法 ： document.documentElement
+      console.log(document.documentElement.scrollTop);
+
+    })
+
+    // 一般是 给 window 或 document  添加 scroll 事件
+    // 但也可以监听 某个元素 的 内部滚动，直接给 某个元素 添加 scroll 事件 即可
+
+  </script>
+
+</body>
+
+</html>
