@@ -43,6 +43,7 @@
       </ul>
     </div>
   </div>
+
   <!-- 头部 -->
   <div class="xtx_header">
     <div class="wrapper">
@@ -93,6 +94,7 @@
       </div>
     </div>
   </div>
+
   <!-- 分类及焦点图 -->
   <div class="xtx_entry">
     <div class="wrapper">
@@ -210,6 +212,7 @@
       </div>
     </div>
   </div>
+
   <!-- 新鲜好物 -->
   <div class="xtx_goods_new xtx_panel">
     <div class="wrapper">
@@ -1057,7 +1060,7 @@
     </div>
   </div>
 
-  <!-- 最新主题 -->
+  <!-- 最新专题 -->
   <div class="xtx_goods_topic xtx_panel">
     <div class="wrapper">
       <div class="xtx_panel_header">
@@ -1144,6 +1147,7 @@
       </div>
     </div>
   </div>
+
   <!-- 公共底部 -->
   <div class="xtx_footer clearfix">
     <div class="wrapper">
@@ -1213,38 +1217,125 @@
       <li><a href="javascript:;" data-name="popular">人气推荐</a></li>
       <li><a href="javascript:;" data-name="brand">热门品牌</a></li>
       <li><a href="javascript:;" data-name="topic">最新专题</a></li>
-      <li><a href="javascript:;" id="backTop"> 
-        <i class="sprites"></i> 顶部</a> 
+      <li><a href="javascript:;" id="backTop">
+         <i class="sprites"></i> 顶部</a> 
       </li>
     </ul>
   </div>
 
   <script>
 
-    //  1、获取元素
-    const xtxElevator = document.querySelector('.xtx-elevator');
+    // 第一大模块 ,页面滑动 可以 显示 和 隐藏
 
-    //  2、给 页面 添加 滚动事件 
-    window.addEventListener('scroll', function () {
+    (function () {
+      //  1、获取 电梯侧边栏 元素
+      const xtxElevator = document.querySelector('.xtx-elevator');
 
-      const n = document.documentElement.scrollTop; // 获取的是 html 标签
+      // 4、获取 .xtx_entry 区域
+      const xtxEntry = document.querySelector('.xtx_entry');
 
-      // 当被卷去的头部 大于等于 300  ，显示 侧边栏，否则 隐藏
-      xtxElevator.style.opacity = n >= 300 ? 1 : 0;  // 同上，简写
+      //  2、给 页面 添加 滚动事件 
+      window.addEventListener('scroll', function () {
 
-    })
+        const n = document.documentElement.scrollTop; // 获取的是 html 标签
 
-    // 点击返回页面顶部
-    const backTop = document.querySelector('#backTop');
+        // 当被卷去的头部 大于等于 300  ，显示 侧边栏，否则 隐藏
+        // xtxElevator.style.opacity = n >= 300 ? 1 : 0;  
+        xtxElevator.style.opacity = n >= xtxEntry.offsetTop ? 1 : 0;
 
-    backTop.addEventListener('click', function () {
+      })
 
-      // document.documentElement.scrollTop = 0;  // 可读写
+      // 3、点击返回页面顶部
+      const backTop = document.querySelector('#backTop');
 
-      // window.scrollTo ( X坐标，Y坐标 )
-      window.scrollTo(0,0);                // 同上
+      backTop.addEventListener('click', function () {
 
-    })
+        // document.documentElement.scrollTop = 0;  // 可读写
+
+        // window.scrollTo ( X坐标，Y坐标 )
+        window.scrollTo(0, 0);                // 同上
+
+      })
+
+    })();
+
+
+    // 第二、三大模块 , 都放到另一个执行函数里面 
+    // 点击页面可以滑动
+    (function () {
+
+      // 1、给 所点击 的 小盒子li 中 a 标签 添加 高亮显示效果
+      // 获取 xtx-elevator-list 区域 并使用 事件委托 来注册事件
+      const list = document.querySelector('.xtx-elevator-list');
+
+      list.addEventListener('click', function (e) {
+
+        if (e.target.tagName === 'A' && e.target.dataset.name) {
+
+          // 排他思想 ： 先移除原来的类active , 先获取 这个 active 的 对象
+          const old = document.querySelector('.xtx-elevator-list .active');
+          // console.log(old); // null ， null 就是 false
+
+          // 判断 如果原来 有 active类的对象，就移除类，如果开始就没有对象，就不删除，所以不报错
+          if (old) {
+            old.classList.remove('active');  // 如果有，就先移除原来的active类
+          }
+          e.target.classList.add('active');  // 给当前元素 添加 active
+
+          // 2、点击 每个模块，页面 自动滚动到 对应模块
+          // 发现小盒子 li 的自定义属性 里面 值 跟 大盒子 后面的一致
+          // 利用模板字符串 把 点击的 自定义属性值 给 大盒子，就可以找到对应的大盒子了 
+          // 然后 拿到 这个大盒子的 offsetTop值 给 document.documentElement.scrollTop 即可
+          console.log(e.target.dataset.name);  // 获取 自定义属性 new  topic
+
+          // 2.1、获取对应大盒子的offsetTop
+          const top = document.querySelector(`.xtx_goods_${e.target.dataset.name}`).offsetTop;
+
+          // 2.2、让页面滚动到对应的位置
+          document.documentElement.scrollTop = top;
+
+        }
+
+      })
+
+
+      // 3、页面滚动，可以根据 大盒子 选 小盒子  添加 active 类
+      window.addEventListener('scroll', function (e) {
+
+        // 3.1 排他思想 ： 先获取 这个 active 的 对象 ,只有页面一滚动，就移除 active类
+        const old = document.querySelector('.xtx-elevator-list .active');
+
+        // 3.2、判断 如果原来 有 active类的对象，就移除类，如果开始就没有对象，就不删除，所以不报错
+        if (old) old.classList.remove('active');  // 如果有，就先移除原来的 active类
+
+        // 3.3 判断 页面 当前滑动的位置，选择 小盒子li 来 添加 active 类
+        const news = document.querySelector(`.xtx_goods_new`);
+        const popular = document.querySelector(`.xtx_goods_popular`);
+        const brand = document.querySelector(`.xtx_goods_brand`);
+        const topic = document.querySelector(`.xtx_goods_topic`);
+        const n = document.documentElement.scrollTop;
+
+        if (n >= news.offsetTop && n < popular.offsetTop) {
+
+          document.querySelector('[data-name="new"]').classList.add('active');
+
+        } else if (n >= popular.offsetTop && n < brand.offsetTop) {
+
+          document.querySelector('[data-name="popular"]').classList.add('active');
+
+        } else if (n >= brand.offsetTop && n < topic.offsetTop) {
+
+          document.querySelector('[data-name="brand"]').classList.add('active');
+
+        } else if (n >= topic.offsetTop) {
+
+          document.querySelector('[data-name="topic"]').classList.add('active');
+
+        }
+
+      })
+
+    })()
 
   </script>
 

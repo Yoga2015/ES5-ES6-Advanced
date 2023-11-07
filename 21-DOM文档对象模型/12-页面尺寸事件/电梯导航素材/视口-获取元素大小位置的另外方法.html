@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>视口-获取元素大小位置的另外方法</title>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: pink;
+      margin: 100px;
+    }
+  </style>
+</head>
+
+<body>
+  
+  <div></div>
+
+  <script>
+    const div = document.querySelector('div');
+    console.log(div.getBoundingClientRect());
+    // DOMRect {x: 107.99005889892578, y: 100, width: 200, height: 200, top: 100, …}
+  </script>
+
+</body>
+
+</html>

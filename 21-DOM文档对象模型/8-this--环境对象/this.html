@@ -29,7 +29,9 @@
 
   <script>
 
-    //  每个函数 里面都有 this 环境对象。      普通函数里面 this  指向的是 window
+    //  每个函数 里面都有 this 环境对象。 this 指向的几种情况 ：
+
+    //  1、普通函数 里面 this  指向的是 window
     function fn() {
       console.log(this);  // 此时的 this 是 Window对象，故称为  this  指向的是 Window对象
     }
@@ -37,6 +39,7 @@
     fn();  // === window.fn()
 
 
+    // 2、触发某种事件是，执行的 回调函数 里面的 this 指向
     const btn = document.querySelector('button');
 
     btn.addEventListener('click', function () {
@@ -52,9 +55,7 @@
 
 
 
-    // this 的 指向
-
-    // 1、 对象方法中的 this
+    // 3、 对象方法中 的 this 指向 当前对象
     var obj = {
       value: "我是 obj 的值",
       show: function () {
@@ -65,8 +66,7 @@
     obj.show();  // 输出 "我是 obj 的值"
 
 
-    // 2、在一个构造函数中，this 指向新创建的对象。
-    
+    // 4、在一个构造函数中，this 指向 新创建 的 对象
     function MyObject() {
       this.value = "我是 MyObject 的值";
       this.show = function () {

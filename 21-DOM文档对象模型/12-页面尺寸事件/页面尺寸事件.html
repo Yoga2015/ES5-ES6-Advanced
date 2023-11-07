@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>页面尺寸事件</title>
+  <style>
+    div {
+      /* 行内块 会根据内容大小来定宽度 */
+      display: inline-block;
+      /* width: 200px; */
+      height: 200px;
+      background-color: pink;
+      padding: 10px;
+      border: 1px solid black;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div>13213</div>
+
+  <script>
+
+    const div = document.querySelector('div');
+
+    console.log(div.clientWidth);
+
+    // 当 浏览器窗口尺寸大小 发生改变的时候 ，触发 resize 事件
+    window.addEventListener('resize', function () {
+
+      console.log(1);
+
+    })
+
+  </script>
+
+</body>
+
+</html>

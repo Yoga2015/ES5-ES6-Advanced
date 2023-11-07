@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>属性选择器</title>
+  <style>
+    input[value] {
+      color: red;
+    }
+
+    input[type=password] {
+      color: green;
+    }
+
+    input[data-index="0"] {
+      color: yellow;
+    }
+  </style>
+</head>
+
+<body>
+
+  <input type="text" value="12">
+  <input type="password">
+  <input type="tel" data-index="0" data-name="walking">
+
+  <script>
+
+    // 获取 元素， 根据 属性选择器
+    const text = document.querySelector('[type="text"]');
+    text.style.placeholder = "34";
+
+    // 获取 元素 包含 自定义属性 的 ， 根据 属性选择器
+    const tel = document.querySelector('[data-index="0"]');
+    console.log(tel.dataset);  // DOMStringMap {index: '0', name: 'walking'}
+    console.log(tel.dataset.name);  // walking
+    
+  </script>
+
+</body>
+
+</html>

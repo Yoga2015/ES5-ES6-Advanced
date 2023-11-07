@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>元素位置offsetLeft和offsetTop</title>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: pink;
+      margin: 100px;
+      /* position: relative; */
+    }
+
+    p {
+      width: 100px;
+      height: 100px;
+      background-color: skyblue;
+      margin: 50px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div>
+    <p></p>
+  </div>
+
+  <script>
+
+    const div = document.querySelector('div');
+    const p = document.querySelector('p');
+
+    // 获取 元素 距离自己 定位父级元素 的 左、上距离
+    console.log(div.offsetLeft);  // 108px 而不是 100px  
+
+    // 检测 盒子的位置， 最近一级带有定位的祖先元素
+    console.log(p.offsetLeft);  // 158px  当自己直接父级元素没有定位时
+
+  </script>
+
+</body>
+
+</html>
