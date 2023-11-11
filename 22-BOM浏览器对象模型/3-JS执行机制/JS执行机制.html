@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+
+    //1 第一个问题
+    console.log(1);
+
+    setTimeout(function () {
+      console.log(2);
+    }, 1000);
+
+    console.log(3);
+
+    // 以上执行顺序是先打印 1，然后打印3 ，再然后才打印 2。
+    // 这个执行顺序不应该是按从上到下的顺序依次执行吗？
+    // 为什么先打印2，打印4，然后才打印 3？
+
+  </script>
+
+  <script>
+
+    // 2、第二个问题
+    console.log(1);
+
+    setTimeout(function () {
+      console.log(3);
+    }, 0);
+
+    console.log(2);
+
+    // 以上执行顺序是先打印 1，然后打印2 ，再然后才打印 3。 
+
+
+  </script>
+
+  <script>
+
+    //3 JS 执行机制
+    console.log(1);
+
+    document.onclick = function () {    // 这属于 回调函数。
+      console.log('click');
+    }
+    /*  只有在页面上鼠标点击了，才会把这个 回调函数(异步任务) 写到 任务队列 里面去。
+        如果你不点击，是不会写到 任务队列 里面去的。
+        你这个回调函数(异步任务) 就 不会在 任务队列中 出现
+    */
+
+    console.log(2);
+
+    setTimeout(function () {
+      console.log(3);
+    }, 3000);
+
+    // 以上执行顺序是先打印 1，打印2 ，然后才打印 3 ，只有在页面上鼠标点击了才打印click
+
+  </script>
+
+</body>
+
+</html>

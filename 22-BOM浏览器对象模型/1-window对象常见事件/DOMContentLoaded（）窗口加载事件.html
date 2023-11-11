@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>窗口加载事件</title>
+</head>
+
+<body>
+
+  <script>
+
+    window.onload = function () { }
+    // 同上
+    window.addEventListener('load', function () { })
+
+    window.onload = function () {  // 无效
+      let btn = document.querySelector('button');
+      btn.addEventListener('click', function (e) {
+        alert('点击按钮了1');
+      })
+    }
+
+    window.onload = function () {
+      alert('99'); 
+    }
+
+    // 上面 ，如果有多个 window.onload, 会以最后一个 window.onload 为准。
+
+    window.addEventListener('load', function () {
+      let btn = document.querySelector('button');
+      btn.addEventListener('click', function (e) {
+        alert('点击按钮了2');
+      })
+    })
+
+    window.onload = function () {
+      alert('99');
+    }
+
+  </script>
+
+  <button>按钮</button>
+
+</body>
+
+</html>

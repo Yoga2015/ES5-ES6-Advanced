@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>setTimeout（）延时定时器</title>
+</head>
+
+<body>
+
+  <script>
+
+    // setTimeout(回调函数,延时时间)
+
+    // 创建 延时定时器
+
+    // 1、这个 回调函数 ，可以直接写函数
+    setTimeout(function () {
+      console.log('3秒后控制台显示内容');
+    }, 3000)
+
+
+    function callback() {
+      console.log('时间到期后，控制台显示内容');
+    }
+
+    // 这个 回调函数 ，也可以 只写 函数名（前提是事先写好的函数）
+    setTimeout(callback, 3000);
+
+    // 2、页面中可能有很多的定时器，我们经常给定时器加标识符（名字） 
+    // 每在 创建一个 定时器 时，同时 起个名字 给 它，用来 区别不同 的 定时器。
+    let time1 = setTimeout(callback, 3000);
+    let time2 = setTimeout(callback, 5000);
+
+  </script>
+
+  <img src="./tab00.png" alt="" class="photo">
+
+  <button>点击停止定时器</button>
+
+  <h3>点击停止定时器 按钮后， 5秒不会自动关闭广告图片</h3>
+
+  <script>
+
+    // 清除延时定时器
+    window.clearTimeout(timeoutID)
+
+    let photo = document.querySelector('.photo');
+    let btn = document.querySelector('button');
+    let time3 = setTimeout(function () {
+      photo.style.display = 'none';
+    }, 5000);
+
+    //清除 setTimeout() 定时器
+    btn.addEventListener('click', function () {
+      clearTimeout(time3);
+    })
+
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<title>调整窗口大小事件</title>
+</head>
+
+<body>
+
+  <script>
+
+    window.addEventListener('load', function () {
+
+      let div = document.querySelector('div');
+
+      // 当 浏览器窗口尺寸 发生变化了，就会触发 resize 事件
+      window.addEventListener('resize', function () {
+
+        // console.log('窗口大小发生变化了');
+        console.log(window.innerWidth);  // 就获取 当前浏览器窗口 宽度值
+
+        // 以前 没有css3 的时候，就用js 来调整窗口大小
+        if (window.innerWidth <= 800) {
+
+          div.style.display = 'none';
+
+        } else {
+
+          div.style.display = 'block';
+
+        }
+
+      })
+
+    })
+  </script>
+
+  <div style="height:100px; width:300px; background-color: pink;"> 123</div>
+
+</body>
+
+</html>

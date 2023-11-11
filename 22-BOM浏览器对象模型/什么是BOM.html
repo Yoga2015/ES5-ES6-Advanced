@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>分析什么是BOM</title>
+</head>
+
+<body>
+  <script>
+    
+    // document.querySelector();
+    // window.document.querySelector();
+
+    console.log(document === window.document);   // true
+
+    // DOM 时 获取一个ul元素的写法：
+    document.querySelector('ul');
+
+    // BOM 时 获取一个ul元素的完整写法：
+    window.document.querySelector('ul');
+
+    let num = 20;
+    console.log(num);
+    console.log(window.num);
+
+    function fn() {
+      console.log(9);
+    }
+
+    fn();
+    window.fn();  // 同上
+
+    alert(11);
+    window.alert(11);
+
+    console.log(window);
+
+    //window 下的一个特殊属性  window.name
+    let name = 'lisi';
+    console.log(window.name);
+
+  </script>
+
+</body>
+
+</html>
