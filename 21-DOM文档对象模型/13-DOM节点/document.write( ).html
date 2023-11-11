@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>document.write()</title>
+</head>
+
+<body>
+
+  <button>按钮</button>
+
+  <p>123</p>
+
+  <script>
+
+    //window.onload的意思是 当我们整个页面加载完了,我再去调用里面的JS
+    window.onload = function () {
+
+    }
+
+    // 1、document.write() 创建元素  如果页面文档流加载完毕，再调用这句话会导致页面重绘
+    let btn = document.querySelector('button');
+    btn.onclick = function () {
+      document.write('<div>456</div>');
+    }
+
+    /**
+    * 但是我点击按钮后，整个页面的原先的内容都没了，只有一个div了，这就叫做页面重绘，
+    * 重新给我们绘制了一个新的HTML页面。但是这种效果不好，我们原先的内容已经没了。
+    */
+   
+  </script>
+
+</body>
+
+</html>

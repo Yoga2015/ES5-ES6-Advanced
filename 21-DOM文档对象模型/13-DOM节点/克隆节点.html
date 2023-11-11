@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>克隆节点</title>
+</head>
+
+<body>
+
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3
+      <a href="#">ppp</a>
+    </li>
+  </ul>
+
+  <script>
+
+    // 克隆节点 （复制节点）
+    // node.cloneNode() 方法 返回调用该方法的节点的一个副本。也称为 克隆节点
+
+    let ul = document.querySelector('ul');
+
+    //1、node.cloneNode() 参数为 空 或者 false，则代表克隆时 不会包含 后代节点，默认为 false
+    let li4 = ul.children[0].cloneNode();
+
+    ul.appendChild(li4);
+
+    //2、node.cloneNode(true); 参数为 true , 则代表克隆时 会包含 后代节点 一起克隆
+    let li5 = ul.children[2].cloneNode(true);
+
+    ul.appendChild(li5);
+
+  </script>
+
+</body>
+
+</html>

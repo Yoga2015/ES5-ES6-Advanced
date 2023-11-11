@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>删除节点</title>
+</head>
+
+<body>
+
+  <button>删除</button>
+
+  <ul>
+    <li>李小龙</li>
+    <li>陈真</li>
+    <li>walking</li>
+  </ul>
+
+  <script>
+
+    // node.removeChild(child) 从 DOM 中删除一个子节点，返回删除的节点
+
+    // 1、事件源  获取元素
+    let ul = document.querySelector('ul');
+    let btn = document.querySelector('button');
+
+    // 2、注册事件   事件处理程序 ：删除元素 
+    btn.onclick = function () {
+
+      if (ul.children.length == 0) {
+
+        this.disabled = true;   //如果没有子节点可删除就禁用按钮
+
+      } else {
+
+        ul.removeChild(ul.children[0]);
+
+        // console.log( ul.removeChild(ul.children[0]) );
+
+      }
+
+    }
+
+    window.setTimeout(回调函数, 延时时间);
+
+    setTimeout(function () {
+      console.log('3秒后控制台显示内容');
+    }, 3000)
+
+  </script>
+
+</body>
+
+</html>

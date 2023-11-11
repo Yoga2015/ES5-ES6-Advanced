@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>查找节点--点击关闭</title>
+  <style>
+    .box {
+      margin: 100px auto;
+      width: 500px;
+      height: 100px;
+      padding: 10px;
+      background-color: pink;
+      position: relative;
+    }
+
+    .box1 {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="box"> 我是广告1
+    <div class="box1">X</div>
+  </div>
+
+  <div class="box">我是广告2
+    <div class="box1">X</div>
+  </div>
+
+  <div class="box">我是广告3
+    <div class="box1">X</div>
+  </div>
+
+  <script>
+
+    // // 1、获取 事件源
+    // const box1 = document.querySelector('.box1');
+
+    // // 2、事件监听
+    // box1.addEventListener('click', function () {
+    //   box1.parentNode.style.display = 'none';
+    // })
+
+    const closeBtn = document.querySelectorAll('.box1');
+
+    for (let i = 0; i < closeBtn.length; i++) {
+
+      closeBtn[i].addEventListener('click', function () {
+
+        this.parentNode.style.display = 'none';
+
+      })
+
+    }
+
+  </script>
+
+</body>
+
+</html>

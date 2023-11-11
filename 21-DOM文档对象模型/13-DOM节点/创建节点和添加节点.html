@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>创建节点并插入节点</title>
+</head>
+
+<body>
+
+  <ul>
+    <li>123</li>
+  </ul>
+
+  <script>
+
+    const ul = document.querySelector('ul');
+
+    const li = document.createElement('li');  // 创建节点
+
+    li.innerHTML = '012';
+
+    ul.appendChild(li);  // 插入节点  ，又叫 添加节点
+
+  </script>
+
+</body>
+
+</html>
