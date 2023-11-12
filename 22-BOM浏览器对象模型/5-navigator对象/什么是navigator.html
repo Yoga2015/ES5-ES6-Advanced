@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>什么是navigator</title>
+</head>
+
+<body>
+
+  什么是 navigator对象
+  navigator 对象 的 数据类型 是 对象， 该 对象下 记录了 浏览器自身 的 相关信息。
+  navigator对象 里包含有关浏览器的信息，它有很多属性，我们最常用的是 userAgent 属性，
+  userAgent 属性 可以返回 由 客户机 发送服务器的 user-agent 头部的值。
+
+  通过 navigator.userAgent 检测 浏览器 的 版本 及 平台。
+
+  <script>
+
+    // 检测 userAgent (浏览器信息)
+    
+    !(function () {
+
+      // 通过 navigator.userAgent 检测 浏览器 的 版本 及 平台。
+      const userAgent = navigator.userAgent;
+
+      // 验证是否为Android 或 iPhone
+      const android = userAgent.match(/(Android);?[\s\/]+([\d.]+)?/);
+      const iPhone = userAgent.match(/(iPhone\soS)\s([\d_]+)/);
+
+      // 如果是Android 或 iPhone ，则跳转至移动站点
+      if (android || iPhone) {
+        location.href = 'http://m.baidu.com';
+      }
+
+    })();
+
+    // !(function(){})();
+    !function () { }();
+
+
+  </script>
+
+</body>
+
+</html>

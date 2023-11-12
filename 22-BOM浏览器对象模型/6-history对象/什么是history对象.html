@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>history 对象</title>
+</head>
+
+<body>
+
+  history 对象 的 数据类型 是 对象，主要 管理 历史记录，<br>
+  history 对象 与 浏览器地址栏 的 操作 相对应 ，如： 前进、后退、历史记录等。<br>
+  history 对象 包含 用户 （ 在浏览器窗口中） 当前 tab页内 中 访问过 的 URL。<br>
+
+  history 对象 的 方法 <br>
+  history.back() 就是 浏览器的 后退 按钮<br>
+  history.forward（） 就是 浏览器的 前进 按钮 ，<br>
+  history.go(1) 参数 是 正数，表示 前进 ，history.go(-1) 参数 是 负数，表示 后退<br>
+
+  history 对象 一般在实际开发中比较少用，但是 会在一些 OA办公系统 中见到。
+
+
+  <button>后退</button>
+  <button>前进</button>
+
+  <script>
+
+    let back = document.querySelector('button:first-child');
+
+    let forward = back.nextElementSibling;
+
+    back.addEventListener('click', function () {
+
+      // history.back();  // 后退一步
+
+      history.go(-1);  // go()的参数 是 负数，表示 后退一步
+
+    })
+
+    forward.addEventListener('click', function () {
+
+      // history.forward();  // 前进一步
+
+      history.go(1);  // go()的参数 是 正数，表示 前进一步
+
+    })
+
+  </script>
+
+</body>
+
+</html>
