@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>index页面</title>
+</head>
+
+<body>
+
+  <div></div>
+
+  <script>
+
+    // 1、获取 数据源
+    let div = document.querySelector('div');
+
+    // 2、通过 location.search 获取 参数，并进行提取部分参数
+    let params = location.search.substr(1);
+
+    console.log(params);   // username=walking&password=123
+
+    // 利用 String对象 的 split()方法 进行参数的提取
+    let arr = params.split('=');
+
+    console.log(arr);  // ['username', 'walking']
+
+    div.innerHTML = arr[1] + ' , 欢迎您回来';
+
+  </script>
+
+</body>
+
+</html>

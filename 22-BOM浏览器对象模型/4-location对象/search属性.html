@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>location.search 属性</title>
+</head>
+
+<body>
+
+  <form action="">
+    <input type="text" name="username">
+    <input type="password" name="password">
+    <input type="submit" value="提交">
+  </form>
+
+  <script>
+
+    // location.search 属性 用于 获取 地址中 携带的参数，符号 ？ 后面部分
+
+    // 在浏览器地址 输入 下面地址，就回车
+    // file:///C:/Users/walking/Desktop/search%E5%B1%9E%E6%80%A7.html?username=walking&password=123456
+
+    console.log(location.search);   // 获取 参数  ?username=walking&password=123456
+
+  </script>
+
+</body>
+
+</html>

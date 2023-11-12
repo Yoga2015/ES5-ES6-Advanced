@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>什么是location对象</title>
+</head>
+
+<body>
+  <script>
+
+    // protocol://host[:port]/path.[?query]#fragment
+
+    // http://www.studycairo.xyz/index.html?name=walking&age=18#link
+    // 通信协议://  主机域名       文件地址  ？参数1&参数2        #锚点  
+
+    // http://www.studycairo.xyz/article/20745c71-a7b2-4e7b-87fa-1293cc31144b
+
+    console.log(window.location);  // Location
+
+    console.log(location);   // Location  
+
+    // 获取 当前文件 的 URL地址
+    console.log(location.href);
+
+    // href 经常用 href , 利用  js方式 跳转 到 目标地址
+    location.href = 'http://www.baidu.com';
+
+    
+
+  </script>
+
+</body>
+
+</html>

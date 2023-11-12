@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5秒钟之后跳转的页面</title>
+  <style>
+    body {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+
+  <a href="https://www.baidu.com/">您将在<span>5</span> 秒之后跳转首页</a>
+
+  <script>
+
+    // 1、获取 发生变化 数据源
+    let a = document.querySelector('a');
+
+    // 2、声明倒计时变量
+    let num = 5;
+
+    // 3、开启定时器
+    let timer = setInterval(function () {
+
+      num--;
+
+      a.innerHTML = `您将在<span>${num}</span>秒之后跳转首页`;
+
+      // 如果 num === 0, 则停止定时器，并且完成跳转功能
+      if (num === 0) {
+
+        clearInterval(timer);
+
+        // 4、跳转 location.href
+        location.href = 'https://www.baidu.com/';
+
+      }
+
+    }, 1000)
+
+
+  </script>
+
+</body>
+
+<!-- <script>
+  
+      // 利用 定时器 做 倒计时效果
+      // 时间到了，就跳转页面。使用location.href
+  
+      let div = document.querySelector('div');
+  
+      let timer = 5;
+  
+      // setInterval(function () {
+      //     if (timer == 0) {
+      //         location.href = 'https://www.baidu.com/';
+      //     } else {
+      //         div.innerHTML = '您将在' + timer + '秒之后跳转首页';
+      //         timer--;
+      //     }
+      // }, 1000)
+  
+      fn();   // 提前调用 就为了 预防 出现空白
+  
+      setInterval(fn, 1000);
+  
+      function fn() {
+        if (timer == 0) {
+          location.href = 'https://www.baidu.com/';
+        } else {
+          div.innerHTML = '您将在' + timer + '秒之后跳转首页';
+          timer--;
+        }
+      }
+  
+    </script> -->
+
+</html>
