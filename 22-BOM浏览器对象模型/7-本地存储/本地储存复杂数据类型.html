@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本地存储 复杂数据类型</title>
+</head>
+
+<body>
+
+  <script>
+
+    const obj = {
+      uname: 'walking老师',
+      age: 18,
+      gender: '男'
+    }
+
+    // 本地存储 复杂数据类型
+    // 本地存储 只能存储 字符串，无法存储 复杂数据类型
+
+    // 存储
+    // localStorage.setItem('obj', obj);
+    // 取     获取出来的是看不懂的！？
+    // console.log(localStorage.getItem('obj'));  // [object Object]
+
+    // 怎么办？ 
+    // 解决方案：需要将 复杂数据类型 转换为 JSON 字符串，再存储到本地
+    // 我不要直接存对象，我要直接存 字符串，只不过 这个 “字符串”要存的时候呢？ 是 那种对象的 字符串
+    // 语法:  JSON.stringify(复杂数据类型)
+
+    // 1、先把  对象（复杂数据类型）  转换为  JSON字符串的形式  来存储到 本地
+    // 存储
+    localStorage.setItem('obj', JSON.stringify(obj));
+    // 取     
+    // console.log(localStorage.getItem('obj')); // {"uname":"walking老师","age":18,"gender":"男"}
+    // JSON 对象 中的  属性 和 属性值 都有 双引号。
+
+    // 2、然后把 JSON字符串    转换为   对象（复杂数据类型） 
+    const str = localStorage.getItem('obj')
+
+    console.log(JSON.parse(str)); // {uname: "walking老师", age: 18, gender: "男"}
+
+  </script>
+
+</body>
+
+</html>

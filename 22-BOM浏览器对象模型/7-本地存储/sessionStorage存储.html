@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>sessionStorage存储</title>
+</head>
+
+<body>
+
+  <!-- <script>
+
+    // sessionStorage 存储
+
+    // 要存储 一个名字  'username' , 'walking老师'   都加引号
+
+    // 1、存储数据 ： （新增）
+    // sessionStorage.setItem('key','value');  页面刷新也不丢失
+    sessionStorage.setItem('username', 'walking老师');
+
+    // 同一个域名下，数据 可以 共享
+    // 可以 多窗口（页面）共享 （同一浏览器可以共享）
+
+    // 2、获取数据： （查询）  
+    // sessionStorage.getItem('username');
+    console.log(sessionStorage.getItem('username'));
+
+    // 3、删除数据： （删除）
+    // sessionStorage.removeItem('key');
+    sessionStorage.removeItem('username');  // 根据 key , 删除 对应的 数据
+    sessionStorage.clear();   // 删除 所有数据 
+
+    // 4、修改数据 ：（修改）
+    // sessionStorage.setItem('key');  
+    // 如果原来 有这个 key ，比如：'username'，则是 修改，否则就是新增
+    sessionStorage.setItem('username', 'yellow老师'); // 根据 key , 修改 对应的 数据
+
+
+    // 我要存一个年龄
+    // 本地储存 只能 存储 字符串 数据类型， 将来用时 注意 转换为 数字类型
+    sessionStorage.setItem('age', 20);
+    console.log(sessionStorage.getItem('age'));  // 20 ，这个 20 是 字符串类型 的
+
+  </script> -->
+
+</body>
+
+
+<!-- <body>
+
+  <input type="text" name="" id="">
+  <button class="set">存储数据</button>
+  <button class="get">获取数据</button>
+  <button class="remove">删除数据</button>
+  <button class="del">清空所有数据</button>
+
+  <script>
+
+    // 事件源 获取元素
+    let ipt = document.querySelector('input');
+    let set = document.querySelector('.set');
+    let get = document.querySelector('.get');
+    let remove = document.querySelector('.remove');
+    let del = document.querySelector('.del');
+
+    // 注册事件
+    set.addEventListener('click', function () {
+      let val = ipt.value;
+      sessionStorage.setItem('username', val);
+      // sessionStorage.setItem('password', val);
+    });
+
+    get.addEventListener('click', function () {
+      console.log(sessionStorage.getItem('username'));
+    });
+
+    remove.addEventListener('click', function () {
+      sessionStorage.removeItem('username');
+    });
+
+    del.addEventListener('click', function () {
+      sessionStorage.clear();
+    })
+
+  </script>
+
+</body> -->
+
+<body>
+  <input type="text" name="" id="">
+  <button class="set">存储数据</button>
+  <button class="get">获取数据</button>
+  <button class="remove">删除数据</button>
+  <button class="del">清空所有数据</button>
+
+  <script>
+
+    // 事件源 获取元素
+    let input = document.querySelector('input');
+    let set = document.querySelector('.set');
+    let get = document.querySelector('.get');
+    let remove = document.querySelector('.remove');
+    let del = document.querySelector('.del');
+
+    set.addEventListener('click', function () {
+      //当我们点击了之后，就可以把表单里面的值存储起来
+      let val = input.value;
+      sessionStorage.setItem('uname', val);
+      sessionStorage.setItem('password', val);
+    })
+
+    get.addEventListener('click', function () {
+      //把表单里面的值获取起来
+      console.log(sessionStorage.getItem('uname'));
+    })
+
+    remove.addEventListener('click', function () {
+      //把表单里面的值删除起来
+      sessionStorage.removeItem('uname');
+    })
+    
+    del.addEventListener('click', function () {
+      //把表单里面的值全部删除起来
+      sessionStorage.clear();
+    })
+
+  </script>
+</body>
+
+</html>
