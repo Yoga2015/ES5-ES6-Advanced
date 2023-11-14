@@ -10,8 +10,8 @@
 <body>
 
   <!-- 1、创建 自定义属性 -->
-  <div data-id='1' data-scm="不知道">1</div>
-  <div data-id='2'>2</div>
+  <div data-id='1'>1</div>
+  <div class="box" data-id='2' data-scm="大帅哥">2</div>
   <div data-id='3'>3</div>
   <div data-id='4'>4</div>
   <div data-id='5'>5</div>
@@ -19,13 +19,21 @@
   <script>
 
     // 2、获取 自定义属性
-    const one = document.querySelector('div');
+    const box = document.querySelector('.box');
 
-    console.log(one.dataset);  // DOMStringMap : id:"1" scm:"不知道"
-    console.log(one.dataset.id);  // 1
-    console.log(one.dataset.scm);  // 不知道
+    console.log(box.dataset);  // DOMStringMap : id:"1" scm:"大帅哥"
 
-    one
+    console.log(box.dataset.id);  // 2    （常用）
+
+    console.log(box.dataset['id']);  // 2  同上
+
+    console.log(box.dataset.scm);  // 大帅哥
+
+    // 3、修改 自定义属性
+    
+    box.dataset.scm = '大帅哥2';
+
+    console.log(box.dataset.scm);
 
   </script>
 

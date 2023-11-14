@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>学生信息管理</title>
+  <link rel="stylesheet" href="css/index.css" />
+</head>
+
+<body>
+
+  <h1>新增学员</h1>
+
+  <form class="info" autocomplete="off">
+
+    姓名 ：<input type="text" class="uname" name="uname" />
+
+    年龄 ：<input type="text" class="age" name="age" />
+
+    性别 : <select name="gender" class="gender">
+      <option value="男">男</option>
+      <option value="女">女</option>
+    </select>
+
+    薪资 ：<input type="text" class="salary" name="salary" />
+
+    就业城市 ：<select name="city" class="city">
+      <option value="北京">北京</option>
+      <option value="上海">上海</option>
+      <option value="广州">广州</option>
+      <option value="深圳">深圳</option>
+    </select>
+
+    <button class="add">录入</button>
+
+  </form>
+
+
+  <h1>就业榜</h1>
+
+  <table>
+
+    <thead>
+      <tr>
+        <th>学号</th>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>性别</th>
+        <th>薪资</th>
+        <th>就业城市</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <!-- 
+        <tr>
+          <td>1001</td>
+          <td>欧阳霸天</td>
+          <td>19</td>
+          <td>男</td>
+          <td>15000</td>
+          <td>上海</td>
+          <td>
+            <a href="javascript:">删除</a>
+          </td>
+        </tr> 
+        -->
+    </tbody>
+
+  </table>
+
+  <script>
+
+    // 声明一个空的数组，增加 和 删除 都是对这个数组进行操作。尽量减少dom操作
+    let arr = [];
+
+    // 获取 事件源
+    const uname = document.querySelector('.uname');
+    const age = document.querySelector('.age');
+    const gender = document.querySelector('.gender');
+    const salary = document.querySelector('.salary');
+    const city = document.querySelector('.city');
+
+    const tbody = document.querySelector('tbody');
+
+    // 1.3、获取 所有带有 name 属性的元素
+    const items = document.querySelectorAll('[name]');
+
+    // 1、录入模块
+    // 1.1 表单提交事件 , 设置 不跳转
+    const info = document.querySelector('.info');
+
+    info.addEventListener('submit', function (e) {
+
+      // 1.2 阻止表单提交的默认行为  这个案例不需要跳转
+      e.preventDefault();
+
+      // 1.4 这里 进行表单验证，如果不通过，直接中断，不需要添加数据
+      for (let i = 0; i < items.length; i++) {
+        if (items[i].value === '') {
+          return alert('输入内容不能为空');     // 非空判断
+        }
+      }
+
+      // 1.5 创建新的对象, 用来 存储 从表单中获取过来的数据
+      const obj = {
+        stuId: arr.length + 1,
+        uname: uname.value,
+        age: age.value,
+        gender: gender.value,
+        salary: salary.value,
+        city: city.value,
+      }
+
+      arr.push(obj);  // 1.6 追加 到 数组里面
+      // console.log(arr);
+
+      this.reset();  // 1.7 清空表单  重置表单
+
+      // 1.8 渲染数据 。添加一次页面渲染一次，删除一次页面渲染一次
+      // 遍历数组，动态生成tr,里面填写对应 td 数据，并追加到 tbody
+      render();
+
+    })
+
+    // 2、定义一个渲染函数，因为 增加 和 删除 都需要渲染
+    function render() {
+
+      // 2.4 先清空 tbody 以前的行, 把 最新数组里面的数据 渲染到 tbody
+      tbody.innerHTML = '';
+
+      // 2.1 遍历数组
+      for (let i = 0; i < arr.length; i++) {
+
+        const tr = document.createElement('tr');  // 2.2动态生成 tr
+
+        tr.innerHTML = `<tr>
+          <td>${arr[i].stuId}</td>
+          <td>${arr[i].uname}</td>
+          <td>${arr[i].age}</td>
+          <td>${arr[i].gender}</td>
+          <td>${arr[i].salary}</td>
+          <td>${arr[i].city}</td>
+          <td>
+            <a href="javascript:" data-id=${i}>删除</a>
+          </td>
+        </tr> `;
+
+        // 2.3 追加元素 到 tbody 父元素.appendChild()
+        tbody.appendChild(tr);
+
+      }
+    }
+
+    // 3、点击删除模块
+    // 采用 事件委托 形式， 给 tbody 注册点击事件
+    tbody.addEventListener('click', function (e) {
+
+      if (e.target.tagName === 'A') {
+
+        // 得到当前元素的自定义属性 data-id
+        // console.log(e.target.dataset.id)
+        // 删除 arr数组 里面 对应的数据
+        // splice( 删除的起始位置(从0开始), 被删除的元素个数 )
+        arr.splice(e.target.dataset.id, 1);
+
+        render();   // 删除一行数据后,需要重新渲染一次
+
+      }
+
+    })
+
+  </script>
+
+</body>
+
+</html>
