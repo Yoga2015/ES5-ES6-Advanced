@@ -23,14 +23,16 @@
     * 
     * 需求5：打印出最大年龄和最小年龄 （最大值） */
 
-    let arr = [];
+    let arr = [18, 20, 22, 16, 110];
 
     while (arr.length < 5) {          //  判断条件 必须输入五个有效年龄，无效就继续输入
 
       let num = +prompt(`请输入第${arr.length + 1}个有效年龄`);
 
       if (num > 0 && num <= 100) {
+
         arr.push(num)
+
       };
 
     }
@@ -41,10 +43,15 @@
 
     // 需求2：打印出所有成年人的年龄(数组筛选)
     let result = [];
+
     for (let i = 0; i < arr.length; i++) {
+
       if (arr[i] >= 18) {
+
         result.push(arr[i])
+
       }
+
     }
 
     document.write(`所有成年人的年龄为： ${result}  <br>`)
@@ -53,8 +60,11 @@
 
     // 需求3：打印出所有人总年龄 （累加）
     let sum = 0;
+
     for (let i = 0; i < arr.length; i++) {
+
       sum += arr[i]
+
     }
 
     document.write(`所有人的总年龄 ：${sum}  <br>`)
@@ -64,6 +74,7 @@
     // 需求4：打印出所有人的平均年龄 （累加）
 
     let average = 0;  //平均年龄
+    
     average = sum / arr.length;    // 总年龄
 
     document.write(`所有人的平均年龄：${average}  <br>`)

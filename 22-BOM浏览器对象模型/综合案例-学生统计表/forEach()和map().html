@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+
+    // forEach() 是 负责遍历（Array、Set、 Map）可迭代对象 的。
+
+    // forEach()  下面 接收 一个函数 作为 参数，
+    // 该 参数 可以是 一个匿名函数（也可以是 箭头函数），也可以是 一个命名的函数 （提前写好的函数），
+    // 该 函数 调用 时，forEach() 方法 会向 它 传入三个参数：
+    //          element 当前元素、index 当前元素的索引 和  array 数组本身 （可省略）。
+
+
+    let arr = [12, 38, 8, 42];
+
+    arr.forEach(function (element, index) {
+
+      console.log(element, index);
+
+    })
+
+    // 12  0 
+    // 38  1 
+    // 8   2 
+    // 42  3
+
+
+    //  forEach() 不会返回 任何值（实际上返回的是undefined）
+
+    let result = arr.forEach((element, index) => {
+
+      return element * 2;
+
+    })
+
+    console.log(result);   // undefined
+
+    // forEach() 遍历 数组 不是为了得到 返回值，而是为了 在屏幕输出内容。
+    // 但如果 遍历数组的目的 是 为了得到返回值，那么请使用 map（）方法，否则使用 forEach方法。
+
+
+
+    // forEach 接收 2 个参数 作为 参数
+    // forEach() 方法 也可以接受 第二个参数 ，绑定 参数函数 的 this变量。
+    // 空数组out 是forEach方法的第二个参数，结果，回调函数(匿名函数)内部的this关键字 就 指向 out。
+
+    let out = [];
+
+    arr.forEach(function (item, index) {
+
+      this.push(item * 1);
+
+    }, out)
+
+    console.log(out);  // [12, 38, 8, 42]
+
+
+    let log = function (n) {
+
+      console.log(n + 1);
+
+    };
+
+    [1, undefined, 2].forEach(log)   // 2    // NaN    // 3
+
+    // [1, null, 2].forEach(log)    // 2    // 1     // 3
+
+    // [1, NaN, 2].forEach(log)    // 2     // 3
+
+
+  </script>
+
+  <!-- <script>
+    
+    
+    // forEach() 无法中断遍历
+
+    var arr = [1, 2, 3];
+
+    for (var i = 0; i < arr.length; i++) {
+
+      if (arr[i] === 3) break;
+
+      console.log(arr[i]);      // 1    // 2
+
+    }
+
+    arr.forEach(function (item, index) {
+
+      if (item === 8) break;
+
+      console.log(item);
+
+    });
+
+    // Uncaught SyntaxError: Illegal break statement
+
+  </script> -->
+
+  <script>
+
+    // map()  可以遍历 数组 处理数据，并返回 新的数组，不会改变原数组
+
+    // map() 方法 接收 一个参数 作为 参数，
+    // 该 参数 可以是一个匿名函数（也可以是箭头函数），也可以是一个命名的函数，
+    // 该 参数函数 调用 时，map() 方法 会向 它 传入三个参数：
+    //          element 数组元素、 index 数组元素的索引  和   array 数组本身 （可省略）。
+
+    let arr1 = [1, 2, 3];
+
+    let arr2 = arr1.filter(function (element, index) {
+
+      console.log(element);     // 数组元素
+
+      console.log(index);     // 数组元素的索引号
+
+      return element + 1;
+
+    })
+
+    console.log(arr2);   // [1, 2, 3]
+
+    console.log(arr1);  // [1, 2, 3]   原数组没有改变
+
+    // map（） 也称为 映射。 映射 是一个 术语。 指 两个元素的集之间元素相互 “对应” 的关系。
+    // map（） 重点在于 有返回值。 forEach() 没有返回值。
+
+
+    // join() 方法 用于 把 数组中的所有元素 转换成 一个字符串。
+
+  </script>
+
+
+</body>
+
+</html>

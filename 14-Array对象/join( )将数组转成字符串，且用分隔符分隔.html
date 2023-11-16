@@ -11,7 +11,8 @@
   <script>
 
     // join(分隔符)
-    let arr = ['red', 'green', 'yellow'];
+
+    // let arr = ['red', 'green', 'yellow'];
 
     console.log(arr);  //['red', 'green', 'yellow']
 
@@ -24,6 +25,39 @@
     console.log(arr.join('&')); // red&green&yellow
 
     console.log(arr.join('|')); // red|green|yellow
+
+
+    function salary(arr) {
+
+      if (Array.isArray(arr)) {
+
+        var newArr = [];
+
+        for (var i = 0; i < arr.length; i++) {
+
+          if (arr[i] < 2000) {
+
+            // newArr[newArr.length] = arr[i];
+
+            newArr.push(arr[i]);
+
+          }
+
+        }
+
+        return newArr;
+
+      } else {
+
+        return '入参不合法，必须是数组格式'
+
+      }
+
+    }
+
+    let arr1 = salary([1600, 1200, 2000, 2200, 1900]);
+    
+    console.log(arr1);  // [1600, 1200, 1900]
 
   </script>
 </body>

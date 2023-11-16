@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>发送短信</title>
+</head>
+
+<body>
+  
+  <h3>发送短信,点击按钮后，该按钮60秒之内不能再次点击，防止重复发生短信</h3>
+  手机号:<input type="text" class="input1"> <button class="btn">发送</button>
+
+  <script>
+
+    //事件源 获取元素
+    let btn = document.querySelector('.btn');
+    let input1 = document.querySelector('.input1');
+
+    let time = 10;  //定义剩下的秒数
+
+    //注册事件   
+    btn.addEventListener('click', function (e) {
+
+      btn.disabled = true;
+
+      let timer = setInterval(function () {
+
+        if (time == 0) {
+          //清除定时器 和 复原按钮
+          clearInterval(timer);
+          btn.disabled = false;
+          btn.innerHTML = '发送';
+          time = 10;  //这个10需要重新开始
+        } else {
+          //按钮里面秒数是有变化的，因此需要用到定时器。
+          btn.innerHTML = '还剩下' + time + '秒';
+          time--;
+          input1.value = '';
+        }
+
+      }, 1000)
+
+    })
+
+  </script>
+
+</body>
+
+</html>

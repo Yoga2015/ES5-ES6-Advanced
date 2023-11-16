@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>记住用户名</title>
+</head>
+
+<body>
+
+  <input type="text" id="username">
+  <input type="checkbox" id="remember"> 记住用户名
+
+  <script>
+
+    // 记住用户名
+    // 把数据存起来，需要用到本地储存，关闭页面也可以显示用户名，所以用到local storage
+    // 1、打开页面，先判断是否有这个用户名 ，通过获取它的形式来做判断，
+    // 1.1、如果有，就在表单里面显示用户名，并且勾选复选框
+    // 2、当复选框发生改变的时候 change 事件
+    // 2.1、如果勾选，就存储，否则就移除
+
+    // 事件源  获取元素
+    let username = document.querySelector('#username');
+    let remember = document.querySelector('#remember');  // 复选框
+
+    // 1、打开页面，先判断是否有这个用户名 ，通过获取它的形式来做判断，
+    if (localStorage.getItem('username')) {
+
+      // 如果有，就把这个数据获取过来，并赋值放到 id 名为 #username 的文本框输入框里面
+      username.value = localStorage.getItem('username');
+
+      // 并且勾选复选框
+      remember.checked = 'checked';
+
+    }
+
+    // 2、监听 复选框 的 勾选变化
+    remember.addEventListener('change', function () {
+
+      // 判断 remember复选框 有没有勾选
+      if (remember.checked) {
+
+        // 如果勾选了，就存储
+        localStorage.setItem('username', username.value);
+        
+      } else {
+
+        // 否则就移除
+        localStorage.removeItem('username');
+      }
+
+    })
+
+  </script>
+
+</body>
+
+</html>
