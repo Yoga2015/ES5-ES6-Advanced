@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>元字符--字符类</title>
+</head>
+
+<body>
+
+  <script>
+
+    // [] 中括号 匹配 字符集合
+
+    //  [abc]  只选 1 个 。 只要有一个匹配上就返回 true, 否则 false
+
+    console.log(/^[abc]$/.test('a'));   // true
+
+    console.log(/^[abc]$/.test('b'));   // true
+
+    console.log(/^[abc]$/.test('c'));   // true
+
+    console.log(/^[abc]$/.test('ab'));  // false
+
+    console.log(/^[abc]{2}$/.test('ab'));  // true
+
+    console.log(/^[1-9][0-9]{4}$/.test('10086'));   // true
+
+    console.log('-------------------------');
+
+
+
+    // [] 里面加上 - 连字符       [a-z] 只选 1 个
+
+    console.log(/^[a-z]$/.test('b'));   // true
+
+    console.log(/^[A-Z]$/.test('b'));   // false
+
+    console.log(/^[A-Z]$/.test('B'));   // true
+
+    console.log(/^[0-9]$/.test('9'));   // true
+
+    console.log(/^[0-9]$/.test('A'));   // false
+
+
+
+    // 字符类 [a-zA-Z0-9]  只选 1 个
+
+    console.log(/^[a-zA-Z0-9]$/.test(6));    // true
+
+    console.log(/^[a-zA-Z0-9]/.test('e'));    // true
+
+    console.log(/^[a-zA-Z0-9]/.test('E'));    // true
+
+
+  </script>
+
+
+  <script>
+
+    // [] 里面加上 ^ 取反符 
+
+    // 如果 中括号 里面 有 ^ 表示取反的意思  （ 千万和 我们的边界符 ^ 别混淆 ）
+
+    let reg = /^[^a-z0-9_-]$/;     
+
+    console.log(reg.test(0));   // false
+
+    console.log(reg.test(9));   // false 
+
+    console.log(reg.test(8));   // false 
+
+    console.log(reg.test('-'));  // false 
+
+    console.log(reg.test('_'));  // false
+
+    console.log(reg.test('a'));  // false
+
+    console.log(reg.test('A'));  // true
+
+  </script>
+
+</body>
+
+</html>

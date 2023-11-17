@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    // （2）边界符  又叫  位置符
+
+    // ^ 表示字符串的开始位置
+
+    // $ 表示字符串的结束位置
+
+    /^one/.test('123one');    // false
+
+    /^one/.test('one\two');   // true
+
+    /one$/.test('one\two\one');   // true
+
+    /^one$/.test('one\two\one');    // false
+
+    /^one$/.test('one');    // true
+
+
+    // 正则表达式 里面 不需要加 引号 不管是数字型还是字符串型
+
+    // /abc/ 只要包含有 abc 这个字符串，返回都是 true
+    let regexp = /abc/;
+
+    console.log(regexp.test('abc'));  // true
+    console.log(regexp.test('abcd'));  // true
+    console.log(regexp.test('aabcd')); // true
+    console.log('--------------------------');
+
+    // 必须以 abc 开头，才返回true
+    let reg = /^abc/;
+
+    console.log(reg.test('abc'));  // true
+    console.log(reg.test('abcd'));  // true
+    console.log(reg.test('aabcd'));  // false
+    console.log('--------------------------');
+
+    // 精确匹配 要求 必须是 abc 字符串 才符合规范
+    let reg1 = /^abc$/;
+
+    console.log(reg1.test('abc'));  // true
+    console.log(reg1.test('abcd'));  // false
+    console.log(reg1.test('aabcd'));  // false
+    console.log(reg1.test('abc9527abc'));  // false
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .right {
+      color: green;
+    }
+
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+
+  <input type="text" id="tel" placeholder="手机号验证"><span></span> <br>
+
+  <input type="text" id="qq" placeholder="QQ号验证"><span></span>
+
+  <script>
+
+    // 1、先设置 所有用到的正则表达式，每设置一个正则表达式就赋值给一个新的变量
+    let regtel = /^1[3|4|5|7|8]\d{9}$/;    //手机号码的正则表达式
+    let regqq = /^[1-9]\d{4,}$/;  //腾讯QQ号 从 10000开始，1之后至少 4位数，以后会更多
+
+    //2、获取 所有input表单元素的值
+    let tel = document.querySelector('#tel');
+    let qq = document.querySelector('#qq');
+
+    // 4、每传入一个就进行调用以下
+    regexp(tel, regtel);   //手机号码号
+    regexp(qq, regqq);   //QQ号
+
+    //3、声明一个表单验证函数，专门用来处理 所有input表单元素的值是否符合格式
+    function regexp(ele, reg) {
+
+      ele.onblur = function () {
+
+        if (reg.test(this.value)) {
+          // console.log('正确的');
+          this.nextElementSibling.className = 'right';
+          this.nextElementSibling.innerHTML = '恭喜您输入正确';
+        } else {
+          // console.log('错误的');
+          this.nextElementSibling.className = 'error';
+          this.nextElementSibling.innerHTML = '格式不正确，请重新输入';
+        }
+        
+      }
+
+    }
+
+  </script>
+
+</body>
+
+</html>

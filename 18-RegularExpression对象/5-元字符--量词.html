@@ -82,9 +82,9 @@
 
     console.log(/^哈*$/.test('哈哈'));  // true
 
-    console.log(/^哈*$/.test('二哈'));  // false   必须 '哈' 开头 才为 true
+    console.log(/^哈*$/.test('二哈'));  // false  必须 '哈' 开头 才为 true
 
-    console.log(/^哈*$/.test('哈很傻'));   // false  必须 '哈' 结尾 才为 true
+    console.log(/^哈*$/.test('哈很傻')); // false 必须 '哈' 结尾 才为 true
 
     console.log(/^哈*$/.test('哈很哈'));   // false
 
@@ -103,7 +103,7 @@
 
     console.log(/^哈+$/.test('二哈'));  // false   必须 '哈' 开头 才为 true
 
-    console.log(/^哈+$/.test('哈很傻'));   // false  必须 '哈' 结尾 才为 true
+    console.log(/^哈+$/.test('哈很傻')); // false  必须 '哈' 结尾 才为 true
 
     console.log(/^哈+$/.test('哈很哈'));   // false
 
@@ -120,11 +120,11 @@
 
     console.log(/^哈?$/.test('哈哈'));  // false
 
-    console.log(/^哈?$/.test('二哈'));  // false   必须 '哈' 开头 才为 true
+    console.log(/^哈?$/.test('二哈'));  // false  必须 '哈' 开头 才为 true
 
-    console.log(/^哈?$/.test('哈很傻'));   // false  必须 '哈' 结尾 才为 true
+    console.log(/^哈?$/.test('哈很傻')); // false  必须 '哈' 结尾 才为 true
 
-    console.log(/^哈?$/.test('哈很哈'));   // false
+    console.log(/^哈?$/.test('哈很哈'));  // false
 
     console.log('------------------------------');
 
@@ -185,9 +185,39 @@
 
     // console.log(/^1+\W{10}/.test('13702890684'));
 
+  </script>
+
+  <script>
+
+    // 量词 是 用来 设定某个模式出现的次数
+
+    // 这个模式，用户只能输入英文字母、数字、下划线、短横线，
+    // 但是有 边界符 和 []，这就限定了 只能 多选1
+
+    let reg = /^[a-zA-Z0-9_-]$/;
+
+    console.log(reg.test('aa'));   // false
+    console.log(reg.test('a'));    // true
+    console.log(reg.test('K'));    // true
+    console.log(reg.test('!'));   // false   这里不包含 ！ 叹号
+    console.log(reg.test('19'));   // false
+    console.log('--------------');
 
 
 
+    // [] 中括号 里 的 字符 可以 重复出现 大于等于6次 并且 小于等于16次  
+
+    let reg1 = /^[a-zA-Z0-9_-]{6,16}$/;
+
+    console.log(reg1.test('aaa'));     // false
+    console.log(reg1.test('bbbbbb'));   // true
+    console.log(reg1.test('abcdefgh'));   // true
+    console.log(reg1.test('aabbcc'));   // true
+    console.log(reg1.test('aabbccddeeffjjhhiijjkk'));  // false
+    console.log(reg1.test('walking001'));  // true
+    console.log(reg1.test('Amy001'));  // true
+    console.log(reg1.test('Amy-009'));  // true
+    console.log(reg1.test('yes_001'));  // true  
 
   </script>
 

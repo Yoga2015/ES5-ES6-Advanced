@@ -49,6 +49,27 @@
 
   </script>
 
+  <script>
+
+    // i 不区分大小写    、    g 全局替换
+
+    console.log(/^java$/.test('java'));    // true
+
+    console.log(/^java$/i.test('JAVA'));   // true
+
+    console.log(/^java$/i.test('Java'));   // true
+
+
+    const str = 'java 是一门编程语言，学完 JAVA 马上就业';
+
+    // const result = str.replace(/java|JAVA/g, '前端'); 使用 选择符 |
+
+    const result = str.replace(/java/gi, '前端');
+
+    console.log(result);  //  '前端 是一门编程语言，学完 前端 马上就业'
+
+  </script>
+
 </body>
 
 </html>

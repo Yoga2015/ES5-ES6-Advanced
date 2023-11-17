@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <!-- <script>
+
+    // 回调函数 的写法 ：
+    // 当 修改 step1 时，还要考虑会不会影响到 step3、 step4 （这是缺点）
+
+    step1(function (value1) {
+
+      step2(value1, function (value2) {
+
+        step3(value2, function (value3) {
+
+          step4(value3, function (value4) {
+            // ...
+          });
+
+        });
+
+      });
+
+    });
+
+
+    // Promise 的写法: 
+    // 当 修改 step2 时，就不用考虑会不会影响到step3 、step4，因为之间是分离的
+
+    (new Promise(step1))
+      .then(step2)
+      .then(step3)
+      .then(step4);
+
+  </script> -->
+
+
+  <script>
+
+    async function foo() {
+
+      await new Promise(function (resolve, reject) {
+
+        console.log(1);
+
+        // resolve();
+
+        reject();
+
+      })
+
+        .then(async () => {
+
+          console.log(2);
+
+        },
+
+          () => {
+
+            console.log(3);
+
+          })
+
+      // .then(() => {
+
+      //   console.log(3);
+
+      // })
+
+      console.log(4);
+
+    }
+
+
+    foo();
+
+    let promise = new Promise();
+    
+    promise.then(function (value) {
+
+      // success
+
+    }, function (error) {
+
+      // fail
+
+    });
+
+
+
+  </script>
+
+  <!-- <script>
+
+    // 例子1
+    function f1(resolve, reject) {
+
+      // 异步代码...
+
+    }
+
+    var p1 = new Promise(f1);
+
+    // Promise构造函数 接受 一个参数，这个参数是一个函数 ，又叫 回调函数。
+    // 这里的 回调函数f1 作为 参数，f1里面 是 异步操作的代码。
+    // 然后，返回的值 赋值给 p1，此时 p1 就是一个 Promise 实例化对象。
+
+
+    // 例子2
+    var promise = new Promise(function (resolve, reject) {
+      // ... some code
+
+      if (/* 异步操作成功 */) {
+
+        resolve(value);
+
+      } else { /* 异步操作失败 */
+
+        reject(new Error());
+
+      }
+
+    });
+
+  </script> -->
+
+</body>
+
+</html>

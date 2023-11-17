@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>座机号码验证</title>
+</head>
+<body>
+
+    <script>
+
+      //  座机号码验证 : 全国座机号 两种格式 ： 010-12345678  或者  0530-1234567
+
+      var reg = /^\d{3,4}-\d{7,8}$/;
+
+      console.log(reg.test(1234 - 1234567));   //false
+
+      // 用户名验证
+      let reg2 = /^\w{6,16}$/;
+      console.log(reg2.test('Amy_9527'));  //true
+      
+    </script>
+
+</body>
+</html>

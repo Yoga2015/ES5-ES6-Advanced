@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>7-大中小括号总结</title>
+</head>
+
+<body>
+
+  <script>
+
+    // 中括号 字符集合，匹配 中括号 中 的 任意字符
+
+    let reg = /^[abc]$/;    // a 也可以 , b 也可以 , c 也可以   a || b || c
+
+     console.log(reg1.test('a'));   // true
+
+     console.log(reg1.test('b'));   // true
+
+     console.log(reg1.test('c'));   // true
+
+     console.log(reg1.test('d'));  // false
+
+
+
+    // 大括号  表示 重复的次数
+
+    var reg1 = /^abc{3}$/;   // 它只是让c 重复三次 ，只有 abccc才是true
+
+    console.log(reg1.test('abc'));   // false
+
+    console.log(reg1.test('abcabcabc'));  // false
+
+    console.log(reg1.test('abcc'));   // false
+
+    console.log(reg1.test('abccc'));  // true
+
+
+
+    // 小括号 表示 优先级
+
+    let reg2 = /^(abc){3}$/;  // 它是让 abc 重复三次， 只有 abcabcabc 才是true
+
+    console.log(reg2.test('abc'));    // false
+
+    console.log(reg2.test('abcabcabc'));  // true
+
+    console.log(reg2.test('abccc'));   // false
+
+  </script>
+
+</body>
+
+</html>

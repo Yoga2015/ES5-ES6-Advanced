@@ -10,8 +10,8 @@
       display: inline-block;
       width: 250px;
       height: 30px;
-      /* 垂直对齐 */
       vertical-align: middle;
+      /* 垂直对齐 */
       line-height: 30px;
       padding-left: 15px;
     }
@@ -34,8 +34,35 @@
 
   <span></span>
 
-  <script src="./username-checking.js"></script>
-  
 </body>
+
+<script>
+
+  // 1、定义规则   验证用户名
+  const reg = /^[\w]{6,16}$/;
+
+  // 表单失去焦点事件
+  const username = document.querySelector('.username');
+  const span = username.nextElementSibling;
+
+  username.addEventListener('blur', function () {
+
+    // console.log(reg.test(this.value));
+
+    // 2、匹配规则
+    if (reg.test(this.value)) {
+
+      span.innerHTML = '输入正确';
+      span.className = 'right';
+
+    } else {
+      span.innerHTML = '请输入6-16位字母、数字、下划线';
+      span.className = 'wrong';
+
+    }
+
+  })
+
+</script>
 
 </html>
