@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>change 事件</title>
+</head>
+
+<body>
+
+  <input type="text">
+
+  <script>
+
+    const input = document.querySelector('input');
+
+    // 如果 input 中 的 值 发生变化，就会触发 change 事件
+    input.addEventListener('change', function () {
+
+      console.log(11);
+
+    })
+
+  </script>
+  
+</body>
+
+</html>

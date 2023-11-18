@@ -33,9 +33,9 @@
     //  关键在于 这个 this 在什么位置 ，根据 位置 的 不同， this 指向 的 对象 也不同
     //  直接调用 函数 (如：fn() ), 其实 相当于 是 window.函数，所以 this 指向 window
 
-    //  1、普通函数 里面 this  指向的是 window
+    //  1、普通函数 里面 this 指向
     function fn() {
-      console.log(this);  // 此时的 this 是 Window对象，故称为  this  指向的是 Window对象
+      console.log(this, 11);  // 此时的 this 是 Window对象，故称为  this  指向的是 Window对象
     }
 
     fn();  // === window.fn()
@@ -43,7 +43,7 @@
 
     // 2、setTimeout() 里的 回调函数 中的 this 指向
     function fn2() {
-      console.log(this);   // this 指向  window
+      console.log(this, 22);   // this 指向  window
     }
 
     setTimeout(fn2, 1000);
@@ -55,34 +55,43 @@
 
     btn.addEventListener('click', function () {
 
-      console.log(this);  // 此时的 this 是 <button>点击</button>
+      console.log(this, 33);  // this 指向的是 <button>点击</button>
 
       // btn.style.backgroundColor = 'pink';  
 
       // 同上。     
       this.style.backgroundColor = 'pink';  // this 的作用： 就是让我们代码更简洁   
 
+      setTimeout(function () {
+        console.log(this, 44);   // this 指向  window
+      }, 1000)
+
     })
 
 
 
-    // 4、 对象方法中 的 this 指向 当前对象
+    // 4、 对象方法中 的 this 指向 
     var obj = {
       value: "我是 obj 的值",
       show: function () {
         console.log(this.value);
+        console.log(this, 55);   // this 指向 当前对象 obj
       }
     };
 
     obj.show();  // 输出 "我是 obj 的值"
 
 
-    // 5、在一个构造函数中，this 指向 新创建 的 对象
+    // 5、在一个构造函数中，this 指向 
     function MyObject() {
+
       this.value = "我是 MyObject 的值";
+
       this.show = function () {
         console.log(this.value);
+        console.log(this, 66);    // this 指向 新创建 的 对象
       }
+      
     }
 
     var obj = new MyObject();  // this 指向 新创建 的 对象 
