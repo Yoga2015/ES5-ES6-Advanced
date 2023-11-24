@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>use strict 严格模式</title>
+</head>
+
+<body>
+
+  <!-- 普通模式 -->
+  <script>
+
+    // 当前 script标签 里 是 普通模式 , 因为 首行没有 use strict
+
+    console.log('这是普通模式');
+
+  </script>
+
+  <!-- 为整个脚本 （script标签）开启严格模式 -->
+  <script>
+
+    "use strict"; // 当前 script标签 开启了严格模式
+
+    // 下面的js代码就会按照严格模式执行代码
+    console.log('这是严格模式');
+
+  </script>
+
+  <script>
+
+    console.log('这是普通模式');
+
+    (function () {
+
+      // 只是 在当前的 这个会 自调用 的 立即执行的匿名函数中 有开启 严格模式，当前函数之外 还是 普通模式
+
+      "use strict";
+
+    })();
+
+    console.log('这是普通模式');
+
+  </script>
+
+  <!-- 如果 use strict 写成下面这样，则不起作用，严格模式 必须从代码一开始就生效。 -->
+
+  <script>
+
+    console.log('这是正常模式');
+
+    'use strict';
+
+  </script>
+
+</body>
+
+</html>

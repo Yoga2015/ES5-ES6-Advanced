@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>严格模式下--函数变化</title>
+</head>
+
+<body>
+
+  <!-- 函数的变化 -->
+
+  <script>
+
+    'use strict';
+
+    // 1、严格模式下，函数里面的参数不允许有重名（包括不限：形参）
+    // a = 1;
+    // a = 2; 普通模式下， 同名的形参，后面的值会覆盖前面的值 ，所以执行后的结果是 4
+
+    function fn(a, a) {  //  语法错误    : 在此上下文中不允许重复的参数名
+
+      console.log(a + a); // SyntaxError: Duplicate parameter name not allowed in this context 
+      
+    }
+
+    fn(1, 2)
+
+
+
+    // 函数 必须声明 在顶层。 新版本的 JavaScript 会引入 块级作用域 （ES6中引入的）。
+    // 为了 与新版本 接轨，不允许 在非函数的代码块 内 声明函数。
+
+    if (true) {                    // 不合法 
+
+      function f() {
+        // !!! 语法错误
+      }
+
+      f();
+
+    }
+
+    for (var i = 0; i < 5; i++) {
+
+      function f2() { } // 语法错误 !!
+
+      f2();
+
+    }
+
+    function baz() { // 合法
+
+      function eit() { } // 同样合法
+
+    }
+
+  </script>
+
+</body>
+
+</html>

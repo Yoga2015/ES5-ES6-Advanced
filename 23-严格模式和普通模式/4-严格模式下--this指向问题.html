@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>严格模式下--this指向问题</title>
+</head>
+
+<body>
+
+  <script>
+
+    'use strict';
+
+    // 1、严格模式下，全局作用域 函数中 的 this是 undefined。
+    function fn() {
+
+      console.log(this);   // undefined
+
+    }
+
+    fn();
+
+
+    // 2、 严格模式下，如果 构造函数 不加 new 调用 ，this 指向的是 undefined, 如果给它赋值，则会报错
+
+    function Star() {
+
+      this.age = 20;
+
+    }
+
+    Star();   // TypeError: Cannot set properties of undefined
+
+
+    // 3、 new 实例化 的 构造函数 指向 创建的对象实例。
+
+    function Star() {
+
+      this.age = 20;
+
+    }
+
+    let lisi = new Star();
+
+    console.log(lisi.age);   // 20  
+
+
+    // 4、定时器 里的 this 还是指向 window
+
+    setTimeout(function () {
+
+      console.log(this);   // window
+      
+    }, 1000)
+
+  </script>
+
+</body>
+
+</html>

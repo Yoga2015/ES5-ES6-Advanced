@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>使用 use strict 为 函数 开启严格模式</title>
+</head>
+
+<body>
+
+  <script>
+
+     // 当前 script标签 未开启 严格模式
+
+    function fn1() {
+
+      'use strict';
+
+      // 此时 fn1 函数 内部 ，下面的js代码就会按照 严格模式 执行代码
+
+    }
+
+    function fn1() {  
+
+      // 里面的js代码就会按照 普通模式 执行代码
+
+    }    
+
+  </script>
+
+</body>
+
+</html>

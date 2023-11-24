@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>严格模式的变化-变量规定</title>
+</head>
+
+<body>
+
+  <script>
+
+    'use strict';    // 整个脚本 开启 严格模式 后
+
+    // 1、 变量必须先声明再使用
+
+    num = 10;   // 当前 num 变量 没有声明，就直接赋值
+
+    console.log(num);   // ReferenceError: num is not defined
+
+
+    // 2、 严禁删除 已经声明的变量
+
+    let num2 = 20;
+
+    console.log(num2);
+
+    delete num2;   // SyntaxError: Delete of an unqualified identifier in strict mode
+
+  </script>
+
+</body>
+
+</html>
