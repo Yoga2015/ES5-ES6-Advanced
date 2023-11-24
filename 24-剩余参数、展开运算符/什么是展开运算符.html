@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+
+    const arr1 = [1, 2, 3, 4];
+
+    console.log(...arr1);   // 使用 展开运算符
+
+    console.log(Math.max(1, 2, 3, 4));   // 4 
+
+    console.log(Math.max(...arr1));      // 4 
+
+    // ...arr ===  1, 2, 3, 4
+
+
+    // 展开运算符 的 典型运用场景
+
+    // 1、求 数组 最大值 或者 最小值
+    console.log(Math.max(...arr1));  // 4   最大值 
+    console.log(Math.min(...arr1));  // 1   最小值
+
+
+    // 2、合并数组
+    const arr2 = [5, 6];
+    const arr = [...arr1, ...arr2];
+    console.log(arr);   // [1, 2, 3, 4, 5, 6]
+
+
+    const name = { id: '1234', name: 'Charuka' };
+
+    const university = { id: '1234', university: 'Harvard' };
+
+    const PersonalDetails = Object.assign({}, name, university);
+
+    console.log(PersonalDetails);      // { id: '1234', name: 'Charuka', university: 'Harvard' }
+
+  </script>
+
+  <script>
+    // spread 扩展运算符 ...  能将 数组 转换为 逗号分隔的 参数序列
+    // 声明一个数组 ...
+    const F3 = ['赵四', '小沈阳', '宋小宝']; // =>'赵四','小沈阳','宋小宝'
+
+    // 声明一个函数
+    function chunwan() {
+      console.log(arguments);
+    }
+
+    //可以放 在函数调用 里  ， 把数组 转换为 参数序列 ，用逗号分隔
+    chunwan(...F3); // => chunwan('赵四','小沈阳','宋小宝')
+  </script>
+  
+  <script>
+
+    // 1、数组的合并   
+    const kuaizi = ['王太利', '肖央'];
+
+    const fenghuang = ['曾毅', '玲花'];
+
+    // const superStar = kuaizi.concat(fenghuang);
+
+    const superStar = [...kuaizi, ...fenghuang]
+
+    console.log(superStar);  // ['王太利', '肖央', '曾毅', '玲花']
+
+
+
+    // 2、数组的克隆
+
+    const sanzhihua = ['A', 'B', 'C'];
+
+    const sanyecao = [...sanzhihua];
+
+    console.log(sanyecao);  //  ['A', 'B', 'C']
+
+
+
+    // 3、将伪数组转为真正的数组
+
+    const btns = document.querySelectorAll('button');
+
+    console.log(btns);  // NodeList(3)[button, button, button]   伪数组
+
+    const btnArr = [...btns];
+
+    console.log(btnArr);  // [button, button, button]
+
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>什么是剩余参数</title>
+</head>
+
+<body>
+
+  <script>
+
+    // 1、定义 剩余参数
+
+    function getSum(x, y, ...arr) {
+
+      return x + y + arr;     // 2、使用 剩余参数 时 无需加 ...
+
+    }
+
+    getSum(1,2);
+
+    getSum(1,2,3,4,5,6);
+
+
+    // 1、使用  arguments动态参数  获取 不确定数量的实参
+    function person() {
+
+      console.log(arguments);   // Arguments(3)  输出的是  伪数组
+                                // 伪数组 没有 数组对象 的 pop、push、shift、unshift 等等方法
+
+    }
+    person('张三', '李四', '王老五');
+
+
+    //  2、使用  剩余参数 ...   获取 不确定数量的实参      
+    function people(...values) {
+
+      console.log(values);   // Array(3)  输出的是 真数组 ，那就可以使用数组的方法：
+                             // pop、push、shift、unshift
+
+    }
+
+    people('丽丽', '君君', 'walking');
+
+
+
+    // 剩余参数 必须要放到 参数 最后
+
+    function fn(x, y, ...values) {
+
+      console.log(x);  //  1
+
+      console.log(y);  //  2
+
+      console.log(values);   // [3, 4, 5, 6]
+
+    }
+
+    fn(1, 2, 3, 4, 5, 6);
+
+  </script>
+</body>
+
+</html>
