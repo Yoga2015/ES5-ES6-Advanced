@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>箭头函数中的this</title>
+</head>
+
+<body>
+
+  <script>
+
+    // 1、箭头函数中 this 是 静态的，this 始终指向 函数声明时 所在作用域下的 this 的值
+
+    function getName() {
+
+      console.log(this.name);  // walking
+
+    }
+
+    let getName2 = () => {
+
+      console.log(this.name);    // walking
+
+    }
+
+
+    // 2、设置 window对象 的 name属性
+    window.name = 'walking';
+
+    const school = {
+      name: '威哥'
+    }
+
+    // 直接调用
+    getName();      // walking
+    getName2();     // walking
+
+    // call方法调用
+    getName.call(school);  // 威哥
+    getName2.call(school);  // walking
+
+    // 普通函数 的 this指向 发生了改变。
+
+    // 箭头函数 的 this 指向 没有发生改变，依然是指向 全局对象window 
+
+  </script>
+  
+</body>
+
+</html>

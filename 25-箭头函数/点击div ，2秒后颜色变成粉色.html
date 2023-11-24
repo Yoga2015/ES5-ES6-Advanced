@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>点击div ，2秒后颜色变成粉色</title>
+  <style>
+    #box {
+      width: 200px;
+      height: 200px;
+      background-color: yellow;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="box"></div>
+
+</body>
+
+<script>
+
+  // 需求一，点击div ，2秒后颜色变成粉色
+  let box = document.querySelector('#box');
+
+  box.addEventListener('click', function () {
+    setTimeout(() => {
+      this.style.backgroundColor = 'pink';
+    }, 2000);
+  })
+
+  box.addEventListener('click', () => {
+    setTimeout(() => {
+      this.style.backgroundColor = 'pink';
+    }, 2000);
+  })
+
+  // 箭头函数 里面的 this 本身是静态的，它是指向 函数声明时，
+  // 所在作用域下的this的值，所以说这个 this 指向它外围的函数(亲父亲)，
+  // 这个外围的函数的this 指向 事件源 box ，所以说我们可以找到元素，然后修改元素。
+
+</script>
+
+<script>
+
+  let arr = [1, 2, 3, 4, 5, 6];
+
+  // fither()方法 的 匿名函数 写法
+  const result1 = arr.filter(function (item) {
+      if (item % 2 === 0) {
+          return true;
+      } else {
+          return false;
+      }
+  });
+
+  console.log(result1);
+
+
+  // fither()方法 的 箭头函数 写法
+  const result2 = arr.filter((item) => {
+      if (item % 2 === 0) {
+          return true;
+      } else {
+          return false;
+      }
+  });
+
+  console.log(result2);
+  
+
+  // 箭头函数 再优化写法
+  const result3 = arr.filter(item => item % 2 === 0);
+
+  console.log(result3);   // [2, 4, 6]
+
+</script>
+
+</body>
+
+</html>

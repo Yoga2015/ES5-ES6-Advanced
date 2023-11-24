@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script type="text/javascript">
+
+    let obj = {
+      name: 'walking',
+      age: 20,
+      say: () => {
+        alert(this.age)  // 因为 window对象下 没有age属性, 所以弹出 undefined
+      }
+    }
+
+    obj.say(); // obj.say() === window.obj.say()
+
+  </script>
+
+  <script>
+
+    // 利用 箭头函数 求和
+
+    const getSum = (...arr) => {
+
+      let sum = 0;
+
+      for (let i = 0; i < arr.length; i++) {
+        sum += arr[i];
+      }
+
+      return sum;   // 注意 函数体 有多行代码 ，所以需要return
+    }
+
+    const result = getSum(1, 2, 3);
+
+    console.log(result);   // 6
+
+
+  </script>
+
+</body>
+
+</html>
