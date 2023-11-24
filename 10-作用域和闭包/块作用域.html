@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>块作用域</title>
+</head>
+
+<body>
+
+  <script>
+
+    for (let t = 1; t <= 6; t++) {
+
+      console.log(t)    // t 只能在该代码块中被访问 
+
+    }
+
+    console.log(t) // 报错了 ，因为 超出了 t 的 作用域
+
+
+    // 注意：ES5 语法，所以在外面调用 num 不会报错
+
+    if (true) {
+
+      var num = 10;   // 这个num变量 是在 块级作用域{} 里面 用 var声明 的，外面的是不能调用 num 的
+
+    }
+
+    console.log(num);  // 但是 在 ES5 语法 里，在 外面调用 num 却不会报错
+
+  </script>
+
+  <script>
+
+    var num = 10;  // 变量num 属于 全局作用域
+
+    function fn() {    // 外部函数
+     
+      var num = 20;   // 这里的 变量num 属于 局部作用域
+
+      function fun() {   // 内部函数
+
+        console.log(num);  //就近原则取值 所以输出 20
+
+      }
+
+      fun();
+
+    };
+
+    fn();
+
+  </script>
+
+</body>
+
+</html>
