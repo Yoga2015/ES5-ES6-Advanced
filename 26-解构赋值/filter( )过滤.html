@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>filter()过滤</title>
+</head>
+
+<body>
+
+  <script>
+
+    const arr = [1, 2, 3, 4, 5];
+
+    const result = arr.filter((item, index) => {
+
+      // console.log(item);  // 数组元素  1 2 3 4 5  
+
+      // console.log(index);  // 索引号 ，可写，可不写的 
+
+      // return item + 10;    // filter（）中 使用 加、减、乘、除 、等于 是 不起作用的
+      // return item - 10;
+      // return item * 10;
+      // return item / 10;
+      // return item = 3;
+
+      return item >= 3;    // filter（）中 使用 比较运算符（8个）、取余 才 起作用的
+
+    })
+
+    console.log(result);  // [3, 4, 5]
+
+
+    const newArr = arr.filter(item => item >= 3);
+
+    console.log(newArr);  // [3, 4, 5]
+
+
+
+  </script>
+
+</body>
+
+</html>

@@ -76,7 +76,7 @@
     arrObj.forEach(function (element, index, array) {
 
       // 在这里执行对数组元素的操作
-      
+
     });
 
     let arr = [1, 2, 3, 4, 5];
@@ -87,9 +87,24 @@
 
     });
 
+  </script>
 
 
+  <script>
 
+    // forEach 就是 适合于 遍历 数组对象 ，是 加强版的 for 循环
+
+    const Arr = ['red', 'green', 'blue'];
+
+    const result2 = Arr.forEach((item, index) => {
+
+      console.log(item);    // 数组元素  red  green  blue
+
+      console.log(index);   // 索引号 ，可写，可不写的  
+
+    })
+
+    console.log(result2);   // undefined    没有返回值的，打印输出 只能是 undefined 
 
 
   </script>
