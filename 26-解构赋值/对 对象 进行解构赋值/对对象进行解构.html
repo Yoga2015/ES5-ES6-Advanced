@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>对对象进行解构</title>
+</head>
+
+<body>
+  <script>
+
+    // 普通对象
+    // 以往 获取 obj 中 属性、方法 的方式 ：obj.name  、 obj.hobby[0] 、 obj.sayHi()
+    // 如果 obj对象中 再嵌套一个对象，那 获取 时，是不是 写得很长啊
+
+    const obj = {
+      name: 'walking',
+      age: 18,
+      hobby: ['吃饭', '睡觉', '打豆豆'],
+      sayHi: () => {
+        console.log('hi');
+      }
+    }
+
+    console.log(obj.name);       // walking
+    console.log(obj.hobby[0]);   // 吃饭
+
+
+    // const uname = 'yellow老师';  解构的变量名 不要和 外面的变量名 冲突，否则报错
+
+    // 解构的语法
+
+    const { uname, sex } = { uname: 'walking', sex: '男' };
+
+    // 等价于 const uame = obj.uame;
+
+    console.log(uname);  // walking   将对象属性的值 将被赋值给 与 属性名相同的 变量
+
+    console.log(age);
+
+
+
+    // 对象解构的变量名  可以重新改名   旧变量名：新变量名
+
+    const { uname: username, age } = { uname: ' walking', age: 18 };
+
+    console.log(username);  // walking
+
+    console.log(age);    // 18
+
+
+    
+
+  </script>
+</body>
+
+</html>

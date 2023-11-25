@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数组对象 解构</title>
+</head>
+
+<body>
+
+  <script>
+
+    const dog = [
+      {
+        uname: '旺财',
+        age: 8,
+      }
+    ];
+
+    const [{ uname, age }] = dog;
+
+    console.log(uname);   // 旺财
+
+    console.log(age);   // 8
+
+
+
+    const pig = [
+      {
+        name: '猪猪侠',
+        sex: '男',
+      }
+    ];
+
+    // 通过 对象解构的形式 修改变量名为 username ，并打印输出
+
+    const [{ name: username, sex }] = pig;
+
+    console.log(username);   // 猪猪侠
+
+    console.log(sex);   // 男
+
+
+
+    // 需求3: 请将 数组对象，完成 商品名和价格的解构
+
+    const goods = [
+      {
+        name: '苹果',
+        price: 100,
+      }
+    ];
+
+    const [{name,price}] = goods;
+
+
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=`, initial-scale=1.0">
+  <title>对 json对象 进行解构</title>
+</head>
+
+<body>
+  <script>
+
+    // 这是 ajax请求 后台 响应回来的数据 ，需要将 data中 的 数据 渲染到页面上
+
+    const msg = {
+      "code": 200,
+      "msg": "获取新闻列表成功",
+      "data": [
+        {
+          "id": 1,
+          "title": "5G商用自己，三大运用商收入下降",
+          "count": 145
+        },
+        {
+          "id": 2,
+          "title": "国际媒体头条速览",
+          "count": 19
+        },
+        {
+          "id": 3,
+          "title": "乌克兰和俄罗斯持续冲突",
+          "count": 1669
+        }
+      ]
+    }
+
+    // 使用 多级对象 进行解构 的 方式  把 data 解构 出来 ，从而获取 data 中 的 数据
+
+    // 需求 1： 请将以上msg 对象， 采用对象解构的方式 只选出 data 部分， 然后用于 渲染页面
+
+    // const { data } = msg;
+    // console.log(data);      // (3) [{…}, {…}, {…}]
+
+
+    // 需求 2：上面 msg 是 后台传递过来的数据，我们需要把 data 选出 当做 参数 传递给 函数
+
+    const { data } = msg;
+
+    function render(arr) {
+      // 我们只要data 数据
+      // 内部处理
+      console.log(arr);  // (3) [{…}, {…}, {…}]
+    }
+
+    render(data);
+
+
+    function render(arr) {
+      const { data } = arr;
+      // 我们只要data 数据
+      // 内部处理
+      console.log(data);  // (3) [{…}, {…}, {…}]
+
+    }
+
+    render(msg);
+
+
+    // msg 中 虽然有很多属性，但是我们只需要 data 数据，利用解构 以快速的获取 data值
+    
+    function render({ data }) {
+      // 我们只要data 数据
+      // 内部处理
+      console.log(data);  // (3) [{…}, {…}, {…}]
+    }
+
+    render(msg);
+
+
+    // 需求3 ： 为了防止 msg 里面 的 data 名字混淆，要求 渲染函数 里面 的 数据名 改为 myData
+
+    function render({ data: myData }) {
+
+      // 要求 将 获取过来的 data数据  更名为 myData
+      //  内部处理
+      console.log(myData);  // (3) [{…}, {…}, {…}]
+
+    }
+
+    render(msg);
+
+  </script>
+
+</body>
+
+</html>

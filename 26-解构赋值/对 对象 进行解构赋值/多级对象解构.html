@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>对 多级对象 进行解构</title>
+</head>
+
+<body>
+  <script>
+
+    // 多级对象 进行解构
+
+    const pig = {
+      name: '佩奇',
+      family: {
+        mother: '猪妈妈',
+        father: '猪爸爸',
+        sister: '乔治',
+      }
+    }
+
+    // 对 多级对象 进行解构
+    const { name, family: { mother, father, sister } } = pig;
+
+    console.log(name);   // 佩奇
+    console.log(mother); // 猪妈妈
+    console.log(father); // 猪爸爸
+    console.log(sister); // 乔治
+
+  </script>
+
+  <!-- <script>
+
+    const pig = [
+      {
+        name: '佩奇',
+        family: {
+          mother: '猪妈妈',
+          father: '猪爸爸',
+          sister: '乔治',
+        }
+      }
+    ]
+
+    // 对 多级对象 进行解构
+    const [{ name, family: { mother, father, sister } }] = pig;
+
+    console.log(name);    // 佩奇
+    console.log(mother);  // 猪妈妈
+    console.log(father);  // 猪爸爸
+    console.log(sister);  // 乔治
+
+  </script> -->
+
+</body>
+
+</html>
