@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>独立完成数组解构赋值</title>
+</head>
+
+<body>
+
+  <script>
+
+    // 需求1: 有个数组: const pc = [海尔，联想，小米，方正]
+
+    // 结构为变量:  hr lx mi fz
+
+    const pc = ['海尔', '联想', '小米', '方正'];
+
+    const [hr, lx, mi, fz] = pc;
+
+    console.log(hr);    // 海尔
+
+    console.log(lx);    // 联想
+
+    console.log(mi);    // 小米
+    
+    console.log(fz);    // 方正
+
+
+
+
+    // 需求2: 请将 最大值 和 最小值 函数返回值 解构 max 和 min 两个变量
+
+    function getValue() {
+
+      return [100, 60];
+
+    }
+
+    const [max, min] = getValue();
+
+    console.log(max);   // 100
+
+    console.log(min);   // 60
+
+  </script>
+
+</body>
+
+</html>

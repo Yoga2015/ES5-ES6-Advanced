@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>对数组进行解构赋值</title>
+</head>
+
+<body>
+  <script>
+
+    const arr = [100, 60, 80];
+    console.log(arr[0]);   // 最大值
+    console.log(arr[1]);   // 最小值
+    console.log(arr[2]);   // 平均值
+
+    // 以上的代码，长时间后不好记忆。
+
+
+    const arr1 = [100, 60, 80];
+    const max = arr1[0];   // 最大值
+    const min = arr1[1];   // 最小值
+    const avg = arr1[2];   // 平均值
+    console.log(max);   // 最大值
+    console.log(min);   // 最小值
+    console.log(avg);   // 平均值
+
+    // 以上的代码 书写麻烦
+
+
+    // 使用 解构赋值的方法 让代码 更简洁
+    const [max0, min0, avg0] = [100, 60, 80];
+    console.log(max0);   // 最大值
+    console.log(min0);   // 最小值
+    console.log(avg0);   // 平均值
+
+  </script>
+
+  
+</body>
+
+</html>

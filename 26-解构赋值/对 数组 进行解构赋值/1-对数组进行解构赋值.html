@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>对数组进行解构赋值</title>
+</head>
+
+<body>
+
+  <script>
+
+    // 对数组进行解构赋值
+
+    const arr = [100, 60, 80];
+
+    // 数组解构  赋值
+
+    // const [max, min,avg] = arr;
+    const [max, min, avg] = [100, 60, 80];
+    // const max = arr[0];
+    // const min = arr[1];
+    // const avg = arr[2];
+
+    console.log(max);   // 100
+    console.log(avg);  // 80
+
+  </script>
+
+
+<script>
+
+  // 交换2个变量的值
+
+  let a = 1;
+
+  let b = 2;
+
+  [b, a] = [a, b];
+
+  console.log(a);   // 2
+
+  console.log(b);   // 1
+
+</script>
+
+</body>
+
+</html>

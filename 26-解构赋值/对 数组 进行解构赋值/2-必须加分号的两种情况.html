@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>必须加分号的两种情况</title>
+</head>
+
+<body>
+  <script>
+
+    // 1、立即执行函数
+    (function () {
+      console.log(123);
+    })();                             // 注意 记得 加分号
+
+    (function () {
+      console.log(123);
+    })()
+
+    // Uncaught TypeError: (intermediate value)(...) is not a function
+
+
+    // 2、数组解构
+    let arr = [1, 2, 3]
+
+    let str = 'pink';               // 注意 记得 加分号
+
+    [1, 2, 3].map(function (item) {
+      console.log(item);
+    })
+
+
+    // Uncaught TypeError: "pink"[(1, 2, 3)].map is not a function
+
+
+    
+
+  </script>
+</body>
+
+</html>

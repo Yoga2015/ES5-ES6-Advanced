@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数组解构细节</title>
+</head>
+
+<body>
+  <script>
+
+    // 变量多，单元值少
+    const [a, b, c, d] = ['海尔', '联想', '小米', '康佳'];
+    console.log(a);   // 海尔
+    console.log(b);   // 联想
+    console.log(c);   // 小米
+    console.log(d);   // undefined     注意
+
+
+    // 变量少，单元值多
+    const [x, y] = ['海尔', '联想', '小米', '康佳'];
+    console.log(x);   // 海尔
+    console.log(y);   // 联想 
+
+
+    // 剩余参数 变量少，单元值多
+    const [arr1, arr2, ...value] = ['海尔', '联想', '小米', '康佳'];
+    console.log(arr1);   // 海尔
+    console.log(arr2);   // 联想 
+    console.log(value);    // ['小米', '康佳']    真数组
+
+
+    // 防止有 undefined 传递 给 单元值的情况，可以设置 默认值
+
+    const [one = 0, two = 0] = [10, 20];
+
+    console.log(one);  // 10
+
+    console.log(two);  // 20
+
+
+    const [three = '小米', four = '华为'] = ['OPPO'];
+
+    console.log(three);  // OPPO
+
+    console.log(four);   // 华为
+
+
+    // 按需导入赋值
+
+    const [e, f, , h] = [1, 2, 3, 4];
+
+    console.log(e);   // 1
+
+    console.log(f);   // 2
+
+    console.log(h);   // 4
+
+
+
+
+
+    const Arr = [1, 2, [3, 4]];  // 二维数组
+
+    console.log(Arr[0]);  // 1
+
+    console.log(Arr[1]);  // 2
+
+    console.log(Arr[2]);  // [3, 4]
+
+    console.log(Arr[2][0]);  // 3
+
+    console.log(Arr[2][1]);  // 4
+
+
+    // 支持 多维数组 的 结构      怎么拿到 小米 和 红米？
+
+    const [K, Z, [M, N]] = ['华为', 'OPPO', ['小米', '红米']];
+
+    console.log(K);   // 华为
+
+    console.log(Z);   // 'OPPO'
+
+    console.log(M);    // 小米
+
+    console.log(N);    // 红米
+
+
+
+
+
+  </script>
+</body>
+
+</html>
