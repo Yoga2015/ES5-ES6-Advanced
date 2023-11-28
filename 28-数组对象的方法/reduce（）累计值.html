@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> reduce（）累计值 </title>
+</head>
+
+<body>
+
+
+  <script>
+
+    // 数组 reduce() 累计值
+
+    // arr.reduce(function (上一次值, 当前值) { }, 初始值)
+
+    //   1、如果 没有起始值 ，则 上一次值 以 数组 的 第一个数组元素的值
+    //   2、每一次循环，把 返回值 给做为 下一次循环 的 上一次值。
+    //   3、如果 有 起始值 ，则 起始值 做为 上一次值
+
+    const arr = [1, 6, 8];
+
+
+    // 1、没有初始值
+    
+    const total = arr.reduce(function (prev, current) {
+
+      return prev + current;
+
+    })
+
+    console.log(total);     // 15
+
+
+    // 上一次值      当前值        返回值   （第一次循环）
+    //   1            6             7
+
+    // 上一次值      当前值        返回值   （第二次循环）
+    //   7            8             15
+
+
+    // 2、有 初始值
+
+    const total2 = arr.reduce(function (prev, current) {
+
+      return prev + current;
+
+    }, 10)
+
+    console.log(total2);   // 25
+
+
+    // 上一次值      当前值        返回值   （第一次循环）
+    //   10            1             11
+
+    // 上一次值      当前值        返回值   （第二次循环）
+    //   11            6             17
+
+    // 上一次值      当前值        返回值   （第二次循环）
+    //   17            8             25
+
+
+
+
+
+    // 3、箭头函数的写法
+    const total3 = arr.reduce((prev, current) => prev + current);
+
+    console.log(total3);
+
+  </script>
+
+
+
+  <!-- <script>
+
+    // reduce() 数组求和
+
+    const arr2 = [1, 2, 3, 4, 5];
+
+    const sum = arr2.reduce((prev, curr, currIndex) => {
+
+      console.log(prev, curr, currIndex);
+
+      return prev + curr;
+
+    }, 10)        // 累积值 10
+
+    console.log(sum);   // 15    25
+
+    // 1   2   1              // 10   1   0
+    // 3   3   2              // 11   2   1
+    // 6   4   3              // 13   3   2
+    // 10  5   4              // 16   4   3
+    // 15                     // 20   5   4
+    // 25
+
+    // reduce 数组扁平化
+    const arr3 = [[1, 2], [3, 4], [5, 6]];
+
+    function flat(arr) {
+
+      return arr.reduce((prev, curr) => {
+
+        return prev.concat(Array.isArray(curr) ? flat(curr) : curr)
+
+      }, [])
+
+    }
+
+    console.log(flat(arr3));   // [1, 2, 3, 4, 5, 6]
+
+  </script> -->
+
+</body>
+
+</html>
