@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Object.keys() 和 for...in 的区别</title>
+</head>
+
+<body>
+
+  <script>
+
+    let person = {
+
+      name: '李四',
+
+      sex: '男'
+
+    }
+
+    // 通过  Object.defineProperty 添加 的 属性    给person 对象进行代理
+
+    // 语法：Object.defineProperty(给哪个对象添加属性，'新增的属性'，｛新增的属性的配置｝)
+
+    Object.defineProperty(person, 'age', {
+
+      value: 18
+
+    })
+
+
+    // 1、 Object.keys（）无法遍历出来 ，通过 Object.defineProperty 添加的属性
+
+    console.log(Object.keys(person));  //  ['name', 'sex'] ,  但没遍历出 age
+
+
+    // 2、for...in 也 无法遍历 出来
+
+    for (let key in person) {
+
+      console.log(key);         // 'name'   'sex'
+
+    }
+
+  </script>
+
+</body>
+
+</html>

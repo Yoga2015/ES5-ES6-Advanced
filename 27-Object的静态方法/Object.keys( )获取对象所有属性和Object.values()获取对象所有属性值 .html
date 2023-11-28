@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Object的静态方法</title>
+</head>
+
+<body>
+
+  <!-- <script>
+
+    let arr = [10, 20, 30, 40, 50];
+
+    for (let i = 0; i < arr.length; i++) {
+      console.log(arr[i]);
+    }
+
+
+    arr.forEach((item) => {
+      console.log(item);
+    })
+
+    arr.filter((item) => {
+      console.log(item);
+    })
+
+    arr.map((item) => {
+      console.log(item);
+    })
+
+    arr.some((item) => {
+      console.log(item);
+    })
+
+    arr.every((item) => {
+      console.log(item + 11);
+    })
+
+    [1, 2, 3, 4, 5].reduce(function (a, b) {
+      console.log(a, b);
+      return a + b;
+    })
+
+  </script> -->
+
+  <script>
+
+    // Object.keys() 静态方法 用于 获取 对象中 所有属性(键)   ，注意 ：返回值 是 一个 由 属性 组成的 新数组 。
+    // Object.keys()  效果 类似 for...in , 但比 for...in 高效。
+    // 注意：但 Object.keys（）无法 遍历出 通过 Object.defineProperty 添加 的 属性
+
+    // 1. 定义一个对象
+    let obj = {
+      id: 1,
+      name: '王五',
+      sex: '女',
+      sayHi: function () {
+        console.log(hi)
+      }
+    }
+
+    // 使用 Object.keys() 方法 获取 所有的属性名
+
+    console.log(Object.keys(obj))    // ['id', 'name', 'sex', 'sayHi']
+    
+
+    // 使用 Object.values() 方法 获取 所有的属性值
+
+    console.log(Object.values(obj));  //  [1, '王五', '女', ƒ]
+
+
+  </script>
+
+</body>
+
+</html>

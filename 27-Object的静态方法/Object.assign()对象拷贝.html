@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Object.assign()对象合并</title>
+</head>
+
+<body>
+
+  <script>
+
+    // Object.assign(拷贝给谁,被拷贝的)
+
+    const kk = {
+      name: '芭比娃娃',
+      age: 5
+    }
+
+    const obj = {};
+
+    Object.assign(obj, kk);    // 1、拷贝对象  把 kk 拷贝给 obj中 
+
+    console.log(obj);   // {name: '芭比娃娃', age: 5}
+
+
+
+    let obj1 = {
+      name: '张三',
+      age: 18,
+      address: '北京'
+    };
+
+    let obj2 = {
+      phone: '110',
+      sayHi: () => {
+        console.log('你好');
+      }
+    };
+
+    let obj3 = Object.assign(obj1, obj2);  // 2. 将 obj2对象中所有属性和方法 拷贝到 obj1对象 中
+
+    console.log(obj1);    // {name: '张三', age: 18, address: '北京', phone: '110', sayHi: ƒ}
+
+    console.log(obj2);    // {phone: '110', sayHi: ƒ}
+
+    console.log(obj3);    // {name: '张三', age: 18, address: '北京', phone: '110', sayHi: ƒ}
+
+
+
+    // 3、拷贝过程中，出现 同名的属性 会被 覆盖  
+
+    let obj4 = {
+      name: '李四',
+      age: 19,
+      address: '上海'
+    }
+
+    let obj5 = {
+      name: '老王',
+      age: 39,
+      address: '广州',
+      phone: '119',
+    }
+
+    let obj6 = Object.assign(obj4, obj5);
+
+    console.log(obj6);  // {name: '老王', age: 39, address: '广州', phone: '119'}
+
+
+
+
+
+  </script>
+
+</body>
+
+</html>
