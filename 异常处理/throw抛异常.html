@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>throw 抛异常</title>
+</head>
+
+<body>
+
+  <script>
+
+    function fn(x, y) {
+
+      if (!x || !y) {
+
+        console.log(11);
+
+        throw new Error('没有参数传递进来');
+
+        console.log(22);
+
+      }
+
+      return x + y;
+
+    }
+
+    console.log(fn());
+
+    // 1、throw 抛出 异常 信息，程序 也会 终止执行
+    // 2、throw 后面 跟的是 错误 提示 信息
+    // 3、Error 对象 配合 throw 使用，能够 设置 更详细的错误信息。
+
+
+
+  </script>
+
+</body>
+
+</html>

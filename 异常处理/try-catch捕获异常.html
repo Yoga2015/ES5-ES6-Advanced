@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>try-catch捕获异常</title>
+</head>
+
+<body>
+
+  <p>123</p>
+
+  <script>
+
+    function fn() {
+
+      try {
+
+        // 可能发生错误的代码 ,要写到 try
+        const p = document.querySelector('.p');  // 这里故意 .p 写错，看看 能不能 检测到 错误。
+        // const p = document.querySelector('p');
+
+        p.style.color = 'yellow';
+
+      } catch (error) {
+
+        // 拦截 错误， 提示 浏览器提供的错误信息，但是 不中断程序 的 执行
+
+        console.log(error.message);   // Cannot read properties of null (reading 'style')
+
+        console.log(11);   // 这里 还能打印 11
+
+        // 感觉 只在控制台 打印 出错信息 不够明显,所以这里 直接抛出一个
+        throw new Error('你看看，选择器错误了吧');   // Uncaught Error: 你看看，选择器错误了吧
+
+        // 人为想中断 需要加 return  中断程序
+        return;
+
+        console.log(22);   // 这 22 不会 打印出来
+
+      } finally {
+
+        // 无论 你 程序 对不对 ，出错也好，finally代码块中 的 代码 一定会 执行
+
+        alert(33);   // 无论上面 报什么错误，这个 33 都会弹出来 
+
+      }
+
+      console.log(44);  // 这 44 不会 打印出来
+
+    }
+
+    fn()
+
+  </script>
+
+</body>
+
+</html>
