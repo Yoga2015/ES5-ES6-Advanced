@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>find( )查找第一个满足条件的元素并返回，否则返回undefined</title>
+</head>
+
+<body>
+
+  <script>
+
+    const arr = [
+      {
+        name: '苹果',
+        price: 100
+      },
+      {
+        name: '香蕉',
+        price: 200
+      },
+      {
+        name: '橘子',
+        price: 300
+      }
+    ];
+
+
+    // 找出 香蕉 这个对象, 并且 返回 这个对象
+
+    const result = arr.find((item) => {
+
+      console.log(item);  // 这里首先找到 {name: '苹果', price: 100}，再往下找就找到了香蕉，然后返回 该成员，则终止循环，不再继续查找。
+
+      return item.name === '香蕉';
+
+    })
+
+    const result2 = arr.find(item => item.name === '香蕉');
+
+    console.log(result);     // {name: '香蕉', price: 200}
+
+  </script>
+
+</body>
+
+</html>

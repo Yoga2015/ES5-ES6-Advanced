@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>every()</title>
+</head>
+
+<body>
+  <script>
+
+    var arr = [1, 2, 3, 4, 5];
+
+    const result = arr.every(function (value, index, arr) {
+      return elem >= 3;
+    });
+
+    console.log(result);   // false  
+
+    // 返回 false , 是因为 arr数组中 并非 所有成员 大于等于 3，所以返回 false。
+
+
+    const result2 = arr.every(item => item >= 1);
+
+    console.log(result2);   // true
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    // some() 方法用于 检测 数组中的元素 是否 满足指定条件, 但凡 数组中有一个元素 满足条件 ，则返回 true, 否则返回 false
+    // 注意，它的 返回值 是 布尔值，如果查找到这个元素，就返回 true，如果找不到就返回 false.
+    // 如果 找到 第一个满足条件的元素，则终止循环，不再继续查找
+
+    array.some(function (currentValue, index, arr) {
+
+        return true / false
+
+    })
+
+    let arr2 = [10, 20, 30, 40];
+
+    let flag = arr2.some(function (value) {
+
+      return value >= 20;
+    })
+
+    console.log(flag);   // true
+
+
+
+    let arr3 = ['red', 'pink', 'blue', 'black'];
+
+    let flag2 = arr3.some(function (value) {
+
+      return value == 'pink';
+
+    })
+
+    console.log(flag2);  //true
+
+  </script>
+  
+</body>
+
+</html>

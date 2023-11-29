@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>from() 用于 将 伪数组 转换为 真数组</title>
+</head>
+
+<body>
+
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+  </ul>
+
+  <script>
+
+    // Array.from(伪数组)  // 用于 将 伪数组 转换为 真数组
+
+    let lis = document.querySelectorAll('li');
+
+    console.log(lis);  // NodeList(3) [li, li, li]  返回的是 一个伪数组，不是真数组
+
+    // console.log(lis.pop()); // Uncaught TypeError: lis.pop is not a function  真数组 才有 pop() 等数组对象的方法
+
+
+    // 1、使用 Array.from() 进行 将 伪数组 转换为 真数组
+    let lis2 = Array.from(lis);
+
+    console.log(lis2);    // [li, li, li]
+
+    console.log(lis2.pop());   // li   返回 被删除的元素
+
+    console.log(lis2);   // [li, li]
+
+  </script>
+
+</body>
+
+</html>
