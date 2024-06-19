@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div>123</div>
+
+  <script>
+
+    let div = document.querySelector('div');
+
+    const spec = { size: '40cm*40cm', color: '黑色' };
+
+    // 请将 size 和 color 里面的值 拼接为 字符串 之后，写到 div 里面，展示 内容如下：
+    // 40cm*40cm/黑色 
+
+    // 1、第一个方式 ：使用字符串拼接
+
+    // div.innerHTML = `${spec.size}/${spec.color}`;
+
+
+    // 2、第二个方式 ：使用解构
+
+    // const { size, color } = spec;
+
+    // div.innerHTML = `${size}/${color}`;
+
+
+    // 3、第三个方式 ：思路 ：获得 所有的属性值，然后 拼接字符串 就可以了。
+
+    // (1)、获得 对象中 所有属性值 ，使用 Object.values() 返回的是 一个数组 
+    // (2)、将 数组 转换为 字符串 ， 使用 数组 join('/') , 把 数组 根据 分隔符 转换为 字符串
+
+    // 获得 对象中 所有属性值
+    // console.log(Object.values(spec));   //  ['40cm*40cm', '黑色']
+
+    div.innerHTML = Object.values(spec).join('/');
+
+  </script>
+
+</body>
+
+</html>

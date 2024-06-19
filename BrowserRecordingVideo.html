@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>webRTC录屏技术</title>
+</head>
+
+<body>
+
+  <button id="btn">点击开始录制屏幕</button>
+
+  <script>
+
+    const btn = document.getElementById('btn');
+
+    btn.onclick = async () => {
+
+      const stream = await navigator.mediaDevices.getDisplayMedia({
+        video: true,
+        audio: true
+      })
+
+      let chunks = []
+
+      const recoder = new MediaRecorder(stream)
+
+      recoder.addEventListener('dataavailable', (e) => {
+
+        chunks.push(e.data)
+
+      })
+
+      recoder.addEventListener('stop', () => {
+
+        const blob = new Blob(chunks, { type: 'video/mp4' })
+
+        const url = URL.createObjectURL(blob)
+
+        const a = document.createElement('a')
+
+        a.href = url
+
+        a.download = 'test.mp4'
+
+        a.click()
+
+        a.remove()
+
+      })
+
+      recoder.start();
+    }
+
+  </script>
+
+</body>
+
+</html>

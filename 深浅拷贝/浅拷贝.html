@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>浅拷贝</title>
+</head>
+
+<body>
+
+  <script>
+
+    const obj = {
+      name: '张三',
+      age: 18,
+      family: {
+        mother: '妈妈',
+        father: '爸爸'
+      }
+    };
+
+    console.log(obj);           // {name: '张三', age: 18, family: {…}}
+
+
+    // 1、浅拷贝   使用 展开运算符 {...obj}
+    const person = { ...obj };
+
+    console.log(person);        // {name: '张三', age: 18, family: {…}}
+
+    person.family.mother = '老妈';
+
+    console.log(person);        // {name: '张三', age: 30, family: {…}}
+
+    console.log(obj);           // {name: '张三', age: 18, family: {…}}
+
+
+
+    // 2、浅拷贝  使用 Object.assign(拷贝给谁,被拷贝的)
+
+    const person2 = {};
+
+    Object.assign(person2, obj);
+
+    console.log(person2);    // {name: '张三', age: 18, family: {…}}
+
+    person.family.father = '老爸';
+
+    console.log(person2);    // {name: '张三', age: 44, family: {…}}
+
+    console.log(obj);       // {name: '张三', age: 18, family: {…}}
+
+  </script>
+
+</body>
+
+</html>

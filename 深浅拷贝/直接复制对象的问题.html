@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+
+    // 直接 复制对象 的 问题
+
+    const obj = {
+      uname: 'walking',
+      age: 19
+    }
+
+    console.log(obj);     // {uname: 'walking', age: 19}
+
+    const person = obj;
+
+    console.log(person);  // {uname: 'walking', age: 19}
+
+    person.age = 20;
+
+    console.log(person);  // {uname: 'walking', age: 20}
+
+    console.log(obj);     // {uname: 'walking', age: 20}    
+
+    // 明明是 在 person对象上 做修改的，为何 obj对象 里面的 age值 也发生了变化？  还是 因为 堆  和 栈  的问题
+
+  </script>
+
+</body>
+
+</html>
