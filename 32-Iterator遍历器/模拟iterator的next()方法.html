@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>模拟iterator的next()方法</title>
+</head>
+
+<body>
+  <script>
+
+    var arr = ['a', 'b'];
+
+    var it = makeIterator(arr);  // 遍历器函数 makeIterator，返回一个遍历器对象（即 指针对象 ）
+
+    console.log(it.next());   // { value: "a", done: false }
+    console.log(it.next());  // { value: "b", done: false }
+    console.log(it.next());  // { value: undefined, done: true }
+
+    function makeIterator(array) {
+      var nextIndex = 0;
+      return {
+        next: function () {
+          return nextIndex < array.length ?
+            { value: array[nextIndex++], done: false } :
+            { value: undefined, done: true }
+        }
+      }
+    }
+
+  </script>
+</body>
+
+</html>
