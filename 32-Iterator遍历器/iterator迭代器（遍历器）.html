@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>什么是Iterator遍历器</title>
+</head>
+
+<body>
+
+  什么是 Iterator
+  Iterator 是一种 接口。
+  Iterator 用来 为 各种不同的数据结构 提供 统一的访问机制。
+
+  ES6 借鉴 C++、Java、C# 和 Python 语言，创造了一种 新的遍历命令 for...of 遍历，
+  作为 遍历 所有数据结构 的 统一的方法。 Iterator的接口 主要供 for…of 消费。
+  (意思就是 : 只要你这个数据结构部署了Iterator 接口，那我就可以使用 for…of 遍历 你这个数据。)
+
+  下面是 JavaScript 原生具备 Iterator 接口 的 数据结构
+  Array、 Set、 Map、 String、 TypedArray、 NodeList 等等
+  任何数据结构 只要部署了 Iterator接口，就被视为具有 iterator 接口，就可以用 for...of 遍历它的成员（遍历一个数组）
+
+  for...of 遍历 内部调用的是 数据结构 的 Symbol.iterator 方法。
+  Iterator 遍历器 是一种 接口，也是一个属性。
+  可以 打印 一个数组，可以看出 数组 中 有 symbol.Iterator 属性。
+
+  <script>
+
+    // 什么是Iterator遍历器
+
+    // 声明一个数组
+    let F3 = ['小沈阳', '赵四', '刘能', '宋小宝'];
+
+    console.log(F3);    // 打印数组，看看其中的 symbol.Iterator 属性
+
+    // 1、使用 for...in 遍历数组  
+    for (let v in F3) {   // 此时变量 v 保存的是 键名
+
+      console.log(v);   // 0   1   2   3
+
+    }
+
+    // 2、使用 for...of 遍历数组 ，遍历出 数组元素的
+    for (let v of F3) {     // // 此时变量 v 保存的是 键值
+
+      console.log(v);     // 小沈阳 赵四  刘能  宋小宝
+
+    }
+
+    // 声明一个数组
+    let F4 = ['小沈阳', '赵四', '刘能', '宋小宝'];
+
+    // 创建 一个指针对象 iterator
+    let iterator = F4[Symbol.iterator]()
+
+    // 控制台里看到 iterator对象 有 next()方法
+    console.log(iterator);   // Array Iterator {}
+
+    // 每一次 调用 iterator对象 的next()方法 ，指针自动指向数据结构的一个成员（下一个成员）。
+    console.log(iterator.next());   // {value: '小沈阳', done: false}
+    console.log(iterator.next());   // {value: '赵四', done: false}
+    console.log(iterator.next());   // {value: '刘能', done: false}
+    console.log(iterator.next());   // {value: '宋小宝', done: false}
+    console.log(iterator.next());   // {value: undefined, done: true}
+
+
+    // Iterator  工作原理
+    // 1 、创建一个指针对象，指向 当前数据结构 的 起始位置。
+    // 2、第一次调用 指针对象的 next()方法  指针自动指向数据结构的第一个成员。
+    // 3、接下来不断调用 next()方法 ，指针一直往后移动，直到指向最后一个成员。
+    // 4、每调用 next()方法 返回一个包含 value属性 和 done属性的对象。
+    // value属性返回当前位置的成员，done属性是一个布尔值，表示遍历是否结束。
+
+  </script>
+
+</body>
+
+</html>

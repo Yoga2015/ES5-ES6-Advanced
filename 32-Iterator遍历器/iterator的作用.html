@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iterator的作用</title>
+</head>
+
+<body>
+
+  Iterator的作用
+
+  自定义遍历数据 ：按照我们自己的意愿 来遍历 数据
+
+  <script>
+    // 声明一个对象
+    const banji = {
+      name: '东北一班',
+      stus: [
+        '小沈阳',
+        '赵四',
+        '刘能',
+        '宋小宝'
+      ],
+      [Symbol.iterator]() {
+        let index = 0;    // 索引变量
+        let _this = this;
+        return {
+          next: function () {
+            if (index < _this.stus.length) {
+              const result = { value: _this.stus[index], done: false };
+              index++;   // 下标自增    
+              return result; // 返回结果
+            } else {
+              return { value: undefined, done: true };
+            }
+          }
+        }
+      }
+    };
+
+    //使用 for...of 遍历 banji 对象 ,而且要求 每次返回的是 banji对象 里 stus数组中的成员
+    for (let v of banji) {
+      console.log(v);  // TypeError: banji is not iterable 因为banji对象里没有Iterator属性
+    }
+
+    // 为什么不使用 for...in ，而使用 for...of 遍历 呢？ 行，但是没有按照我的意愿去执行
+
+    // 使用 forEach遍历  banji 对象也可以，但是这不符合 面向对象的一种思想
+    banji.stus.forEach((value, key) => {
+      console.log(value, key);   // 小沈阳 0  赵四 1  刘能 2   宋小宝 3
+    })
+
+    // 所以 在 banji 对象里 继续加上 Symbol.iterator（） 方法
+    for (let v of banji) {
+      console.log(v);  //TypeError: Result of the Symbol.iterator method is not an object 
+      // TypeError: undefined is not a function
+      // TypeError: Iterator result undefined is not an object
+      // 小沈阳   赵四   刘能    宋小宝 
+    }
+  </script>
+
+</body>
+
+</html>
