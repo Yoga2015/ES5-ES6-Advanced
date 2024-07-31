@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>什么是Promise</title>
+</head>
+
+<body>
+
+  <script>
+
+    // 模拟获取 -->  用户数据 --> 用户的订单数据 --> 用户的订单数据中的商品数据    （有先后顺序）
+
+
+    // 什么是 Promise
+    //   Promise 是 异步编程的一种解决方案，比 传统的异步解决方案—-> 回调函数 和 事件，更合理和更强大。
+    //   在 Promise 出现之前，是使用 回调函数 来实现 异步操作， 回调函数 管理 一些异步程序的状态 。
+
+    // 为什么会出现 Promise？
+    //   Promise  主要是为了 解决 回调地狱 而生。
+
+    // 1s 后 控制台 输出 111 ； 2s 后 输出 222 ； 3s 后 输出 333
+    // 回调地狱
+    setTimeout(() => {
+      console.log(111);
+      setTimeout(() => {
+        console.log(222);
+        setTimeout(() => {
+          console.log(333);
+        }, 3000)
+      }, 2000)
+    }, 1000)
+
+    // 上面传统 的 回调函数写法 使得 代码 混成一团，变得横向发展而不是向下发展。
+
+
+    // 1、实例化 Promise 对象
+    const p = new Promise(function (resolve, reject) {
+
+      setTimeout(function () {
+
+        // 调用 resolve（）  说明 数据读取 成功 
+        // let data1 = '数据库中的用户数据';
+        // resolve(data1)
+
+        // 调用 reject（） 说明 数据读取 失败 
+        let data2 = '数据读取失败';
+        reject(data2)
+
+      }, 1000)
+
+    })
+
+    // 2、调用 Promise实例对象 的 then() 方法 ，then() 方法 可以接受 两个参数 ，这 两个参数 都是 回调函数
+    p.then(function (value) {
+
+      // success
+      console.log(value);
+
+    }, function (error) {
+
+      // fail
+      console.log(error);
+
+    })
+
+    // 实例化 Promise 对象，并把 异步操作 封装 在 其中，
+
+    // 而且 通过 resolve 或者 reject 来 改变 Promise 的 实例化对象 p 的 状态，
+
+    // 改变 Promise 的 实例化对象 p 的 状态 后，就 调用 then（）方法 里面 的 回调函数：
+
+    //  若 异步操作 成功 ，就 调用 then（）方法 的 第一个 参数（ 回调函数）
+
+    //  若 异步操作 失败 ，就 调用 then（）方法 的 第二个 参数（ 回调函数）
+
+
+
+    let p1 = new Promise((resolve, reject) => {
+
+      setTimeout(function () {
+
+        let data = '数据库中的用户数据';
+
+        resolve(data); // 即从“未完成”到“成功”（即从 pending 变为 fulfilled 状态）
+
+      }, 1000)
+
+    })
+
+    p1.then(function (value) {      // 成功时就调用then()方法的第一个 回调函数
+
+      console.log(value);   // 数据库中的用户数据
+
+    }, function (reason) {   // 失败时就调用then()方法的第二个 回调函数
+
+      console.log(reason);   // 数据读取失败
+
+    })
+
+
+    let p2 = new Promise((resolve, reject) => {
+
+      setTimeout(function () {
+
+        let err = '数据读取失败';
+
+        reject(err);  //  即从“未完成”到“失败”  (即从 pending 变为 rejected 状态)
+
+      }, 1000)
+
+    })
+
+    p2.then(function (value) {      // 成功时就调用then()方法的第一个 回调函数
+
+      console.log(value);   // 数据库中的用户数据
+
+    }, function (reason) {   // 失败时就调用then()方法的第二个 回调函数
+
+      console.log(reason);   // 数据读取失败
+
+    })
+
+  </script>
+
+</body>
+
+</html>
