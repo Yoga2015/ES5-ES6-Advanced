@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Promise对象的catch()方法</title>
+</head>
+
+<body>
+
+  <script>
+    const p = new Promise((resolve, reject) => {
+
+      setTimeout(function () {
+
+        // 设置 实例对象 p 的状态 为 失败，并设置 失败的值
+        reject('出错了')
+
+      }, 1000)
+
+    });
+
+    // 第一种方式
+    p.then(function (value) {
+
+    }, function (reason) {
+
+      console.error(reason);
+
+    })
+
+    // 第二种方式
+    p.catch(function (reason) {
+
+      console.warn(reason);
+
+    })
+
+  </script>
+
+</body>
+
+</html>

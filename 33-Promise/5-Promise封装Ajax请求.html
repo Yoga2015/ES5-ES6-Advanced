@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Promise封装Ajax请求</title>
+</head>
+
+<body>
+
+  XMLHttpRequest本身是一个构造函数，可以使用new命令生成实例。它没有任何参数。
+
+  一旦新建实例，就可以使用 open()方法 向指定的服务器网址，发出 HTTP 请求。
+
+  open()方法 可接受 三个参数 分别是 请求方式 和 请求地址 和 true/false 。
+
+  然后 ，指定回调函数 去 监听通信状态（readyState属性）的变化。
+
+  一旦拿到服务器返回的数据，AJAX 不会刷新整个网页，而是只更新网页里面的相关部分，从而不打断用户正在做的事情。
+
+
+  <!-- <script>
+
+    // XMLHttpRequest对象 发出 HTTP 请求
+
+    // 接口地址：  https://api.apiopen.top/getJoke
+
+    // 1、创建 XMLHttpRequest 对象 的 实例 (它没有任何参数)
+    const xhr = new XMLHttpRequest();
+
+    // 2、一旦新建实例，就可以使用open()方法 向指定的服务器网址 发出请求
+    xhr.open("GET", "https://api.apiopen.top/getJoke")
+
+    // 故意输错地址，模拟请求失败，接收服务器返回的响应状态码
+    // xhr.open("GET", "https://api.apiopen.top/get");  
+
+    // 3、发送 HTTPS 请求 
+    xhr.send();
+
+    // 4、绑定事件，处理响应结果 （ 接收 服务器 返回的数据 ）
+    xhr.onreadystatechange = function () {
+
+      // 判断 服务器 返回的数据 是否 已经完全接收 或者 本次接收已经失败
+      if (xhr.readyState === 4) {  // 通信成功,已经完全接收,状态值 为 4
+
+        // 判断 响应状态码 ，200-299 是 请求成功 的 范围
+        if (xhr.status >= 200 && xhr.status < 300) {
+
+          // 表示请求成功 , 并接收 服务器 返回 的 数据，并处理
+          console.log(xhr.response);
+
+        } else {
+
+          // 表示请求失败, 并接收 服务器 返回 的 数据，并处理
+          console.error(xhr.status);
+
+        }
+
+      }
+
+    }
+
+  </script> -->
+
+  <script>
+
+    // Promise封装Ajax请求.  接口地址：  https://api.apiopen.top/getJoke
+
+    const p = new Promise((resolve, reject) => {
+
+      // 1、创建 XMLHttpRequest 对象 的 实例 (它没有任何参数)
+      const xhr = new XMLHttpRequest();
+
+      // 2、一旦新建实例，就可以使用open()方法 向指定的服务器网址 发出请求
+      xhr.open("GET", "https://api.apiopen.top/getJoke")
+
+      // 3、发送 HTTPS 请求 
+      xhr.send();
+
+      // 4、绑定事件，处理响应结果 （ 接收 服务器 返回的数据 ）
+      xhr.onreadystatechange = function () {
+
+        // 判断 服务器 返回的数据 是否 已经完全接收 或者 本次接收已经失败
+        if (xhr.readyState === 4) {  // 通信成功,已经完全接收,状态值 为 4
+
+          // 判断 响应状态码 ，200-299 是 请求成功 的 范围
+          if (xhr.status >= 200 && xhr.status < 300) {
+
+            // 表示请求成功 , 并接收 服务器 返回 的 数据   
+            resolve(xhr.response);   // console.log(xhr.response);
+
+          } else {
+
+            // 表示请求失败, 并接收 服务器 返回 的 数据 
+            reject(xhr.status);     // console.error(xhr.status);
+
+          }
+
+        }
+
+      }
+
+    })
+
+    // 根据 实例对象 p 的 状态，指定 回调函数 ，来处理 服务器 返回 的 数据
+    p.then(function (value) {
+
+      console.log(value);
+
+      // 根据 服务器 返回的数据，在这里 处理 请求成功 ，避免了 回调地狱
+
+    }, function (reason) {
+
+      console.log(reason);
+
+      // 根据 服务器 返回的数据，在这里 处理 请求失败 ，避免了 回调地狱
+
+    })
+
+  </script>
+
+
+  AJAX 通过 原生 的 XMLHttpRequest对象 发出 HTTP 请求，得到服务器返回的数据后，再进行处理（更新网页数据）。
+
+  XMLHttpRequest对象是 AJAX 的主要接口，用于 浏览器 与 服务器之间 的 通信。
+
+  XMLHttpRequest对象尽管名字里面有XML和Http，它实际上可以使用 多种协议（比如file或ftp），发送任何格式的数据（包括字符串和二进制）。
+
+  AJAX 只能向 同源网址（协议、域名、端口都相同）发出 HTTP 请求，如果发出跨域请求，就会报错
+
+</body>
+
+</html>

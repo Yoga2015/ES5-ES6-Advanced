@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    const p = new Promise(function (resolve, reject) {
+
+      setTimeout(() => {
+
+        resolve('用户数据')
+
+        // reject('出错啦')
+
+      }, 1000)
+
+    })
+
+
+    // then（）方法 的 返回结果 是 Promise 对象，对象状态 由 回调函数 的 执行结果 决定
+    // 如果 回调函数 中 返回的结果是 非 Promise 类型 的 属性，状态成功，返回值 为 对象 的 成功 的值
+    const result = p.then((value) => {
+
+      console.log(value);
+
+      // (1) 非 Promise 类型 的 属性
+      // return '9527';
+
+      //（2）是 Promise 对象
+      // return new Promise((resolve, reject) => {
+      // resolve('ok')
+      // reject('error')
+      // })
+
+      // (3) 抛出错误
+      // throw new Error('出错啦')
+      throw '出错啦'
+
+    }, (reason) => {
+
+      console.warn(reason);
+
+    })
+
+    console.log(result);  // 返回结果 是 Promise 对象:  Promise {<pending>}
+
+
+    // then() 方法 可以 链式使用
+
+    p.then(value => {
+
+    }).then(value => {
+
+    })
+
+
+    p.then(step1)
+
+      .then(step2)
+
+      .then(step3)
+
+      .then(
+
+        console.log,
+        console.error
+
+      );
+
+  </script>
+</body>
+
+</html>
