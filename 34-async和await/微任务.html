@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>微任务</title>
+</head>
+
+<body>
+  <script>
+
+    new Promise(function (resolve, reject) {
+
+      resolve(1);
+
+    }).then(console.log);
+
+    console.log(2);
+
+    // 控制台中的打印顺序：
+    // 2
+    // 1
+
+    setTimeout(function () {
+
+      console.log(1);
+
+    }, 0);
+
+    new Promise(function (resolve, reject) {
+
+      resolve(2);
+
+    }).then(console.log);
+
+    console.log(3);
+
+    // 控制台中的打印顺序：
+    // 3
+    // 2
+    // 1
+
+  </script>
+</body>
+
+</html>
