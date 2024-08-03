@@ -2,31 +2,87 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>async</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>async关键字</title>
 </head>
 
 <body>
-
-  async 是 ES2017（ES8） 引入的一个关键字，用于声明一个函数为异步函数。
-
-  async 函数是基于 ES6 中引入的 Promise 机制的一个语法糖，旨在提供更简洁、更易读的异步编程方式。
-
-  async 函数 的 设计灵感来源于 Generator 函数，但相比于 Generator 函数，async 函数在语法上更加简洁，使用上也更加方便。
-
-  async 函数 允许你 在函数内部使用 await 关键字 来 暂停函数的执行，等待 Promise 解决（resolve）或拒绝（reject），然后继续执行函数体中的后续代码。
-
-  async/await 通过使异步代码以更接近同步代码的方式书写，减少了这种嵌套，提高了代码的可读性。
-
-  使用 async/await 可以更方便地使用 try/catch 语句来捕获 和 处理异步操作中的错误，而传统的 Promise 链式调用 中 的 错误处理通常需要使用多个 catch 语句。
+  async 是 ES8 引入的一个关键字，用于 声明一个函数 为 异步函数，该 函数的执行
+  返回的结果 是 一个 Promise 对象。
 
   <script>
 
+    // 普通的函数
+    function fn() { }
 
+    // async函数   特殊的是 返回值 是一个 Promise 对象
+    async function fn() {
+
+      // 此时 返回的结果 不管是 字符串 、数组 、null 、undefined，
+      // 只要返回的结果 不是一个Promise类型的对象 时，则返回的结果 就是一个 成功的 Promise对象
+
+      // 返回一个字符串  , 则返回的结果就是一个 成功的 Promise对象
+      return "今晚打老虎";
+
+      // 返回的结果 不是一个Promise类型对象时，则返回的结果就是一个 成功的Promise对象
+      return;
+
+      // 抛出错误   此时 返回的结果是一个失败的 Promise对象
+      throw new Error("出错了");
+
+      // 当返回的结果是一个 Promise对象
+      return new Promise((resolve, reject) => {
+
+        // resolve('成功的数据');
+        reject("失败的错误");
+
+      });
+    }
+
+    const result = fn();
+
+    result.then(value => {
+      console.log(value);
+    }, reason => {
+      console.warn(reason);
+    }
+    );
 
   </script>
 
+  <script>
+    async function fn1() {
+      // 返回一个字符串
+      // return '今晚打老虎';
+
+      // 返回的结果 不是一个Promise类型的对象，返回的结果 就是 成功 Promise对象
+      // return;
+
+      // 抛出错误，返回的结果 是一个 失败的 Promise
+      // throw new Error('出错了！')
+
+      // 返回的结果 如果 是一个 Promise 对象       （通常）
+      return new Promise((resolve, reject) => {
+        // resolve('成功的数据')
+
+        reject("失败的数据");
+      });
+    }
+
+    const result2 = fn1();
+
+    // console.log(result);
+
+    result2.then(
+      (value) => {
+        console.log(value);
+      },
+      (reason) => {
+        console.warn(reason);
+      }
+    );
+  </script>
 </body>
 
 </html>
