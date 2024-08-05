@@ -9,21 +9,23 @@
 
 <body>
 
-  什么是 Iterator
-  Iterator 是一种 接口。
-  Iterator 用来 为 各种不同的数据结构 提供 统一的访问机制。
+  什么是 Iterator<br><br>
+  Iterator 是一种 接口。 <br><br>
+  Iterator 用来 为 各种不同的数据结构 提供 统一的访问机制。<br><br>
 
   ES6 借鉴 C++、Java、C# 和 Python 语言，创造了一种 新的遍历命令 for...of 遍历，
   作为 遍历 所有数据结构 的 统一的方法。 Iterator的接口 主要供 for…of 消费。
-  (意思就是 : 只要你这个数据结构部署了Iterator 接口，那我就可以使用 for…of 遍历 你这个数据。)
+  (意思就是 : 只要你这个数据结构部署了Iterator 接口，那我就可以使用 for…of 遍历 你这个数据。)<br><br>
 
-  下面是 JavaScript 原生具备 Iterator 接口 的 数据结构
-  Array、 Set、 Map、 String、 TypedArray、 NodeList 等等
-  任何数据结构 只要部署了 Iterator接口，就被视为具有 iterator 接口，就可以用 for...of 遍历它的成员（遍历一个数组）
+  下面是 JavaScript 原生具备 Iterator 接口 的 数据结构<br><br>
+  Array、 Set、 Map、 String、 TypedArray、 NodeList 等等 任何数据结构 只要部署了 Iterator接口，
+  就被视为具有 iterator 接口，就可以用 for...of 遍历它的成员（遍历一个数组） <br><br>
 
-  for...of 遍历 内部调用的是 数据结构 的 Symbol.iterator 方法。
-  Iterator 遍历器 是一种 接口，也是一个属性。
-  可以 打印 一个数组，可以看出 数组 中 有 symbol.Iterator 属性。
+  for...of 遍历 内部调用的是 数据结构 的 Symbol.iterator 方法。<br><br>
+
+  Iterator 遍历器 是一种 接口，也是一个属性。<br><br>
+
+  尝试 打印 一个数组，可以看出 数组 中 有 symbol.Iterator 属性。<br><br>
 
   <script>
 
