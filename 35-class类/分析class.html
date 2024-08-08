@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>分析class</title>
+</head>
+
+<body>
+
+  ES5 中，生成 实例对象 的 传统方法 是 通过 构造函数 的。<br><br>
+
+  ES6 引入了 Class (类) 这个概念，作为 对象 的 模板 。通过 class 关键字，可以定义 类 。 <br><br>
+
+  class 可以看作 只是 一个语法糖，它 的 绝大部分功能，ES5 都可以做到。 <br><br>
+
+  <script>
+
+    // 使用 ES5 的 构造函数 来 实例化对象
+
+    // 创建 Phone 类 ，并设置 brand、price 属性
+    function Phone(brand, price) {
+      this.brand = brand;
+      this.price = price;
+    }
+
+    // 为 Phone 类 添加 call方法   从 构造函数 的 原型对象上 添加 ,这样可以做到 重复用
+    Phone.prototype.call = function () {
+
+      console.log('我可以打电话！');
+
+    }
+
+    // 实例化对象
+    let xiaomi = new Phone('xiaomi', 4999);
+
+    xiaomi.call();
+
+    console.log(xiaomi);
+
+  </script>
+
+  <script>
+
+    class Shouji {
+      //构造方法 名字不能修改  this关键字则代表实例对象   new一个实例对象时就自调用
+      constructor(brand, price) {
+        this.brand = brand;
+        this.price = price;
+      }
+
+      //添加方法  前面不需要加上function这个关键字 方法必须使用该语法，不能使用 ES5 的对象完整形式   
+      call() {
+        console.log('我可以打电话！');
+      }
+    }
+
+    //使用的时候，也是直接对类使用new命令
+    let redmi = new Shouji('redmi', 1999);
+    console.log(redmi);
+
+    //类的数据类型就是函数
+    console.log(typeof Shouji);   // function
+
+    // 类本身就指向构造函数
+    console.log(Shouji === Shouji.prototype.constructor);
+
+  </script>
+
+</body>
+
+</html>
