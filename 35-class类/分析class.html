@@ -43,28 +43,30 @@
 
   <script>
 
+    // 通过class实例化对象 
+
     class Shouji {
-      //构造方法 名字不能修改  this关键字则代表实例对象   new一个实例对象时就自调用
+      // 构造方法 名字不能修改  this关键字 则代表 实例对象   当new一个实例对象时 就自调用
       constructor(brand, price) {
         this.brand = brand;
         this.price = price;
       }
 
-      //添加方法  前面不需要加上function这个关键字 方法必须使用该语法，不能使用 ES5 的对象完整形式   
+      //添加方法  前面不需要加上function这个关键字 
       call() {
         console.log('我可以打电话！');
       }
     }
 
-    //使用的时候，也是直接对类使用new命令
+    // 使用的时候，也是直接 对 类 使用 new 命令 创建 一个实例对象
     let redmi = new Shouji('redmi', 1999);
     console.log(redmi);
 
-    //类的数据类型就是函数
+    //类的数据类型 就是 函数
     console.log(typeof Shouji);   // function
 
-    // 类本身就指向构造函数
-    console.log(Shouji === Shouji.prototype.constructor);
+    // 类本身 就指向 构造函数
+    console.log(Shouji === Shouji.prototype.constructor);    // true
 
   </script>
 
