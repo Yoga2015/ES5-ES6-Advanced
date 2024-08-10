@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>类中的属性和方法</title>
+</head>
+
+<body>
+
+  <script>
+
+    // constructor() 方法
+
+    // 一个类必须有constructor()方法，如果没有显式定义，一个空的constructor()方法会被默认添加。
+
+    class Point {
+
+    }
+
+    // 等同于
+
+    class Point {
+
+      constructor() { }
+
+    }
+
+  </script>
+
+  <script>
+
+    // 类的所有方法 都定义在 类 的 prototype属性 上面
+
+    class Point {
+
+      // 一个类必须有constructor()方法，如果没有显式定义，一个空的constructor()方法会被默认添加。
+      constructor() { }
+
+      toString() { }
+
+      toValue() { }
+
+    }
+
+    // 同上 、等同于
+
+    function Point() {
+
+    }
+
+    Point.prototype = {
+
+      constructor() { },
+
+      toString() { },
+
+      toValue() { },
+
+    };
+
+    // 上面代码中，constructor()、toString()、toValue()这三个方法，其实都是定义在 Point.prototype 上面
+
+    // 因此，在类的实例上面调用方法，其实就是调用原型上的方法。
+
+
+  </script>
+
+</body>
+
+</html>
