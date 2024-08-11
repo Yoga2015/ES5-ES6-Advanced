@@ -4,10 +4,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>类中的属性和方法</title>
+  <title>分析 类中的construtor()方法</title>
 </head>
 
 <body>
+
+  每一个 类 中 都必须有一个 constructor( ) 方法。<br> <br>
+
+  当 类中 如果没有显式定义，一个空的 constructor（）方法 会被默认添加。 <br> <br>
+
+  constructor( ) 方法 用于 初始化 新创建的对象。 <br> <br>
+
+  constructor( ) 方法 可以接受 参数，这些参数 用于 初始化 对象的属性。 <br> <br>
+
+  在 constructor( ) 内部，可以使用 this关键字 来引用 当前实例 。 <br> <br>
+
+  如果 类 继承 自另一个类，可以使用 super关键字 来调用 父类的constructor( ) 方法。 <br> <br>
+
+  右面代码中，定义了一个空的类Point，JavaScript 引擎会自动为它添加一个空的 constructor() 方法 <br> <br>
 
   <script>
 
@@ -19,7 +33,7 @@
 
     }
 
-    // 等同于
+    // 同上 ，等同于   
 
     class Point {
 
@@ -35,7 +49,6 @@
 
     class Point {
 
-      // 一个类必须有constructor()方法，如果没有显式定义，一个空的constructor()方法会被默认添加。
       constructor() { }
 
       toString() { }
@@ -45,10 +58,6 @@
     }
 
     // 同上 、等同于
-
-    function Point() {
-
-    }
 
     Point.prototype = {
 
@@ -63,6 +72,13 @@
     // 上面代码中，constructor()、toString()、toValue()这三个方法，其实都是定义在 Point.prototype 上面
 
     // 因此，在类的实例上面调用方法，其实就是调用原型上的方法。
+
+
+    class Point { }
+
+    const p = new Point();
+
+    p.constructor === Point.prototype.constructor // true
 
 
   </script>

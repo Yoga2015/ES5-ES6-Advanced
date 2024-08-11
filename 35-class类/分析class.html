@@ -9,41 +9,86 @@
 
 <body>
 
-  ES5 中，生成 实例对象 的 传统方法 是 通过 构造函数 的。<br><br>
+  在 ES5 及之前的版本中，JavaScript 中 使用 构造函数 来创建 对象，
+  然后 通过 new关键字 来调用，从而 创建 并 初始化 新对象。 <br><br>
 
-  ES6 引入了 Class (类) 这个概念，作为 对象 的 模板 。通过 class 关键字，可以定义 类 。 <br><br>
+  什么是 class <br><br>
 
-  class 可以看作 只是 一个语法糖，它 的 绝大部分功能，ES5 都可以做到。 <br><br>
+  ES6 引入了 Class (类) 这个概念，作为 对象 的 模板 。 <br><br>
+
+  通过 class 关键字，来 定义 类 ，然后 也是通过 new关键字 来调用，从而 创建 并 初始化 新对象。 <br><br>
+
+  class 底层 是基于 ES5中 已有的原型继承机制 实现 的 语法糖。 <br><br>
+
+  为什么出现会 class <br><br>
+
+  ES6 中 引入 的 class 主要是为了 提供一种 更接近于 传统面向对象编程语言 的 语法结构，
+  使得 JavaScript 的 面向对象编程 更加 简洁、清晰、易读。 <br><br>
+
+  使用 class 语法 可以让 对象原型 的 写法 更加 简洁、清晰、易读，更符合 面向对象编程 的习惯。 <br><br>
 
   <script>
 
-    // 使用 ES5 的 构造函数 来 实例化对象
+    // 使用 构造函数 来创建 对象，并 实例化对象 
 
-    // 创建 Phone 类 ，并设置 brand、price 属性
-    function Phone(brand, price) {
-      this.brand = brand;
+    // 创建 Phone 构造函数 ，并设置 name、price 属性
+    function Phone(name, price) {
+
+      this.name = name;
+
       this.price = price;
+
     }
 
-    // 为 Phone 类 添加 call方法   从 构造函数 的 原型对象上 添加 ,这样可以做到 重复用
+    // 为 Phone构造函数 添加 call()方法, 从 构造函数 的 原型对象上 添加，可做到 复用
     Phone.prototype.call = function () {
 
-      console.log('我可以打电话！');
+      console.log('我的手机是' + this.name + ', 买它花了我' + this.price + '元');
 
     }
 
-    // 实例化对象
+    // 使用 new 关键字 来 实例化 Person 
     let xiaomi = new Phone('xiaomi', 4999);
 
-    xiaomi.call();
+    console.log(xiaomi);     // Phone {name: 'xiaomi', price: 4999}
 
-    console.log(xiaomi);
+    console.log(typeof xiaomi);   // object
+
+    xiaomi.call();  // 我的手机是xiaomi, 买它花了我4999元
 
   </script>
 
   <script>
 
-    // 通过class实例化对象 
+    // 使用 class 来创建 对象，并 实例化对象 
+
+    class Phone {
+
+      // 构造方法的名字 不能修改 , this关键字 则代表实例对象, 当new一个实例对象时 就自调用
+      constructor(name, price) {
+        this.name = name;
+        this.price = price;
+      }
+
+      // 为 Phone 类 添加 方法 时， 方法名称 的 前面 不需要加上 function 关键字 
+      call() {
+        console.log(`我的手机是 ${this.name} , 买它花了我 ${this.price} 元`);
+      }
+
+    }
+
+    // // 使用 new 关键字 来 实例化 Phone 
+    let xiaomi = new Phone('xiaomi', 4999);
+
+    console.log(xiaomi);  // Phone {name: 'xiaomi', price: 4999}
+
+    console.log(typeof xiaomi);   // object
+
+    xiaomi.call();   // 我的手机是 xiaomi , 买它花了我 4999 元
+
+    // 类本身 就指向 构造函数
+    console.log(Phone === Phone.prototype.constructor);    // true      
+
 
     // 1.类 中 的 方法名  前面不需要加上function这个关键
 
@@ -53,33 +98,7 @@
 
     // 4.clas使用的时候，也是直接 对 类 使用 new命令，跟 构造函数的用法 完全一致。
 
-    class Shouji {
-
-      // 构造方法 名字 不能修改 , this关键字 则代表 实例对象,   当new一个实例对象时 就自调用
-      constructor(brand, price) {
-        this.brand = brand;
-        this.price = price;
-      }
-
-      // 添加方法  前面不需要加上function这个关键字 
-      call() {
-        console.log('我可以打电话！');
-      }
-
-    }
-
-    // 使用的时候，也是直接 对 类 使用 new 命令 创建 一个实例对象
-    let redmi = new Shouji('redmi', 1999);
-    console.log(redmi);
-
-    //类的数据类型 就是 函数
-    console.log(typeof Shouji);   // function
-
-    // 类本身 就指向 构造函数
-    console.log(Shouji === Shouji.prototype.constructor);    // true      
-
   </script>
-
 
 
 </body>
