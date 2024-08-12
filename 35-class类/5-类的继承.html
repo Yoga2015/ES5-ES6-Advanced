@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <h2> Function.prototype.call() </h2>
+
+  函数实例 的 call（）方法，可以指定 函数内部 this的指向（即:函数执行时 所在的作用域），然后在 所指定 的 作用域中，调用该函数。 <br><br>
+
+  call（）方法可以接受多个参数: <br><br>
+
+  call 的 第一个参数 就是 this 所要指向 的 那个对象，后面的参数 则是 函数调用时 所需的参数。<br><br>
+
+  <h2>super()</h2>
+
+  <script>
+
+    // 实现 构造函数 的 继承 
+
+    // 第一代手机
+    function Phone(brand, price) {
+      this.brand = brand;
+      this.price = price;
+    }
+
+    Phone.prototype.call = function () {
+      console.log('我可以打电话');
+    }
+
+    // 智能手机
+    function SmartPhone(brand, price, color, size) {
+
+      // 在这里面 先去调用一下 父级Phone 构造函数里面 的 初始化代码
+      Phone.call(this, brand, price)
+
+      this.color = color
+      this.size = size
+    }
+
+    // 设置 子级 构造函数 的 原型
+    SmartPhone.prototype = new Phone;
+
+    SmartPhone.prototype.constructor = SmartPhone;
+
+    // 声明 子类 的 方法
+    SmartPhone.prototype.photo = function () {
+      console.log('我可以拍照');
+    }
+
+    SmartPhone.prototype.playGame = function () {
+      console.log('我可以玩游戏');
+    }
+
+    const redmi = new SmartPhone('红米', '1999', '白色', '6.7英寸')
+
+    console.log(redmi);
+
+  </script>
+
+  <script>
+
+    // 实现 类 的 继承
+
+    class Phone {
+
+      constructor(brand, price) {
+        this.brand = brand;
+        this.price = price;
+      }
+
+      // 父类 的 成员属性
+      call() {
+        console.log('我可以打电话');
+      }
+
+    }
+
+    class SmartPhone extends Phone {
+
+      constructor(brand, price, color, size) {
+
+        super(brand, price);  // Phone.call(this, brand, price)
+
+        this.color = color
+        this.size = size
+
+      }
+
+      photo() {
+        console.log('我可以拍照');
+      }
+
+      playGame() {
+        console.log('我可以玩游戏');
+      }
+
+    }
+
+    const xiaomi = new SmartPhone('小米', 3999, '白色', '6.8inch');
+
+    console.log(xiaomi); // SmartPhone {brand: '小米', price: 3999, color: '白色', size: '6.8inch'}
+
+    xiaomi.call();  // 我可以打电话
+
+    xiaomi.photo();  // 我可以拍照
+
+    xiaomi.playGame();  // 我可以玩游戏
+
+  </script>
+
+</body>
+
+</html>
