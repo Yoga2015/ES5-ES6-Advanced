@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>类中getter和setter设置</title>
+</head>
+
+<body>
+
+  通过使用 getter 和 setter方法，类可以控制对其内部状态的访问和修改，从而确保数据的一致性和安全性。
+
+  <script>
+
+    class Phone {
+
+      // 构造方法 不一定 非要有，可以不写   
+
+      get price() {
+        console.log('价格属性被读取了');
+        return 'YouAreMySunshine';
+      }
+
+      set price(newVal) {
+        console.log('价格属性被修改了');
+      }
+
+    }
+
+    let s = new Phone();
+
+    console.log(s.price);  // 价格属性 被读取了
+
+    s.price = 'free';   // 价格属性 被修改了
+
+  </script>
+
+</body>
+
+</html>

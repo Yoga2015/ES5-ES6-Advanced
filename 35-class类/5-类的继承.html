@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>实现 构造函数 的 继承 对比 实现 类 的 继承</title>
 </head>
 
 <body>
@@ -17,16 +17,23 @@
 
   call 的 第一个参数 就是 this 所要指向 的 那个对象，后面的参数 则是 函数调用时 所需的参数。<br><br>
 
-  <h2>super()</h2>
+  <h2>super 关键字</h2>
+
+  super这个关键字，既可以当作 函数 使用，也可以当作 对象 使用，在这两种情况下，它的用法完全不同。 <br><br>
+
+  第一种情况，super 作为 函数调用 时，代表 父类的构造函数。ES6 要求，子类的constructor()构造函数中 必须执行一次super()函数，这是必须的，否则报错。<br><br>
 
   <script>
 
-    // 实现 构造函数 的 继承 
+    // 使用 构造函数 和 原型链 来 实现 继承
 
     // 第一代手机
     function Phone(brand, price) {
+
       this.brand = brand;
+
       this.price = price;
+
     }
 
     Phone.prototype.call = function () {
@@ -36,15 +43,24 @@
     // 智能手机
     function SmartPhone(brand, price, color, size) {
 
-      // 在这里面 先去调用一下 父级Phone 构造函数里面 的 初始化代码
+      // 让 SmartPhone实例 继承 Phone实例的属性和方法
       Phone.call(this, brand, price)
 
       this.color = color
       this.size = size
+
     }
 
-    // 设置 子级 构造函数 的 原型
-    SmartPhone.prototype = new Phone;
+    // 设置 SmartPhone 构造函数 的 原型
+    // SmartPhone.prototype = new Phone;   
+
+    // 优化如下：
+
+    // 设置 SmartPhone 的 原型  继承自  Phone.prototype  
+    SmartPhone.prototype = Object.create(Phone.prototype);
+
+    // 使用 Object.create()方法 来 创建 一个新对象，该 新对象的原型（__proto__） 被指定为 传递给 Object.create() 的 第一个参数。
+    // 最后 并赋值给 SmartPhone.prototype，所以 SmartPhone的实例 将能够 继承 Phone原型上 定义的属性和方法。
 
     SmartPhone.prototype.constructor = SmartPhone;
 
@@ -57,9 +73,9 @@
       console.log('我可以玩游戏');
     }
 
-    const redmi = new SmartPhone('红米', '1999', '白色', '6.7英寸')
+    const redmi = new SmartPhone('红米', '1999', '白色', '6.7英寸');
 
-    console.log(redmi);
+    console.log(redmi); // SmartPhone {brand: '红米', ...}
 
   </script>
 
@@ -85,7 +101,7 @@
 
       constructor(brand, price, color, size) {
 
-        super(brand, price);  // Phone.call(this, brand, price)
+        super(brand, price); // === Phone.call(this, brand, price)
 
         this.color = color
         this.size = size
@@ -100,13 +116,19 @@
         console.log('我可以玩游戏');
       }
 
+      // 子类 对 父类方法的重写    在普通的成员方法里 是不能够 去调用父类的同名方法的
+      call() {
+        // super();  // SyntaxError: 'super' keyword unexpected here
+        console.log('我不仅可以打电话，还可以视频通话');
+      }
+
     }
 
     const xiaomi = new SmartPhone('小米', 3999, '白色', '6.8inch');
 
-    console.log(xiaomi); // SmartPhone {brand: '小米', price: 3999, color: '白色', size: '6.8inch'}
+    console.log(xiaomi); // SmartPhone {brand: '小米',...}
 
-    xiaomi.call();  // 我可以打电话
+    xiaomi.call();  // 我不仅可以打电话，还可以视频通话
 
     xiaomi.photo();  // 我可以拍照
 

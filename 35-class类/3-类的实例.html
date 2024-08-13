@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>类的实例、类中的属性和方法</title>
+</head>
+
+<body>
+
+  <!-- <script>
+
+    // 类的实例
+
+    // 生成 类的实例 的 写法，与 构造函数 完全一样，也是使用 new 命令。
+
+    // 类 也是 必须使用 new 调用，否则会报错。
+
+    class Point {
+      // ...
+    }
+
+    // 报错 : Uncaught TypeError: Class constructor Point cannot be invoked without 'new'
+    var point = Point(2, 3);
+
+    // 正确
+    var point = new Point(2, 3);
+
+  </script> -->
+
+  <script>
+
+    // 类中的属性和方法
+
+    class Point {
+
+      constructor(x, y) {
+        this.x = x;
+        this.y = y;
+      }
+
+      toString() {
+        return '(' + this.x + ', ' + this.y + ')';
+      }
+
+    }
+
+    var point = new Point(2, 3);
+
+    console.log(point);  // Point {x: 2, y: 3}
+
+    console.log(point.toString());   // (2, 3)
+
+    console.log(point.hasOwnProperty('x'));  // true
+
+    console.log(point.hasOwnProperty('y'));  // true
+
+    console.log(point.hasOwnProperty('toString'));  // false
+
+    console.log(point.__proto__.hasOwnProperty('toString'));  // true
+
+  </script>
+
+  <script>
+
+    // 与 ES5 一样，类 的 所有实例  共享 一个原型对象。
+
+    let p1 = new Point(2, 3);
+
+    let p2 = new Point(3, 2);
+
+    console.log(p1.__proto__ === p2.__proto__);   // true
+
+  </script>
+
+  <script>
+
+    var p3 = new Point(2, 3);
+
+    var p4 = new Point(3, 2);
+
+    p3.__proto__.printName = function () { return 'Oops' };
+
+    console.log(p3.printName());   // "Oops"
+
+    console.log(p4.printName());   // "Oops"
+
+    var p5 = new Point(4, 2);
+
+    console.log(p5.printName());   // "Oops"
+
+  </script>
+
+
+
+</body>
+
+</html>
