@@ -43,45 +43,6 @@
 
   </script>
 
-  <script>
-
-    // 类的所有方法 都定义在 类 的 prototype属性 上面
-
-    class Point {
-
-      constructor() { }
-
-      toString() { }
-
-      toValue() { }
-
-    }
-
-    // 同上 、等同于
-
-    Point.prototype = {
-
-      constructor() { },
-
-      toString() { },
-
-      toValue() { },
-
-    };
-
-    // 上面代码中，constructor()、toString()、toValue()这三个方法，其实都是定义在 Point.prototype 上面
-
-    // 因此，在类的实例上面调用方法，其实就是调用原型上的方法。
-
-
-    class Point { }
-
-    const p = new Point();
-
-    p.constructor === Point.prototype.constructor // true
-
-
-  </script>
 
 </body>
 

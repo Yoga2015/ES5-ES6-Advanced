@@ -4,34 +4,58 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>类的实例、类中的属性和方法</title>
+  <title>类的方法</title>
 </head>
 
 <body>
 
-  <!-- <script>
 
-    // 类的实例
+  类的方法 定义在 类体 内部，可以包含 参数 和 函数体。<br><br>
 
-    // 生成 类的实例 的 写法，与 构造函数 完全一样，也是使用 new 命令。
+  类的方法内部 可以使用 this关键字 来访问 类的实例。<br><br>
 
-    // 类 也是 必须使用 new 调用，否则会报错。
+  类的方法 可以是异步的（使用 async关键字 ）。 <br><br>
 
-    class Point {
-      // ...
-    }
-
-    // 报错 : Uncaught TypeError: Class constructor Point cannot be invoked without 'new'
-    var point = Point(2, 3);
-
-    // 正确
-    var point = new Point(2, 3);
-
-  </script> -->
 
   <script>
 
-    // 类中的属性和方法
+    class Point {
+
+      constructor() { }
+
+      toString() { }
+
+      toValue() { }
+
+    }
+
+    // 同上 、等同于
+
+    Point.prototype = {
+
+      constructor() { },
+
+      toString() { },
+
+      toValue() { },
+
+    };
+
+    // 上面代码中，constructor()、toString()、toValue()这三个方法，其实都是定义在 Point.prototype 上面
+
+    // 因此，在类的实例上面调用方法，其实就是调用原型上的方法。
+
+
+    class Point { }
+
+    const p = new Point();
+
+    p.constructor === Point.prototype.constructor // true
+
+  </script>
+
+
+  <script>
 
     class Point {
 
@@ -91,7 +115,6 @@
     console.log(p5.printName());   // "Oops"
 
   </script>
-
 
 
 </body>
