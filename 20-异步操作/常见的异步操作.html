@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>常见 的 异步操作</title>
+</head>
+
+<body>
+
+  <h2>异步操作 又称为 异步编程 </h2>
+
+  <h3>常见 的 异步操作（asynchronous）</h3>
+
+  - DOM 事件形式的异步：如 click, resize, keyup 等; <br><br>
+
+  - 定时器：setInterval , setTimeout等; <br><br>
+
+  - 网络 I/O 操作 ：Ajax请求 <br><br>
+
+  - 文件 I/O 操作：读取文件、写入文件 <br><br>
+
+  <div>上午好！</div> <button id="btn">切换问候语</button>
+
+  <script>
+
+    let div = document.querySelector('div');
+    let btn = document.getElementById('btn');
+
+    btn.onclick = function () {
+      div.innerHTML = '下午好！'
+    }
+
+  </script>
+
+  <script>
+
+    // setTimeout() 延时定时器，开启后，仅仅只执行一次，所以可理解为 只是 把 一段代码 延迟执行。
+
+    let f0 = setTimeout(() => {
+
+      console.log(`10秒后，才执行，且仅只执行一次`);
+
+    }, 10000)
+
+
+    // setInterval() 间歇定时器 ，开启后，每隔一段时间 会自动 执行一段代码
+
+    let n = 1
+
+    function fn() {
+      console.log(`5秒执行一次,现在第${n}次执行`);
+      n++
+    }
+
+    fn();  // 避免首次进入 控制台 会出现 留白
+
+    let f1 = setInterval(fn, 5000);
+
+
+
+  </script>
+
+</body>
+
+</html>
