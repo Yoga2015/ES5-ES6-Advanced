@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>多重继承</title>
+</head>
+
+<body>
+
+  JavaScript 不提供 多重继承 功能，即不允许一个对象同时继承多个对象。但是，可以通过变通方法 Object.assign（）实现 这个功能。
+
+  <script>
+
+    function M1() {
+      this.name = 'walking';
+      this.age = '18'
+    }
+
+    function M2() {
+      this.weight = '120斤';
+    }
+
+    function S() {
+      M1.call(this);
+      M2.call(this);
+    }
+
+    // 继承 M1
+    S.prototype = Object.create(M1.prototype);
+
+    // 继承链上 加入 M2
+    Object.assign(S.prototype, M2.prototype);
+
+    // 需要显式地 将 S.prototype.constructor 指定回 S构造函数
+    S.prototype.constructor = S;
+
+    var s = new S();
+
+    console.log(s.name);   // 'walking'
+
+    console.log(s.weight);    // '120斤'
+
+    console.log(s);  // {name: 'walking', age: '18', weight: '120斤'}
+
+
+  </script>
+
+</body>
+
+</html>
