@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>分析Object.defineProperty()</title>
+</head>
+
+<body>
+
+  <h2>什么 是 Object.defineProperty()</h2>
+
+  Object.defineProperty() 是 ES5 中 引入 的 一个方法，它允许 开发者 直接在 一个对象上 定义新属性 或 修改 现有属性，并返回 这个对象。
+
+
+  <h2>为什么会出现 Object.defineProperty()</h2>
+
+  在 ES5 之前，JavaScript 对象属性 只能通过 赋值操作 来 定义 或 修改，而 无法直接控制 属性的特性 (如: 不可枚举、只读等)。 <br><br>
+
+  Object.defineProperty() 方法 的 主要作用 是 允许开发者 定义 或 修改 对象属性 时，能够指定 属性的各种特性。<br><br>
+
+  Object.defineProperty()方法 的 由来 是为了提供 更细粒度 的 对象属性 控制，包括 属性的值：是否可枚举（enumerable）、
+  是否可配置（configurable）、是否可写（writable）、以及 一个特殊 的 属性get 和 set（访问控制器属性），用于设置 属性 的 取值函数 和 存值函数。 <br><br>
+
+  所以说 Object.defineProperty() 方法 还可以 用来 代理（监听） 对象 中 的 属性 的， 而且 一次 只能监听 对象中 的 一个属性。 <br><br>
+
+  通过上面所述的方式，可以创建 更安全的对象：给对象 封装 私有变量 来 防止外部直接访问，实现了 属性 的 封装 和 访问控制 ，从而 增强了 代码的安全性 和 可维护性。 <br><br>
+
+
+
+
+  <script>
+
+    // Object.defineProperty() 的 语法：
+
+    //                         对象         新增 或 修改 属性    配置对象，配置 第二个参数 property
+
+    // Object.defineProperty(  person,     'property',         descriptor)
+
+    // 第一个参数 ：person 指 要 定义 或 修改 属性 的 对象。
+
+    // 第二个参数 ：property 指 要 定义 或 修改的 属性的名称。
+
+    // 第三个参数 ：descriptor 指 将被 定义 或 修改 的 属性描述符，或者说 一般是 一个对象，一个配置对象。
+
+    //   属性描述符 有 两种主要形式：数据 描述符 和 存取 描述符：
+
+    //    1、数据描述符 是一个 具有值 的 属性，该 值 可以是 可写的 或 不可写的。有 四个配置属性：
+
+    //       value：属性的值（默认为 undefined）。
+
+    //       writable：当且 仅当 该属性的值 可以 被改变时  为 true（默认为 false）。
+
+    //       configurable：当且 仅当 该属性的描述符 可以 被改变，且 该属性 可以从  对应的对象上 被删除时 为 true（默认为 false）。
+
+    //       enumerable：当且 仅当 该属性 出现在  对象的枚举属性中 时  为 true（默认为 false）。
+
+    //   2、存取描述符 是由 getter 函数 和 setter 函数 所描述的属性：
+
+    //     - get：一个给属性提供 getter 的方法，如果没有 getter 则为 undefined。
+    //           当访问该属性时，会调用此 getter 方法，执行时不传入任何参数，并返回该方法的返回值。
+
+    //     - set：一个给属性提供 setter 的方法，如果没有 setter 则为 undefined。
+    //           当属性值被修改时，会调用此 setter 方法，该方法将接受唯一参数，即被赋予的新值。
+
+    //     注意：一个描述符 只能是 这两者 其中之一；不能 同时 使用两者：
+
+    //       当 使用了 存取描述符 get() 或 set() 方法，不允许使用 writable和value这两个属性；
+
+    //       同理，当 使用了 数据描述符 writable 和 value，不允许使用 get() 或set()方法。
+
+
+
+    // 1、 利用 Object.defineProperty()方法 定义 新属性 
+
+    const person = { name: 'walking' };
+
+    console.log(person);   // {name: 'walking'}
+
+    Object.defineProperty(person, 'weight', {
+      value: 120
+    })
+
+    console.log(person);   // {name: 'walking', weight: 120}
+
+
+    // 2、利用 Object.defineProperty()方法 直接修改 现有属性 name
+
+    Object.defineProperty(person, 'name', {
+      value: '老六'
+    })
+
+    console.log(person.name);  // 老六
+
+    console.log(person);  // {name: '老六', weight: 120}
+
+
+    // 3、利用 Object.defineProperty()方法 给对象 定义 新属性，并设置 新属性 是否可配置
+
+    Object.defineProperty(person, 'age', {
+
+      value: 20,  // 重量 age 的 属性值 是 20
+
+      writable: false,  // 控制 属性 是否可以 被修改，默认值是 false  
+
+      configurable: false,  // 控制 属性 是否可以 被删除，默认值是 false
+
+      enumerable: true  // 控制 属性 是否可以 枚举，默认值是 false
+
+      // 如果 这里 使用 set 和 get 后 不注释 上面的 配置项 会报错 ，因为 不能同时指定 访问器 和 值 或 可写属性
+
+    })
+
+    console.log(person);  // {name: '老六', age: 20, weight: 120}
+
+    // 尝试修改 age属性的值 ，但不会生效  
+    person.age = 49
+
+    console.log(person.age);  // 输出仍然是：20 ，是因为 writable 为 false，要改成 true 才能修改
+
+    // 删除 person 现有属性 age
+    console.log(delete person.age);  // 输出： false ，是因为 configurable 为 false，要改成 true 才能删除
+
+    console.log(person);   //  {name: '老六', age: 20, weight: 120}
+
+    // 枚举 person 对象 里 的 属性
+    console.log(Object.keys(person));   // ['name', 'age']
+
+    for (let key in person) {
+
+      console.log(key);     // 只输出： name 、 age ,   weight属性 没有设置 可枚举，因此不输出
+
+    }
+
+  </script>
+
+  <script>
+
+    let number = 25
+
+    let person2 = {
+      name: '王五',
+      weight: '120'
+    }
+
+    // 通过 Object.defineProperty 追加（添加）的 属性 的 属性值:
+    // 默认不可修改（写）、不可遍历、不可删除，除非 设置 属性的配置项 才行。
+
+    Object.defineProperty(person2, 'age', {
+
+      // value: 50,
+
+      // writable: true,     // 控制 属性 是否可以 被修改，默认值是 false  
+
+      // 注意：使用 set 和 get后 记得注释 value、writable ，否则 会报错 ，因为 不能 同时指定 访问器 和 值 或 可写属性
+
+      // 1、当有人 来 读取 person2 的 age属性 时，get 函数（getter）就会被调用，这里 设置 直接返回 number变量的值
+      get() {
+
+        console.log('有人 读取 age属性 了');
+
+        return number
+
+      },
+
+      // 2、当有人 来 修改 person2 的 age属性 时，set 函数（setter）就会被调用，但 set函数 里 可设置 是否可修改
+      set(newValue) {
+
+        if (newValue > 100) {
+
+          throw new Error('Invalid age !')
+
+        }
+
+        number = newValue
+
+      },
+
+      configurable: true, // 控制 属性 是否可以 被删除，默认值 是 false
+
+      enumerable: true,   // 控制 属性 是否可以 枚举，默认值 是 false
+
+    })
+
+    console.log(person2.age);  // 有人 读取 age属性 了  25
+
+    person2.age = 30;   // 有人 修改了 age 属性值，修改后的值是 30 
+
+    console.log(person2.age);    // 有人 读取 age属性 了  30
+
+    // 遍历 person2 对象里的属性
+    console.log(Object.keys(person2));  // ['name', 'weight', 'age']
+
+    for (let key in person2) {
+
+      console.log(key);     // name  、 weight 、age
+
+    }
+
+    // 所以说 Object.defineProperty()  方法 还可以 用来 代理（监听）  对象 中 的 属性  的， 而且 一次 只能监听 对象中 的 一个属性
+
+  </script>
+
+</body>
+
+</html>
