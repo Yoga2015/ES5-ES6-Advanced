@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>利用 Object.defineProperty() 实现 监听 对象上 所有的属性 </title>
+</head>
+
+<body>
+
+  为了 实现 能监听 对象上 所有 的 属性，需要 封装 一个 代理（监听） 函数 ， 将 对象上的属性 循环 遍历出来，作为 参数 传递给 代理（监听）函数。
+
+  <script>
+
+    //  1、声明一个 person 对象
+    const person = {
+      name: '小陈',
+      age: 20,
+      sex: '男'
+    }
+
+    // 封装 实现 一个 响应式 函数
+    function defineProperty(obj, key, val) {
+
+      Object.defineProperty(obj, key, {
+
+        get() {
+
+          console.log(`有人来访问了 ${key} 属性`)
+
+          return val
+
+        },
+
+        set(newVal) {
+
+          if (newVal > 100 && newVal <= 0) {
+
+            throw new Error('Invalid age !')
+
+          }
+
+          console.log(`${key}属性的值 被修改为 ${newVal} `)
+
+          val = newVal
+        }
+
+      })
+
+    }
+
+    // 实现 一个 遍历函数 Observer  作为 观察者
+    function observer(obj) {
+
+      Object.keys(obj).forEach((key) => {
+
+        defineProperty(obj, key, obj[key])
+
+      })
+
+    }
+
+    observer(person);
+
+    console.log(person.age); // 访问了age属性 20
+
+    person.age = 24;  // age属性 被修改为 24 了
+
+    console.log(person.age);  // 访问了age属性 24
+
+    person.sex = '女';   // sex属性的值 被修改为 女 
+
+    console.log(person.sex);  // 有人来访问了 sex 属性  女
+
+    person.name = '老六';  // name属性的值 被修改为 老六 
+
+    console.log(person.name);  // 有人来访问了 name 属性  老六
+
+  </script>
+
+</body>
+
+</html>
