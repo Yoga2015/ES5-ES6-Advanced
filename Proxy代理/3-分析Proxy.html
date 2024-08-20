@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>分析 Proxy 代理</title>
+</head>
+
+<body>
+
+  <h2>什么是 Proxy</h2>
+  Proxy 是 ES6中 引入 的 一个新特性，旨在 提供一种 更灵活的方式 来 操作对象。（Proxy 翻译过来叫 代理 ） 。 <br><br>
+  比如 ：当 在一个对象 中，存储了一些数据，这些数据 中 可能 有一些 是 希望对外界开放的，
+  但也有一些是重要的、私有的，不希望被外界访问的，希望保护起来，因此 ES6 推出了 Proxy 代理 来对 外界的访问 进行管控。
+
+
+  <h2>Proxy 的 由来</h2>
+  在 ES5 及以前，由于 Object.defineProperty（）只能监听 对象的属性，不能监听 数组，
+  也不能 对 ES6 新引入的 Map、Set 这些数据结构 做出 监听 ; 也不能监听 新增 和 删除操作 等等。<br><br>
+  而ES6 新引入 的 Proxy 可以直接监听 整个对象 ，而非 对象中某个属性，还可以监听 数组的变化，具有多达13中拦截方法。
+
+  <h2>Proxy 的 作用</h2>
+  Proxy 的 主要作用 是 拦截 并 自定义 目标对象 的 各种操作，如属性访问、赋值、枚举、函数调用等。<br><br>
+  通过 Proxy，开发者 可以在 这些操作发生时 加入 自定义的逻辑，如数据验证、日志记录、权限控制等。 <br><br>
+
+  比如： 用 Proxy 代理 对象A ，当 外界 对 对象A 进行访问 时 ，可以 对 外界的访问 可以进行 拦截、改写。<br><br>
+  所以 Proxy 可以理解成，在 目标对象 之前 架设一层 “ 拦截 ” ，当 外界 对 目标对象 进行 访问 时，
+  都必须 先通过 这层拦截，从而提供了一种机制来对外界的访问进行过滤和改写。<br><br>
+
+  Proxy的引入 还可以让 开发者 能够在不修改原对象的情况下 添加额外的逻辑，从而避免了 直接修改 原对象 可能带来的风险。
+
+  <script>
+
+    const target = {
+      foo: 'bar',
+      baz: 42
+    };
+
+    const handler = {
+      get: function (target, prop, receiver) {
+        console.log(`读取属性：${prop}`);
+        return Reflect.get(...arguments);
+      }
+    };
+
+    const proxy = new Proxy(target, handler);
+
+    console.log(proxy.foo); // 控制台输出："读取属性：foo"，然后输出："bar"  
+    console.log(proxy.baz); // 控制台输出："读取属性：baz"，然后输出：42
+
+  </script>
+
+</body>
+
+</html>
