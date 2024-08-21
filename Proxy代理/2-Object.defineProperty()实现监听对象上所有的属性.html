@@ -44,7 +44,11 @@
           console.log(`${key}属性的值 被修改为 ${newVal} `)
 
           val = newVal
-        }
+        },
+
+        configurable: false, // 控制 属性 是否可以 被删除，默认值 是 false
+
+        enumerable: false,   // 控制 属性 是否可以 遍历，默认值 是 false
 
       })
 
@@ -63,19 +67,30 @@
 
     observer(person);
 
-    console.log(person.age); // 访问了age属性 20
+    // 1、查询 age 属性
+    console.log(person.age); // 有人来访问了age属性  // 20
 
-    person.age = 24;  // age属性 被修改为 24 了
+    // 2、修改 age 属性
+    person.age = 24;  // age属性的值 被修改为 24 
 
-    console.log(person.age);  // 访问了age属性 24
+    console.log(person.age);  // 有人来访问了 age属性  // 24
 
     person.sex = '女';   // sex属性的值 被修改为 女 
 
-    console.log(person.sex);  // 有人来访问了 sex 属性  女
+    console.log(person.sex);  // 有人来访问了 sex 属性  // 女
 
     person.name = '老六';  // name属性的值 被修改为 老六 
 
-    console.log(person.name);  // 有人来访问了 name 属性  老六
+    console.log(person.name);  // 有人来访问了 name 属性  // 老六
+
+    // 3、删除 person 的 sex 属性
+    console.log(delete person.sex);   // false , 因为上面设置了 不允许 删除（配置）
+
+
+    // 3、遍历 person 对象
+    console.log(Object.keys(person));   // 控制台输出 ： [] ，因为上面设置了 不允许 遍历
+
+    // 
 
   </script>
 

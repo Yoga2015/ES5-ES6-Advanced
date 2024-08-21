@@ -35,8 +35,10 @@
     // 1、定义 一个 要被代理 的 目标对象
     const targetObj = {
       name: 'walking',
+      sex: '男',
       age: 18,
-      weight: '180斤',
+      height: '180cm',
+      weight: '130斤',
     };
 
     // 2、设置 监听、拦截 外界的操作
@@ -53,13 +55,15 @@
 
           } else {
 
+            console.log(`监听到 外界 来读取 ${propKey} 属性`);
+
             return targetObj[propKey]  // 当 属性 存在 目标对象中，且不是 weight属性 ，就 允许 外界 来 读取
 
           }
 
         } else {
 
-          return `属性名称 \"" + ${propKey} + "\" 不存在.`
+          return `属性名称 ${propKey} 不存在.`
 
         }
 
@@ -70,9 +74,17 @@
 
         if (propKey in targetObj) {
 
-          console.log(`监听到 外界 试图修改 ${propKey} 属性 为 ：${propKey} = ${value}，已经被拦截 ！`);
+          if (propKey === 'name' || propKey === 'age' || propKey === 'sex') {       // 仅允许修改  除 name 和 sex 之外 的 属性
 
-          targetObj[propKey] = targetObj[propKey];    // 不允许 外界 修改
+            console.log(`监听到 外界 试图修改 ${propKey} 属性 为 ：${propKey} = ${value}，已经被拦截 ！`);
+
+            targetObj[propKey] = targetObj[propKey];    // 不允许 外界 修改
+
+          } else {
+
+            targetObj[propKey] = value;      // 部分 属性 允许 外界 修改    
+
+          }
 
         } else {
 
@@ -91,7 +103,9 @@
 
 
       deleteProperty(targetObj, propKey) {
+
         return false
+
       }
 
     };
@@ -100,44 +114,46 @@
     // 3、创建 Proxy 实例对象 ，并给 targetObj 设置 代理对象 proxyObj
     const proxyObj = new Proxy(targetObj, handlerObj);
 
-    console.log(proxyObj);
+    console.log(proxyObj);   // Proxy(Object){name: 'walking', sex: '男', age: 18, height: '180cm', weight: '130斤'}
 
-    // 4、读取 targetObj 的 age 属性，注意了，定义 代理 后。得用 代理对象 proxyObj 来调用 属性 或 方法
+    // 4、读取 targetObj 的 name 属性，注意了!!  定义 代理 后，得用 代理对象 proxyObj 来调用 属性 或 方法
+    proxyObj.name = '老六';  // 监听到 外界 试图修改 name 属性 为 ：name = 老六，已经被拦截 ！
+    proxyObj.sex = '女';   //  监听到 外界 试图修改 sex 属性 为 ：sex = 女，已经被拦截 ！
     proxyObj.age = 33;  // 监听到 外界 试图修改 age 属性 为 ：age = 33，已经被拦截 ！
 
-    console.log(proxyObj.age);  // 监听到 外界 来读取 age 属性    //  18
-
-    // 5、读取 targetObj 的 name 属性，注意了，定义 代理 后。得用 代理对象 proxyObj 来调用 属性 或 方法
-    proxyObj.name = '老六';  // 监听到 外界 试图修改 name 属性 为 ：name = 老六，已经被拦截 ！
-
     console.log(proxyObj.name); // 监听到 外界 来读取 name 属性    //  walking
+    console.log(proxyObj.sex);  // 监听到 外界 来读取 sex  属性    //  男
+    console.log(proxyObj.age);  // 监听到 外界 来读取 age 属性    //  18
 
     console.log(proxyObj.weight);   // 7、weight 属性的值 属于 隐私数据，不可读取
 
-    // 6、访问 目标对象 不存在的属性，会抛出一个错误。如果没有这个拦截函数，访问不存在的属性，只会返回undefined。
-    console.log(proxyObj.sex);  // Prop name "" + sex + "" does not exist.
+    // 5、访问 目标对象 不存在 的 属性
+    console.log(proxyObj.phoneNumber);  // 属性名称 phoneNumber 不存在.
 
 
-    // 8、 ownKeys() 方法 用来 拦截 外界 遍历 对象自身属性 的 读取操作   （ Object.keys()、for...in循环 ）
-    console.log(Object.keys(proxyObj));
+    // 6、 ownKeys() 方法 用来 拦截 外界 遍历 对象自身属性 的 读取操作   （ Object.keys()、for...in循环 ）
+    console.log(Object.keys(proxyObj));    // ['name']
 
     for (let key in proxyObj) {
 
-      console.log(proxyObj[key]);
+      console.log(key);    // 监听到 外界 来读取 name 属性    // name
 
     }
 
-    // 9、尝试 添加 不存在 的 属性
-    proxyObj.sex = '男'
+    // 7、尝试 添加 不存在 的 属性
+    proxyObj.phoneNumber = 110;
 
-    console.log(proxyObj);  // Proxy(Object) { name: 'walking', age: 18, weight: '180斤' }
+    console.log(proxyObj);  // Proxy(Object) {name: 'walking', sex: '男', age: 18, height: '180cm', weight: '130斤'}
 
-    // 10、尝试 删除 存在 的 属性
+    // 8、尝试 删除 存在 的 属性
     console.log(delete proxyObj.name);    // false
 
-    console.log(proxyObj);   // Proxy(Object) { name: 'walking', age: 18, weight: '180斤' }
+    console.log(proxyObj);   // Proxy(Object) {name: 'walking', sex: '男', age: 18, height: '180cm', weight: '130斤'}
 
+    // 9、尝试 修改 存在 的 属性
+    proxyObj.height = '236cm';
 
+    console.log(proxyObj);   // Proxy(Object) {name: 'walking', sex: '男', age: 18, height: '236cm', weight: '130斤'}
   </script>
 
 </body>

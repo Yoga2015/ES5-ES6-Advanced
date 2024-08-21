@@ -16,11 +16,11 @@
 
   <h2>为什么会出现 Object.defineProperty()</h2>
 
-  在 ES5 之前，JavaScript 对象属性 只能通过 赋值操作 来 定义 或 修改，而 无法直接控制 属性的特性 (如: 不可枚举、只读等)。 <br><br>
+  在 ES5 之前，JavaScript 对象属性 只能通过 赋值操作 来 定义 或 修改，而 无法直接控制 属性的特性 (如: 不可遍历、只读等)。 <br><br>
 
   Object.defineProperty() 方法 的 主要作用 是 允许开发者 定义 或 修改 对象属性 时，能够指定 属性的各种特性。<br><br>
 
-  Object.defineProperty()方法 的 由来 是为了提供 更细粒度 的 对象属性 控制，包括 属性的值：是否可枚举（enumerable）、
+  Object.defineProperty()方法 的 由来 是为了提供 更细粒度 的 对象属性 控制，包括 属性的值：是否可遍历（enumerable）、
   是否可配置（configurable）、是否可写（writable）、以及 一个特殊 的 属性get 和 set（访问控制器属性），用于设置 属性 的 取值函数 和 存值函数。 <br><br>
 
   所以说 Object.defineProperty() 方法 还可以 用来 代理（监听） 对象 中 的 属性 的， 而且 一次 只能监听 对象中 的 一个属性。 <br><br>
@@ -30,7 +30,7 @@
 
 
 
-  <script>
+  <!-- <script>
 
     // Object.defineProperty() 的 语法：
 
@@ -54,7 +54,7 @@
 
     //       configurable：当且 仅当 该属性的描述符 可以 被改变，且 该属性 可以从  对应的对象上 被删除时 为 true（默认为 false）。
 
-    //       enumerable：当且 仅当 该属性 出现在  对象的枚举属性中 时  为 true（默认为 false）。
+    //       enumerable：当且 仅当 该属性 出现在  对象的遍历属性中 时  为 true（默认为 false）。
 
     //   2、存取描述符 是由 getter 函数 和 setter 函数 所描述的属性：
 
@@ -106,7 +106,7 @@
 
       configurable: false,  // 控制 属性 是否可以 被删除，默认值是 false
 
-      enumerable: true  // 控制 属性 是否可以 枚举，默认值是 false
+      enumerable: true  // 控制 属性 是否可以 遍历，默认值是 false
 
       // 如果 这里 使用 set 和 get 后 不注释 上面的 配置项 会报错 ，因为 不能同时指定 访问器 和 值 或 可写属性
 
@@ -124,16 +124,16 @@
 
     console.log(person);   //  {name: '老六', age: 20, weight: 120}
 
-    // 枚举 person 对象 里 的 属性
+    // 遍历 person 对象 里 的 属性
     console.log(Object.keys(person));   // ['name', 'age']
 
     for (let key in person) {
 
-      console.log(key);     // 只输出： name 、 age ,   weight属性 没有设置 可枚举，因此不输出
+      console.log(key);     // 只输出： name 、 age ,   weight属性 没有设置 可遍历，因此不输出
 
     }
 
-  </script>
+  </script> -->
 
   <script>
 
@@ -155,7 +155,7 @@
 
       // 注意：使用 set 和 get后 记得注释 value、writable ，否则 会报错 ，因为 不能 同时指定 访问器 和 值 或 可写属性
 
-      // 1、当有人 来 读取 person2 的 age属性 时，get 函数（getter）就会被调用，这里 设置 直接返回 number变量的值
+      // get() 方法 ：当有人 来 读取 person2 的 age属性 时，get 函数（getter）就会被调用，这里 设置 直接返回 number变量的值
       get() {
 
         console.log('有人 读取 age属性 了');
@@ -164,12 +164,12 @@
 
       },
 
-      // 2、当有人 来 修改 person2 的 age属性 时，set 函数（setter）就会被调用，但 set函数 里 可设置 是否可修改
+      // set() 方法 ：当有人 来 修改 person2 的 age属性 时，set 函数（setter）就会被调用，但 set函数 里 可设置 是否可修改
       set(newValue) {
 
-        if (newValue > 100) {
+        if (newValue > 100 || newValue < 0) {
 
-          throw new Error('Invalid age !')
+          throw new ReferenceError('Invalid age !');
 
         }
 
@@ -179,22 +179,29 @@
 
       configurable: true, // 控制 属性 是否可以 被删除，默认值 是 false
 
-      enumerable: true,   // 控制 属性 是否可以 枚举，默认值 是 false
+      enumerable: false,   // 控制 属性 是否可以 遍历，默认值 是 false
 
     })
 
+
+    // 1、查询 age 属性
     console.log(person2.age);  // 有人 读取 age属性 了  25
 
+    // 2、修改 age 属性
     person2.age = 30;   // 有人 修改了 age 属性值，修改后的值是 30 
 
     console.log(person2.age);    // 有人 读取 age属性 了  30
 
-    // 遍历 person2 对象里的属性
-    console.log(Object.keys(person2));  // ['name', 'weight', 'age']
+    // 3、删除 person2 的 age 属性
+    console.log(delete person2.age);   // false , 因为上面设置了 不允许 删除（配置）
 
+    // 4、遍历 person2 对象里的属性
+    console.log(Object.keys(person2));  // ['name', 'weight']   ，因为上面设置了 不允许 遍历
+
+    // 5、使用 for...in 获得 person2 对象 的 所有可遍历属性（不管是自身的还是继承的）
     for (let key in person2) {
 
-      console.log(key);     // name  、 weight 、age
+      console.log(key);     // name  、 weight   ，因为上面设置了 不允许 遍历
 
     }
 
