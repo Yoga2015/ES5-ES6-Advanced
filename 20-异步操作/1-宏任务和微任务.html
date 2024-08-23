@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>宏任务和微任务</title>
+</head>
+
+<body>
+
+  在JavaScript中，宏任务（Macro-tasks）和微任务（Micro-tasks）是 异步编程 中 两种不同类型 的 任务，它们在 事件循环（EventLoop）中 被 以不同的方式 处理。<br>
+  宏任务（Macro-tasks）和微任务（Micro-tasks）这 两种任务类型 的 区别 在于 它们 被添加到 任务队列中 的 方式、它们 执行的时机 以及 它们在执行时 如何相互影响。
+
+  <h2>宏任务（Macro-tasks）</h2>
+  宏任务 是由 <b>宿主环境（如浏览器或Node.js）</b> 提供的，用于执行 具有较长执行时间 或 较高延迟 的 任务。 <br>
+  每次 事件循环 只处理 一个宏任务，并且 在处理完 该宏任务 后，会 检查 并 清空 微任务队列中 的 所有任务。宏任务包括但不限于：<br><br>
+
+  script（整体代码执行）<br>
+
+  setTimeout <br>
+
+  setInterval <br>
+
+  setImmediate（Node.js特有）<br>
+
+  I/O <br>
+
+  UI渲染（在浏览器环境中）<br>
+
+
+
+  <h2>微任务（Micro-tasks）</h2>
+  微任务 是在 当前 宏任务 执行完成 后、下一个宏任务 开始之前，立即 被调度 的 任务。 <br>
+  与 宏任务 不同，微任务队列 中 的 任务 会在 所有宏任务 之后、但在 下一轮宏任务 开始之前 被 清空 并 执行。<br>
+  这意味着 一旦 宏任务执行完毕，JavaScript运行时 会 连续执行 微任务队列中 的 所有任务，直到 队列 为空。微任务包括但不限于：<br><br>
+
+  Promise.then/Promise.catch/Promise.finally <br>
+
+  process.nextTick（Node.js特有） <br>
+
+  MutationObserver（用于监视DOM变动的API） <br>
+
+
+  <h2>事件循环（Event Loop）与宏任务和微任务的关系</h2>
+  事件循环 是 JavaScript异步编程 的 核心，它不断地 从任务队列中 取出 任务 并 执行。<br>
+  任务队列 被分为 宏任务队列 和 微任务队列 两种。每次 事件循环，JavaScript引擎都会： <br><br>
+
+  （1）从 宏任务队列 中 取出 一个宏任务 执行。 <br>
+  （2）执行完 宏任务 后，检查 并 清空 微任务队列中 的 所有任务。 <br>
+  （3）如果需要，进行 UI渲染（在浏览器环境中）。 <br>
+  （4）回到步骤1，继续处理下一个宏任务。 <br>
+  这个循环会一直持续，直到所有的宏任务和微任务都被处理完毕。 <br>
+
+  <h2>为什么要区分宏任务和微任务？</h2>
+  区分宏任务 和 微任务 的 主要原因 是为了 在 JavaScript的异步编程模型 中 提供一种 更加细粒度 的 控制方式。 <br>
+  微任务 提供了 在 单个宏任务 之后、但 在 渲染之前 执行 异步代码 的 能力，这对于 需要尽快处理 的 结果（如响应用户输入 或 数据验证）非常有用。<br>
+  同时，它也允许开发者通过 微任务 来管理 多个异步操作 的 执行顺序，确保 某些操作 在特定时间点上 被执行。
+
+</body>
+
+</html>
